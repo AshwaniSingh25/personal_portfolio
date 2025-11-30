@@ -1,70 +1,67 @@
 import React from "react";
+// Assuming SkillsInfo now contains categories like "Cloud," "Architecture," etc.
 import { SkillsInfo } from "../../constants";
-import Tilt from "react-parallax-tilt";
+import { Zap } from "lucide-react"; // Icon for section title
 
 const Skills = () => {
   return (
-    <section
-      id="skills"
-      className="py-24 pb-24 px-[12vw md:px-[7vw] lg:px-[20vw] font-sans bg-skills-gradient clip-path-custom"
-    >
+    // 1. Remove custom BG and clip-path for consistency
+    <section id="skills" className="py-24 md:py-32">
+      
       {/* Section Title */}
-      <div className="text-center mb-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white uppercase">
-          Skills
+      <div className="text-center mb-16 max-w-2xl mx-auto">
+        <h2 className="uppercase font-extrabold text-4xl sm:text-5xl text-text-dark dark:text-text-light">
+          <Zap className="inline w-8 h-8 mr-3 mb-1 text-accent" />
+          Technical Domains
         </h2>
-        {/* underline */}
-        <div className="w-28 h-1 bg-[#8245ec] mx-auto mt-0"></div>
+        {/* underline using accent color */}
+        <div className="w-60 h-1 bg-accent mx-auto mt-2"></div>
 
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
-          My technical skill set, built through practical experience and
-          project-based learning.
+        <p className="text-gray-500 dark:text-gray-400 mt-6 text-lg">
+          Expertise in key architectural domains, cloud infrastructure, and distributed systems.
         </p>
       </div>
 
-      {/* Skills Category */}
-      <div className="flex flex-wrap gap-1 lg:gap-5 py-10 justify-between">
+      {/* Skills Category Grid */}
+      <div className="flex flex-wrap gap-8 justify-center mx-auto max-w-6xl">
         {SkillsInfo.map((category) => (
          
          <div
             key={category.title}
-            className="bg-gray-900 backdrop-blur-md px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl border border-white 
-          shadow-[0_0_20px_1px_rgba(130,69,236,0.3)]"
+            // 2. Use semantic styling for the category card
+            className="bg-white dark:bg-primary-dark/80 p-6 sm:p-8 w-full md:w-[48%] rounded-xl 
+                       border border-gray-200 dark:border-accent/30 shadow-xl dark:shadow-[0_0_20px_5px_rgba(0,191,255,0.1)] 
+                       transition duration-300 hover:shadow-2xl hover:dark:shadow-[0_0_30px_5px_rgba(0,191,255,0.2)]"
           >
-            <h3 className="text-2xl sm:text-3xl font-semibold text-gray-400 mb-4 text-center">
+            {/* Category Title */}
+            <h3 className="text-xl sm:text-2xl font-bold text-accent mb-6 text-center border-b border-gray-200 dark:border-gray-700 pb-3">
               {category.title}
             </h3>
 
-            {/* Skills Items -- 3 per row on larger screen */}
-            <Tilt
-              tiltMaxAngleX={20}
-              tiltMaxAngleY={20}
-              perspective={1000}
-              scale={1.05}
-              transitionSpeed={1000}
-              gyroscope={false}
-            >
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
-                {category.skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex items-center justify-center space-x-2 bg-transparent border-2 border-gray-700 rounded-3xl py-2 px-2 text-center"
-                  >
-                    {/* images */}
-                    <img
-                      src={skill.logo}
-                      alt={skill.name}
-                      className={`w-6 h-6 sm:w-8 sm:h-8`}
-                    />
+            {/* 3. Skill Items Grid - Simple, clean presentation (Tilt wrapper removed) */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
+              {category.skills.map((skill) => (
+                <div
+                  key={skill.name}
+                  // 4. Clean Skill Badge Styling
+                  className="flex flex-col items-center justify-center space-y-1 bg-secondary-light dark:bg-primary-dark/50 
+                             border border-gray-300 dark:border-gray-700 rounded-lg py-3 px-1 text-center 
+                             transition duration-200 hover:border-accent/50 hover:shadow-md"
+                >
+                  {/* images */}
+                  <img
+                    src={skill.logo}
+                    alt={`${skill.name} logo`}
+                    loading="lazy"
+                    className={`w-6 h-6 sm:w-8 sm:h-8 object-contain`}
+                  />
 
-                    <span className="text-xs sm:text-sm text-gray-300 ">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </Tilt>
-
+                  <span className="text-xs sm:text-sm text-text-dark dark:text-gray-300 font-medium">
+                    {skill.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>

@@ -8,7 +8,7 @@ const BlurBlob = ({ position, size }) => {
 
   return (
     <div
-      className="absolute"
+      className="absolute pointer-events-none" // 1. Add pointer-events-none
       style={{
         top: top,
         left: left,
@@ -17,21 +17,22 @@ const BlurBlob = ({ position, size }) => {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <div className="w-full h-full bg-purple-500 rounded-full opacity-20 blur-3xl  animate-blob"></div>
+      {/* 2. Use semantic accent color for the blur effect */}
+      <div className="w-full h-full bg-accent dark:bg-accent rounded-full opacity-20 blur-3xl animate-blob"></div>
     </div>
   );
 };
 
-// Define prop types
-BlurBlob.PropTypes = {
+// 3. Fix PropTypes spelling (P should be lowercase)
+BlurBlob.propTypes = {
   position: PropTypes.shape({
-    top: PropTypes.string,
-    left: PropTypes.string,
-  }),
+    top: PropTypes.string.isRequired, // Added isRequired
+    left: PropTypes.string.isRequired, // Added isRequired
+  }).isRequired,
   size: PropTypes.shape({
-    width: PropTypes.string,
-    height: PropTypes.string,
-  }),
+    width: PropTypes.string.isRequired, // Added isRequired
+    height: PropTypes.string.isRequired, // Added isRequired
+  }).isRequired,
 };
 
 export default BlurBlob;

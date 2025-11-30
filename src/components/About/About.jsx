@@ -1,92 +1,90 @@
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
-import { cv } from "../../constants";
+import { cv } from "../../constants"; 
 import Tilt from "react-parallax-tilt";
 import profileImage from "../../assets/profile_pic.webp";
+import { ChevronRight, FileText } from 'lucide-react'; 
 
-const About = () => {
+const Hero = () => {
   return (
-    <section
-      id="about"
-      className="sm:py-20 md:py-28 px-[7vw] md:px-[7vw] lg:px-[20vw] font-sans sm:mt-16 md:mt-24 lg:mt-2 "
-    >
+    // Ensure the section uses global padding and max width for responsiveness
+    <section id="hero" className="py-20 md:py-32 relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> 
+      
       {/* Main Container */}
-      <div className="flex flex-col-reverse md:flex-row justify-between items-center">
-        {/* Left Side */}
-        <div className="md:w-1/2 lg:w-4/5 text-center md:text-left mt-8 md:mt-0">
+      <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-12">
+        
+        {/* Left Side: Text Content */}
+        <div className="md:w-3/5 text-center md:text-left">
+          
           {/* Greeting */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-2 leading-tight">
-            Hi, I am
+          <h1 className="text-xl sm:text-2xl font-medium text-gray-500 dark:text-gray-400 mb-2 leading-snug animate-fade-down">
+            Hi, my name is
           </h1>
 
           {/* Name */}
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
+          <h2 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold text-text-dark dark:text-text-light mb-4 leading-tight tracking-tight animate-fade-down animation-delay-200">
             Manav Pal
           </h2>
 
           {/* Skills heading with typing effect */}
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-[#8245ec] leading-tight">
-            <span className="text-white">I am a </span>
-
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-accent leading-tight animate-fade-down animation-delay-400">
             <Typewriter
-              words={["Software Engineer", "Fullstack Developer", "coder"]}
-              typeSpeed={90}
-              deleteSpeed={55}
-              delaySpeed={1000}
+              words={["Fullstack Developer", "MERN Stack Specialist", "Working at Jogan Pvt. Ltd."]}
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1500}
               loop={true}
               cursor
-              cursorStyle="|"
+              cursorStyle="_"
             />
           </h3>
 
           {/* About me paragraph */}
-          <p className="text-base sm:text-lg md:text-lg text-gray-400 mb-6 mt-8 leading-relaxed">
-            I am a passionate{" "}
-            <span className="font-bold text-white"> Full Stack Developer </span>{" "}
-            skilled in building scalable and user-friendly web applications. I
-            specialize in the{" "}
-            <span className="font-bold text-white">MERN stack </span> and have
-            strong experience in{" "}
-            <span className="font-bold text-white">
-              frontend development, REST API design, secure authentication, and
-              database management.
-            </span>{" "}
-            I enjoy solving real-world problems and continuously learning new
-            technologies to improve my craft.
+          <p className="text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-10 mt-6 leading-relaxed max-w-xl animate-fade-down animation-delay-600">
+            With **one year of hands-on experience**, I specialize in building and deploying **full-stack web applications** with a strong focus on the **MERN stack**. I am passionate about clean code, performance optimization, and transforming complex problems into elegant, functional digital solutions.
           </p>
 
-          {/* Resume Button */}
-          <a
-            href={cv}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block text-white py-3 px-8 rounded-full mt-1 text-lg font-bold transition duration-300 transform hover:scale-105"
-            style={{
-              background: "linear-gradient(90deg,#8245ec,#a855f7)",
-              boxShadow: "0 0 2px #8425ec, 0 0 40px #8245ec",
-            }}
-          >
-            VIEW CV
-          </a>
+          {/* Two-Button CTA Group */}
+          <div className="flex gap-4 justify-center md:justify-start pt-4 animate-fade-down animation-delay-800">
+            
+            <a
+              href="#work" 
+              className="inline-flex items-center text-white py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg font-bold transition duration-300 transform hover:scale-105 shadow-xl bg-accent hover:bg-accent-dark focus:ring-4 focus:ring-accent/50"
+            >
+              View My Work
+              <ChevronRight className="w-5 h-5 ml-2" />
+            </a>
+
+            <a
+              href={cv}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg font-bold transition duration-300 border-2 border-accent text-accent hover:bg-accent/10 transform hover:scale-105"
+            >
+              <FileText className="w-5 h-5 mr-2" />
+              Download CV
+            </a>
+          </div>
         </div>
 
-        {/* Right side */}
-        <div className="md:w-1/2 lg:w-3/5 sm:w-2/5 md:ml-4 flex justify-center md:justify-end">
+        {/* Right side: Profile Image - NOW PORTRAIT/RECTANGULAR */}
+        <div className="md:w-2/5 flex justify-center md:justify-end mt-8 md:mt-0">
           <Tilt
-            tiltMaxAngleX={20}
-            tiltMaxAngleY={20}
+            tiltMaxAngleX={10}
+            tiltMaxAngleY={10}
             perspective={1000}
-            scale={1.05}
+            scale={1.03}
             transitionSpeed={1000}
             gyroscope={false}
-            className="w-full h-full border-4 border-purple-700 rounded-full"
+            // KEY CHANGE: Changed h-X to be taller than w-X for a portrait look (e.g., 3:4 aspect ratio)
+            className="w-64 h-80 sm:w-80 sm:h-96 lg:w-96 lg:h-[480px] overflow-hidden shadow-2xl dark:shadow-[0_10px_40px_rgba(0,191,255,0.4)] border-4 border-accent/50" 
           >
             <img
               src={profileImage}
-              alt="Manav Pal -- Full Stack Developer"
+              alt="Manav Pal -- Fullstack Developer"
               loading="eager"
-              decoding="async"
-              className="w-full h-full rounded-full object-cover drop-shadow-[0_10px_20px_rgba(130,69,236,0.5)]"
+              // Ensure the image covers the taller container
+              className="w-full h-full object-cover" 
             />
           </Tilt>
         </div>
@@ -95,4 +93,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Hero;
