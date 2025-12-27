@@ -27,7 +27,7 @@ const handleScroll = (sectionId) => {
         
         {/* Branding/Name - Use accent color */}
         <h2 className="text-2xl font-bold text-accent">Manav Pal</h2>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Senior Software Architect</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Full Stack Developer</p>
 
         {/* Navigation Links - Now using <a> tags for semantic HTML */}
         <nav className="flex flex-wrap justify-center md:space-x-8 space-x-4 mt-8">

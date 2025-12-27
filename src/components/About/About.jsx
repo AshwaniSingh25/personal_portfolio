@@ -29,7 +29,7 @@ const Hero = () => {
           {/* Skills heading with typing effect */}
           <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-accent leading-tight animate-fade-down animation-delay-400">
             <Typewriter
-              words={["Fullstack Developer", "MERN Stack Specialist", "Working at Jogan Pvt. Ltd."]}
+              words={["Full Stack Developer", "Working at Jogaz Info Pvt. Ltd."]}
               typeSpeed={70}
               deleteSpeed={50}
               delaySpeed={1500}
@@ -41,7 +41,7 @@ const Hero = () => {
 
           {/* About me paragraph */}
           <p className="text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-10 mt-6 leading-relaxed max-w-xl animate-fade-down animation-delay-600">
-            With **one year of hands-on experience**, I specialize in building and deploying **full-stack web applications** with a strong focus on the **MERN stack**. I am passionate about clean code, performance optimization, and transforming complex problems into elegant, functional digital solutions.
+              I am a full-stack developer with hands-on experience building and maintaining web applications, primarily using the MERN stack. I enjoy writing clean, maintainable code and turning real-world requirements into practical, user-friendly digital solutions while continuously learning and improving my skills.
           </p>
 
           {/* Two-Button CTA Group */}

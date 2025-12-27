@@ -1,35 +1,42 @@
-// Skills Section Logo's
-// [Logos imports remain unchanged]
-// import htmlLogo from "./assets/tech_logo/html.png";
-// import cssLogo from "./assets/tech_logo/css.png";
+//Frontend Section Logo's
 import reactjsLogo from "./assets/tech_logo/reactjs.png";
+import htmlLogo from "./assets/tech_logo/html.png";
+import cssLogo from "./assets/tech_logo/css.png";
 import reduxLogo from "./assets/tech_logo/redux.png";
 import nextjsLogo from "./assets/tech_logo/nextjs.png";
+import angular from "./assets/tech_logo/angular.png";
 import tailwindcssLogo from "./assets/tech_logo/tailwindcss.png";
 import gsapLogo from "./assets/tech_logo/gsap.png";
 // import materialuiLogo from "./assets/tech_logo/materialui.png";
+
+
+// Backend & Database Section Logo's
 import nodejsLogo from "./assets/tech_logo/nodejs.png";
 import expressjsLogo from "./assets/tech_logo/express.png";
 import mysqlLogo from "./assets/tech_logo/mysql.png";
 import mongodbLogo from "./assets/tech_logo/mongodb.png";
 import javascriptLogo from "./assets/tech_logo/javascript.png";
+import postgreLogo from "./assets/tech_logo/postgre.png";
+
+// Languages Section Logo's
 import cLogo from "./assets/tech_logo/c.png";
 import cppLogo from "./assets/tech_logo/cpp.png";
 import javaLogo from "./assets/tech_logo/java.png";
 import pythonLogo from "./assets/tech_logo/python.png";
 import typescriptLogo from "./assets/tech_logo/typescript.png";
+
+// Tools & Platforms Section Logo's
 import gitLogo from "./assets/tech_logo/git.png";
 import githubLogo from "./assets/tech_logo/github.png";
 import vscodeLogo from "./assets/tech_logo/vscode.png";
 import postmanLogo from "./assets/tech_logo/postman.png";
 import mcLogo from "./assets/tech_logo/mc.png"; // Assuming 'mcLogo' is MongoDB Compass
 import vercelLogo from "./assets/tech_logo/vercel.png";
-import postgreLogo from "./assets/tech_logo/postgre.png";
 
 // Experience Section Logo's
 // import freelance from "./assets/company_logo/freelancer-logo.png";
-import jvplLogo from "./assets/education_logo/ignou.png"; // Placeholder for new company logo
-import securestanLogo from "./assets/education_logo/ignou.png"; // Placeholder for new company logo
+import jogazLogo from "./assets/company_logo/jogaz_logo.jpeg"; // Placeholder for new company logo
+import concentrixLogo from "./assets/company_logo/concentrix_logo.jpeg"; // Placeholder for new company logo
 
 // Education Section Logo's
 import ignou from "./assets/education_logo/ignou.png";
@@ -58,50 +65,53 @@ export const socialMedia = {
 // ====================================================================
 export const SkillsInfo = [
   {
-    title: "Cloud & System Design", // Senior Domain
+    title: "Frontend",
+    skills: [
+      { name: "HTML5", logo: htmlLogo },
+      { name: "CSS3", logo: cssLogo },
+      { name: "React JS", logo: reactjsLogo },
+      { name: "Next JS", logo: nextjsLogo },
+      { name: "Angular", logo: angular },
+      { name: "Redux", logo: reduxLogo },
+      { name: "TypeScript", logo: typescriptLogo },
+      { name: "Tailwind CSS", logo: tailwindcssLogo },
+      { name: "GSAP (Animation)", logo: gsapLogo },
+    ],
+  },
+  {
+    title: "Backend & Databases",
     skills: [
       { name: "Node JS", logo: nodejsLogo },
       { name: "Express JS", logo: expressjsLogo },
-      { name: "REST API", logo: postmanLogo }, // Re-purposing Postman logo for REST/API concept
-      { name: "Microservices", logo: nodejsLogo }, // Conceptual Logo
-      { name: "System Design", logo: githubLogo }, // Conceptual Logo
-      { name: "Git", logo: gitLogo },
-    ],
-  },
-  {
-    title: "Advanced Frontend", // Senior Domain
-    skills: [
-      { name: "React JS", logo: reactjsLogo },
-      { name: "Next JS", logo: nextjsLogo },
-      { name: "TypeScript", logo: typescriptLogo },
-      { name: "Redux", logo: reduxLogo },
-      { name: "GSAP (Animation)", logo: gsapLogo },
-      { name: "Tailwind CSS", logo: tailwindcssLogo },
-    ],
-  },
-  {
-    title: "Data & Database", // Senior Domain
-    skills: [
+      { name: "REST APIs", logo: postmanLogo },
       { name: "MongoDB", logo: mongodbLogo },
       { name: "PostgreSQL", logo: postgreLogo },
       { name: "MySQL", logo: mysqlLogo },
-      { name: "Data Modeling", logo: mcLogo }, // Re-purposing Compass logo
+    ],
+  },
+  {
+    title: "Languages",
+    skills: [
+      { name: "JavaScript (ES6+)", logo: javascriptLogo },
+      { name: "TypeScript", logo: typescriptLogo },
+      { name: "C++", logo: cppLogo },
+      { name: "C", logo: cLogo },
       { name: "Java", logo: javaLogo },
       { name: "Python", logo: pythonLogo },
     ],
   },
   {
-    title: "Core Technologies", // Senior Domain
+    title: "Tools & Platforms",
     skills: [
-      { name: "JavaScript (ES6+)", logo: javascriptLogo },
-      { name: "C++ (DSA)", logo: cppLogo },
-      { name: "C", logo: cLogo },
-      { name: "VS Code", logo: vscodeLogo },
+      { name: "Git", logo: gitLogo },
       { name: "GitHub", logo: githubLogo },
-      { name: "Vercel (CI/CD)", logo: vercelLogo },
+      { name: "VS Code", logo: vscodeLogo },
+      { name: "Postman", logo: postmanLogo },
+      { name: "Vercel", logo: vercelLogo },
     ],
   },
 ];
+
 
 // ====================================================================
 // REVISED EXPERIENCE SECTION - Focused on Impact and Seniority
@@ -109,39 +119,52 @@ export const SkillsInfo = [
 export const experiences = [
   {
     id: 0,
-    img: jvplLogo, // Updated logo
-    role: "Senior Fullstack Engineer",
-    company: "Jogan Pvt Limited", // Updated company name
-    date: "July 2024 - Present",
-    desc: "Led the architectural overhaul of a legacy monolithic system into a scalable microservices architecture. Designed and implemented high-throughput REST APIs using Node.js and PostgreSQL. **Result:** Achieved a 40% reduction in API latency and established a resilient CI/CD pipeline, significantly improving deployment frequency and system stability. Mentored a team of three junior developers on best practices in state management (Redux/Zustand) and component design in Next.js.",
+    img: jogazLogo,
+    role: "Full Stack Developer",
+    company: "Jogaz Info Pvt. Ltd.",
+    date: "October 2025 - Present",
+    points: [
+      "Working on the development and maintenance of a web-based trading support platform.",
+      "Building custom tools and strategy interfaces to help traders configure and manage their workflows.",
+      "Developing the frontend using Angular and TypeScript for better structure and type safety.",
+      "Integrating frontend components with backend services using REST APIs.",
+      "Handling bug fixes, feature enhancements, and regular maintenance to ensure platform stability.",
+    ],
     skills: [
-      "NextJS",
+      "Angular",
       "TypeScript",
-      "Microservices",
-      "PostgreSQL",
-      "Node.js",
-      "System Design",
-      "Leadership",
+      "REST APIs",
+      "Web Application Development",
+      "Bug Fixing",
+      "Feature Enhancement",
+      "Maintenance & Support",
     ],
   },
   {
     id: 1,
-    img: securestanLogo, // Updated logo
-    role: "Software Developer Intern (MERN)",
-    company: "SecureStan Cybersecurity", // Updated company name
-    date: "April 2024 - June 2024",
-    desc: "Developed a secure, multi-tenant user authentication service layer for a cybersecurity platform, handling over 10,000 daily users. Implemented JWT-based authorization and role-based access control (RBAC) across Express and React components. **Focus:** Ensured high-level data security compliance and contributed to the performance optimization of the main dashboard, reducing initial load time by 25%.",
+    img: concentrixLogo,
+    role: "Chat Support Advisor",
+    company: "Concentrix",
+    date: "September 2025 - October 2025",
+    points: [
+      "Worked on the Amazon customer support process, handling customer queries through live chat.",
+      "Resolved order, account, and delivery-related issues while maintaining service quality standards.",
+      "Used internal CRM and ticketing systems to document, track, and escalate customer issues.",
+      "Maintained high customer satisfaction and SLA compliance in a fast-paced environment.",
+      "Developed strong communication, problem-solving, and time-management skills.",
+    ],
     skills: [
-      "MERN Stack",
-      "JWT Authentication",
-      "RBAC",
-      "Express.js",
-      "MongoDB",
-      "ReactJS",
-      "Performance Tuning",
+      "Customer Communication",
+      "Problem Solving",
+      "CRM Tools",
+      "Ticketing Systems",
+      "Time Management",
+      "Professional Communication",
+      "Cross-cultural Communication",
     ],
   },
 ];
+
 
 // ====================================================================
 // REVISED EDUCATION SECTION - Focused on Specialization
@@ -153,8 +176,12 @@ export const education = [
     school: "Indira Gandhi National Open University, New Delhi",
     date: "Jan 2023 - Dec 2025",
     grade: "7.81 CGPA",
-    desc: "Completed BCA (Bachelor of Computer Applications). **Specialization Focus:** Advanced Data Structures, Relational Database Management Systems (RDBMS), and Software Engineering Principles, providing a strong theoretical base for system development.",
     degree: "Bachelor of Computer Applications (BCA)",
+    points: [
+      "Studied core subjects including Data Structures, Database Management Systems (RDBMS), and Software Engineering.",
+      "Built a strong foundation in programming, data handling, and web application development.",
+      "Applied theoretical concepts through practical projects and assignments.",
+    ],
   },
   {
     id: 1,
@@ -162,8 +189,11 @@ export const education = [
     school: "Lal Bahadur Shastri School",
     date: "Apr 2021 - March 2022",
     grade: "88.74%",
-    desc: "Achieved excellent results in Class 12 (CBSE), majoring in **Economics and Computer Science**. The focus on economic models provided critical analytical skills transferable to efficient resource allocation in software architecture.",
     degree: "CBSE (Class XII), Arts with Economics and Computer Science",
+    points: [
+      "Focused on Economics and Computer Science with an emphasis on analytical and logical thinking.",
+      "Learned basic programming concepts and problem-solving techniques.",
+    ],
   },
   {
     id: 2,
@@ -171,10 +201,14 @@ export const education = [
     school: "Lal Bahadur Shastri School",
     date: "Apr 2019 - March 2020",
     grade: "87.54%",
-    desc: "Completed Class 10 (CBSE) with a strong emphasis on **Science and Computer Applications**, establishing foundational logic and problem-solving skills.",
     degree: "CBSE (Class X), Science with Computer Applications",
+    points: [
+      "Studied Science and Computer Applications with a focus on logic and mathematics.",
+      "Developed a foundation in problem-solving and computational thinking.",
+    ],
   },
 ];
+
 
 // ====================================================================
 // REVISED PROJECTS SECTION - Focused on Architectural Solutions
@@ -182,10 +216,10 @@ export const education = [
 export const projects = [
   {
     id: 0,
-    title: "QucikBlog - High-Performance Blogging Platform",
+    title: "QucikBlog AI - High-Performance Blogging Platform",
     description:"Engineered QuickBlog as a full-stack MERN application, focusing on high data availability and efficient content delivery. **Key Achievement:** Designed a normalized schema in MongoDB and implemented server-side caching mechanisms to handle concurrent read requests efficiently. Secured API endpoints using robust JWT and cookie-based authentication, supporting millions of data transactions per month.",
     image: quickblogLogo,
-    tags: ["MERN Stack", "REST API", "JWT", "MongoDB", "Caching", "Next.js"],
+    tags: ["MERN Stack","React.js", "REST API", "JWT", "MongoDB", "Node.js", "Express.js", "Gemnini API AI Integration", "Tailwind CSS", "CRUD Operations"],
     github: "https://github.com/manavpal-dev/QuickBlog_Project.git",
     webapp: "https://quickblog-beta-eight.vercel.app/",
   },

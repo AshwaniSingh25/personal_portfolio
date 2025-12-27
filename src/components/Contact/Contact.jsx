@@ -22,13 +22,13 @@ const Contact = () => {
 
     if (result.success) {
       toast.success("Message sent successfully! ✅", {
-        position: "top-right",
+        position: "top-middle",
         // Using toast theme 'dark' works well with our dark mode background
       });
       form.current.reset();
     } else {
       toast.error("Failed to send message. ❌", {
-        position: "top-right",
+        position: "top-middle",
       });
     }
   };
@@ -63,7 +63,7 @@ const Contact = () => {
           {/* Email Input Group */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1">
-              Your Email (Required)
+              Your Email (Required)<span className="text-red-500">*</span>
             </label>
             <input
               type="email"
@@ -80,7 +80,7 @@ const Contact = () => {
           {/* Name Input Group */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1">
-              Your Name
+              Your Name<span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -96,7 +96,7 @@ const Contact = () => {
           {/* Subject Input Group */}
           <div>
             <label htmlFor="subject" className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1">
-              Subject
+              Subject<span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -112,7 +112,7 @@ const Contact = () => {
           {/* Message Textarea Group */}
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1">
-              Message
+              Message<span className="text-red-500">*</span>
             </label>
             <textarea
               id="message"
