@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Send, Mail } from 'lucide-react'; // Icons for visual polish
+import { Send, Mail } from "lucide-react"; // Icons for visual polish
 
 const Contact = () => {
   const form = useRef();
@@ -43,12 +43,14 @@ const Contact = () => {
           <Mail className="inline w-8 h-8 mr-3 mb-1 text-accent" />
           Contact
         </h2>
-        
+
         {/* Underline using accent color */}
-        <div className="w-44 h-1 bg-accent mx-auto mt-2"></div> 
-        
+        <div className="w-44 h-1 bg-accent mx-auto mt-2"></div>
+
         <p className="text-gray-500 dark:text-gray-400 mt-6 text-lg">
-          I'm actively seeking challenging **Architect** or **Principal Engineer** opportunities. Let's discuss your distributed systems challenges or next big project!
+          I'm actively seeking full-time opportunities as a Full Stack Developer
+          where I can apply my skills, learn from experienced engineers, and
+          contribute to building high-quality web applications.
         </p>
       </div>
 
@@ -58,11 +60,17 @@ const Contact = () => {
           Connect With Me
         </h3>
 
-        <form ref={form} onSubmit={sendEmail} className="flex flex-col space-y-5">
-          
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="flex flex-col space-y-5"
+        >
           {/* Email Input Group */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1"
+            >
               Your Email (Required)<span className="text-red-500">*</span>
             </label>
             <input
@@ -79,7 +87,10 @@ const Contact = () => {
 
           {/* Name Input Group */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1"
+            >
               Your Name<span className="text-red-500">*</span>
             </label>
             <input
@@ -95,7 +106,10 @@ const Contact = () => {
 
           {/* Subject Input Group */}
           <div>
-            <label htmlFor="subject" className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1">
+            <label
+              htmlFor="subject"
+              className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1"
+            >
               Subject<span className="text-red-500">*</span>
             </label>
             <input
@@ -111,7 +125,10 @@ const Contact = () => {
 
           {/* Message Textarea Group */}
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-text-dark dark:text-gray-300 mb-1"
+            >
               Message<span className="text-red-500">*</span>
             </label>
             <textarea

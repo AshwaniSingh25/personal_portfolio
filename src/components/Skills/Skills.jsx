@@ -7,7 +7,6 @@ const Skills = () => {
   return (
     // 1. Remove custom BG and clip-path for consistency
     <section id="skills" className="py-24 md:py-32">
-      
       {/* Section Title */}
       <div className="text-center mb-16 max-w-2xl mx-auto">
         <h2 className="uppercase font-extrabold text-4xl sm:text-5xl text-text-dark dark:text-text-light">
@@ -18,15 +17,15 @@ const Skills = () => {
         <div className="w-60 h-1 bg-accent mx-auto mt-2"></div>
 
         <p className="text-gray-500 dark:text-gray-400 mt-6 text-lg">
-          Expertise in key architectural domains, cloud infrastructure, and distributed systems.
+          Hands-on experience with modern web technologies, full-stack
+          development, and building scalable web applications.
         </p>
       </div>
 
       {/* Skills Category Grid */}
       <div className="flex flex-wrap gap-8 justify-center mx-auto max-w-6xl">
         {SkillsInfo.map((category) => (
-         
-         <div
+          <div
             key={category.title}
             // 2. Use semantic styling for the category card
             className="bg-white dark:bg-primary-dark/80 p-6 sm:p-8 w-full md:w-[48%] rounded-xl 

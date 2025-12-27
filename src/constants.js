@@ -209,37 +209,76 @@ export const education = [
   },
 ];
 
-
-// ====================================================================
-// REVISED PROJECTS SECTION - Focused on Architectural Solutions
-// ====================================================================
+// Project Section
 export const projects = [
   {
     id: 0,
-    title: "QucikBlog AI - High-Performance Blogging Platform",
-    description:"Engineered QuickBlog as a full-stack MERN application, focusing on high data availability and efficient content delivery. **Key Achievement:** Designed a normalized schema in MongoDB and implemented server-side caching mechanisms to handle concurrent read requests efficiently. Secured API endpoints using robust JWT and cookie-based authentication, supporting millions of data transactions per month.",
+    title: "QuickBlog AI – High-Performance Blogging Platform",
     image: quickblogLogo,
-    tags: ["MERN Stack","React.js", "REST API", "JWT", "MongoDB", "Node.js", "Express.js", "Gemnini API AI Integration", "Tailwind CSS", "CRUD Operations"],
+    points: [
+      "Built a full-stack blogging platform using the MERN stack with a focus on performance and scalability.",
+      "Designed a normalized MongoDB schema to efficiently store and retrieve blog content and user data.",
+      "Implemented server-side caching to improve response times for frequently accessed content.",
+      "Secured API endpoints using JWT and cookie-based authentication.",
+      "Integrated Gemini AI API to assist with content generation and enhancement.",
+    ],
+    tags: [
+      "MERN Stack",
+      "React.js",
+      "REST API",
+      "JWT",
+      "MongoDB",
+      "Node.js",
+      "Express.js",
+      "Gemini AI Integration",
+      "Tailwind CSS",
+      "CRUD Operations",
+    ],
     github: "https://github.com/manavpal-dev/QuickBlog_Project.git",
     webapp: "https://quickblog-beta-eight.vercel.app/",
   },
   {
     id: 1,
-    title: "VastraCraft - Scalable eCommerce System",
-    description:
-      "Architected VastraCraft, a modern eCommerce solution, by integrating complex state management (Redux) for the shopping cart and checkout pipeline. **Key Achievement:** Developed a responsive product grid optimized for image loading and implemented transactional logic on the backend to guarantee order consistency and prevent race conditions during inventory updates. Built using React and Express/Node.",
+    title: "VastraCraft – eCommerce Web Application",
     image: vastracraft,
-    tags: ["React/Redux", "Node/Express", "E-commerce Logic", "Transactional Data", "Performance"],
+    points: [
+      "Developed a modern eCommerce web application using React and Node.js.",
+      "Implemented Redux for managing shopping cart and checkout state.",
+      "Built a responsive product listing and detail pages optimized for different screen sizes.",
+      "Added backend logic to handle order processing and maintain inventory consistency.",
+      "Focused on performance optimization and clean component structure.",
+    ],
+    tags: [
+      "React",
+      "Redux",
+      "Node.js",
+      "Express.js",
+      "E-commerce Logic",
+      "State Management",
+      "Performance Optimization",
+    ],
     github: "https://codingmasterweb.in/",
     webapp: "https://ecommerce-project-lake-eight.vercel.app/",
   },
   {
     id: 2,
-    title: "GitHub Profile Detective - External API Aggregator",
-    description:
-      "A React application designed to reliably aggregate, process, and display complex data from the external GitHub API. **Key Achievement:** Implemented comprehensive error handling and request throttling strategies to manage API rate limits gracefully, ensuring a consistent user experience even under heavy load. Focused on responsive design and minimal component re-rendering.",
+    title: "GitHub Profile Detective – API-Based Dashboard",
     image: github_project_logo,
-    tags: ["External API Integration", "Rate Limiting", "React Hooks", "Error Handling", "Tailwind CSS"],
+    points: [
+      "Built a React application to fetch and display GitHub user data using the GitHub public API.",
+      "Handled API errors and edge cases such as invalid usernames and rate limits.",
+      "Implemented loading and error states to improve user experience.",
+      "Optimized component re-rendering using React hooks and state management best practices.",
+      "Designed a clean and responsive UI using Tailwind CSS.",
+    ],
+    tags: [
+      "React",
+      "External API Integration",
+      "Error Handling",
+      "Rate Limiting",
+      "React Hooks",
+      "Tailwind CSS",
+    ],
     github: "https://github.com/manavpal-dev/Github-Profile-Detective.git",
     webapp: "https://github-profile-detective-orpin.vercel.app/",
   },
