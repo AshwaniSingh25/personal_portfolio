@@ -21,8 +21,9 @@ const Education = () => {
 
       {/* Timeline Container */}
       <div className="relative max-w-5xl mx-auto">
+       
         {/* Vertical Line */}
-        <div className="absolute top-0 bottom-0 left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-1 bg-accent/50"></div>
+        <div className="absolute top-0 bottom-0 left-0 lg:left-1/2 transform lg:-translate-x-1/2 w-1 bg-accent/50"></div>
 
         {/* Entries */}
         {education.map((edu, index) => (
@@ -33,7 +34,7 @@ const Education = () => {
             }`}
           >
             {/* Timeline Circle (hidden on mobile) */}
-            <div className="hidden sm:flex absolute sm:left-1/2 transform -translate-x-1/2 bg-white dark:bg-primary-dark border-4 border-accent w-14 h-14 rounded-full justify-center items-center z-10">
+            <div className="hidden lg:flex absolute left-1/2 transform lg:-translate-x-1/2 bg-white dark:bg-primary-dark border-4 border-accent w-14 h-14 rounded-full justify-center items-center z-10">
               <img
                 src={edu.img}
                 alt={edu.school}
