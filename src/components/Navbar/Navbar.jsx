@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+
+import { Menu, X } from "lucide-react";
 
 import {
   FaGithub,
@@ -9,50 +10,9 @@ import {
 
 import { socialMedia } from "../../constants";
 
-const useTheme = () => {
-  const [theme, setTheme] = useState("dark");
-
-  useEffect(() => {
-    const storedTheme =
-      localStorage.getItem("theme") || "dark";
-
-    setTheme(storedTheme);
-
-    document.documentElement.classList.remove(
-      "light",
-      "dark"
-    );
-
-    document.documentElement.classList.add(
-      storedTheme
-    );
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme =
-      theme === "dark" ? "light" : "dark";
-
-    setTheme(newTheme);
-
-    document.documentElement.classList.remove(
-      "light",
-      "dark"
-    );
-
-    document.documentElement.classList.add(
-      newTheme
-    );
-
-    localStorage.setItem("theme", newTheme);
-  };
-
-  return { theme, toggleTheme };
-};
-
 const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
-
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] =
+    useState(false);
 
   const [activeSection, setActiveSection] =
     useState("hero");
@@ -90,18 +50,18 @@ const Navbar = () => {
   // ACTIVE SECTION
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.25,
-        rootMargin: "-100px 0px -40% 0px",
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setActiveSection(entry.target.id);
       }
-    );
+    });
+  },
+  {
+    threshold: 0.15,
+    rootMargin: "-80px 0px -20% 0px",
+  }
+);
 
     menuItems.forEach((item) => {
       const section = document.getElementById(
@@ -116,25 +76,20 @@ const Navbar = () => {
 
   // SCROLL TO SECTION
   const handleMenuItemClick = (sectionId) => {
-    setIsOpen(false);
+  setIsOpen(false);
 
-    const section =
-      document.getElementById(sectionId);
+  const section =
+    document.getElementById(sectionId);
 
-    if (!section) return;
+  if (!section) return;
 
-    const yOffset = -90;
+  section.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest",
+  });
 
-    const y =
-      section.getBoundingClientRect().top +
-      window.pageYOffset +
-      yOffset;
-
-    window.scrollTo({
-      top: y,
-      behavior: "smooth",
-    });
-  };
+  setActiveSection(sectionId);
+};
 
   return (
     <>
@@ -162,17 +117,17 @@ const Navbar = () => {
               overflow-hidden
               rounded-[22px]
               border
-              border-black/10
-              dark:border-white/10
+              border-white/10
               px-8
               py-4
               backdrop-blur-2xl
               transition-all
               duration-500
+
               ${
                 isScrolled
-                  ? "bg-white/80 shadow-[0_8px_40px_rgba(0,0,0,0.12)] dark:bg-[#0b0718]/75 dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)]"
-                  : "bg-white/70 dark:bg-white/[0.04]"
+                  ? "bg-[#0b0718]/75 shadow-[0_8px_40px_rgba(0,0,0,0.35)]"
+                  : "bg-white/[0.04]"
               }
             `}
           >
@@ -219,10 +174,8 @@ const Navbar = () => {
                 className="
                   mx-1
                   bg-gradient-to-r
-                  from-gray-900
-                  to-gray-600
-                  dark:from-white
-                  dark:to-gray-300
+                  from-white
+                  to-gray-400
                   bg-clip-text
                   text-transparent
                 "
@@ -238,10 +191,8 @@ const Navbar = () => {
                 className="
                   mx-1
                   bg-gradient-to-r
-                  from-gray-600
-                  to-gray-900
-                  dark:from-gray-300
-                  dark:to-white
+                  from-gray-300
+                  to-white
                   bg-clip-text
                   text-transparent
                 "
@@ -285,10 +236,11 @@ const Navbar = () => {
                       font-medium
                       transition-all
                       duration-300
+
                       ${
                         activeSection === item.id
-                          ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-lg"
-                          : "text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
+                          ? "bg-white text-black shadow-lg"
+                          : "text-gray-300 hover:bg-white/10 hover:text-white"
                       }
                     `}
                   >
@@ -298,101 +250,60 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* RIGHT SIDE */}
+            {/* SOCIALS */}
             <div
               className="
                 relative
                 z-10
                 flex
                 items-center
-                gap-5
+                gap-4
               "
             >
-              {/* SOCIALS */}
-              <div className="flex items-center gap-4">
-                <a
-                  href={socialMedia.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="
-                    text-gray-500
-                    dark:text-gray-400
-                    transition-all
-                    duration-300
-                    hover:scale-110
-                    hover:text-black
-                    dark:hover:text-white
-                  "
-                >
-                  <FaLinkedin size={18} />
-                </a>
-
-                <a
-                  href={socialMedia.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="
-                    text-gray-500
-                    dark:text-gray-400
-                    transition-all
-                    duration-300
-                    hover:scale-110
-                    hover:text-black
-                    dark:hover:text-white
-                  "
-                >
-                  <FaGithub size={18} />
-                </a>
-
-                <a
-                  href={socialMedia.twitter}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="
-                    text-gray-500
-                    dark:text-gray-400
-                    transition-all
-                    duration-300
-                    hover:scale-110
-                    hover:text-black
-                    dark:hover:text-white
-                  "
-                >
-                  <FaTwitter size={18} />
-                </a>
-              </div>
-
-              {/* THEME BUTTON */}
-              <button
-                onClick={toggleTheme}
+              <a
+                href={socialMedia.linkedin}
+                target="_blank"
+                rel="noreferrer"
                 className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-black/10
-                  dark:border-white/10
-                  bg-black/[0.04]
-                  dark:bg-white/[0.05]
-                  text-gray-700
-                  dark:text-gray-300
+                  text-gray-400
                   transition-all
                   duration-300
-                  hover:bg-black/5
-                  dark:hover:bg-white/10
-                  hover:text-black
-                  dark:hover:text-white
+                  hover:scale-110
+                  hover:text-white
                 "
               >
-                {theme === "dark" ? (
-                  <Sun size={18} />
-                ) : (
-                  <Moon size={18} />
-                )}
-              </button>
+                <FaLinkedin size={18} />
+              </a>
+
+              <a
+                href={socialMedia.github}
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  text-gray-400
+                  transition-all
+                  duration-300
+                  hover:scale-110
+                  hover:text-white
+                "
+              >
+                <FaGithub size={18} />
+              </a>
+
+              <a
+                href={socialMedia.twitter}
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  text-gray-400
+                  transition-all
+                  duration-300
+                  hover:scale-110
+                  hover:text-white
+                "
+              >
+                <FaTwitter size={18} />
+              </a>
             </div>
           </div>
         </div>
@@ -419,17 +330,17 @@ const Navbar = () => {
             overflow-hidden
             rounded-2xl
             border
-            border-black/10
-            dark:border-white/10
+            border-white/10
             px-5
             py-4
             backdrop-blur-2xl
             transition-all
             duration-500
+
             ${
               isScrolled
-                ? "bg-white/80 shadow-[0_8px_40px_rgba(0,0,0,0.12)] dark:bg-[#0b0718]/80 dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)]"
-                : "bg-white/70 dark:bg-white/[0.04]"
+                ? "bg-[#0b0718]/80 shadow-[0_8px_40px_rgba(0,0,0,0.35)]"
+                : "bg-white/[0.04]"
             }
           `}
         >
@@ -456,85 +367,39 @@ const Navbar = () => {
               text-lg
               font-black
               tracking-tight
+              text-white
             "
           >
-            <span
-              className="
-                bg-gradient-to-r
-                from-gray-900
-                to-gray-600
-                dark:from-white
-                dark:to-gray-300
-                bg-clip-text
-                text-transparent
-              "
-            >
-              Manav
-            </span>
+            Manav
           </button>
 
-          {/* ACTIONS */}
-          <div
+          {/* MENU BUTTON */}
+          <button
+            onClick={() =>
+              setIsOpen(!isOpen)
+            }
             className="
               relative
               z-10
               flex
+              h-10
+              w-10
               items-center
-              gap-3
+              justify-center
+              rounded-full
+              bg-gradient-to-r
+              from-violet-500
+              to-cyan-500
+              text-white
+              shadow-lg
             "
           >
-            {/* THEME BUTTON */}
-            <button
-              onClick={toggleTheme}
-              className="
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-black/10
-                dark:border-white/10
-                bg-black/[0.04]
-                dark:bg-white/[0.05]
-                text-gray-700
-                dark:text-gray-300
-              "
-            >
-              {theme === "dark" ? (
-                <Sun size={18} />
-              ) : (
-                <Moon size={18} />
-              )}
-            </button>
-
-            {/* MENU BUTTON */}
-            <button
-              onClick={() =>
-                setIsOpen(!isOpen)
-              }
-              className="
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-full
-                bg-gradient-to-r
-                from-violet-500
-                to-cyan-500
-                text-white
-                shadow-lg
-              "
-            >
-              {isOpen ? (
-                <X size={20} />
-              ) : (
-                <Menu size={20} />
-              )}
-            </button>
-          </div>
+            {isOpen ? (
+              <X size={20} />
+            ) : (
+              <Menu size={20} />
+            )}
+          </button>
         </div>
 
         {/* MOBILE MENU */}
@@ -543,6 +408,7 @@ const Navbar = () => {
             overflow-hidden
             transition-all
             duration-500
+
             ${
               isOpen
                 ? "mt-3 max-h-[500px] opacity-100"
@@ -554,14 +420,11 @@ const Navbar = () => {
             className="
               rounded-2xl
               border
-              border-black/10
-              dark:border-white/10
-              bg-white/90
-              dark:bg-[#0b0718]/90
+              border-white/10
+              bg-[#0b0718]/90
               p-4
               backdrop-blur-2xl
-              shadow-[0_8px_40px_rgba(0,0,0,0.15)]
-              dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)]
+              shadow-[0_8px_40px_rgba(0,0,0,0.35)]
             "
           >
             {/* MENU ITEMS */}
@@ -582,10 +445,11 @@ const Navbar = () => {
                       font-medium
                       transition-all
                       duration-300
+
                       ${
                         activeSection === item.id
-                          ? "bg-gray-900 text-white dark:bg-white dark:text-black"
-                          : "text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
+                          ? "bg-white text-black"
+                          : "text-gray-300 hover:bg-white/10 hover:text-white"
                       }
                     `}
                   >
@@ -594,66 +458,6 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-
-            {/* MOBILE SOCIALS */}
-            <div
-              className="
-                mt-5
-                flex
-                items-center
-                justify-center
-                gap-6
-                border-t
-                border-black/10
-                dark:border-white/10
-                pt-5
-              "
-            >
-              <a
-                href={socialMedia.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="
-                  text-gray-500
-                  dark:text-gray-400
-                  transition
-                  hover:text-black
-                  dark:hover:text-white
-                "
-              >
-                <FaLinkedin size={20} />
-              </a>
-
-              <a
-                href={socialMedia.github}
-                target="_blank"
-                rel="noreferrer"
-                className="
-                  text-gray-500
-                  dark:text-gray-400
-                  transition
-                  hover:text-black
-                  dark:hover:text-white
-                "
-              >
-                <FaGithub size={20} />
-              </a>
-
-              <a
-                href={socialMedia.twitter}
-                target="_blank"
-                rel="noreferrer"
-                className="
-                  text-gray-500
-                  dark:text-gray-400
-                  transition
-                  hover:text-black
-                  dark:hover:text-white
-                "
-              >
-                <FaTwitter size={20} />
-              </a>
-            </div>
           </div>
         </div>
       </div>

@@ -4,17 +4,19 @@ import PropTypes from "prop-types";
 const BlurBlob = ({
   position,
   size,
-  color = "from-violet-500/30 to-fuchsia-500/20",
+  color = "from-violet-500/25 to-cyan-500/20",
   duration = "20s",
 }) => {
-  const { top, left, right, bottom } = position;
+  const { top, left, right, bottom } =
+    position;
+
   const { width, height } = size;
 
   return (
     <div
       className="
-        absolute
         pointer-events-none
+        absolute
         -z-10
         transform-gpu
         will-change-transform
@@ -28,16 +30,20 @@ const BlurBlob = ({
         height,
       }}
     >
+      {/* MAIN BLOB */}
       <div
         className={`
-          w-full
           h-full
+          w-full
           rounded-full
           bg-gradient-to-br
           ${color}
-          opacity-70
-          blur-3xl
-          mix-blend-screen
+
+          opacity-60
+          blur-[90px]
+
+          dark:opacity-70
+
           animate-blob
         `}
         style={{
@@ -45,15 +51,36 @@ const BlurBlob = ({
         }}
       />
 
-      {/* Secondary Glow Layer */}
+      {/* SECONDARY GLOW */}
       <div
         className="
           absolute
           inset-0
           rounded-full
-          bg-white/10
-          blur-2xl
+
+          bg-white/40
           opacity-30
+          blur-[120px]
+
+          dark:bg-white/10
+          dark:opacity-20
+        "
+      />
+
+      {/* EXTRA DEPTH LAYER */}
+      <div
+        className="
+          absolute
+          inset-0
+          rounded-full
+
+          bg-gradient-to-br
+          from-white/10
+          to-transparent
+
+          dark:from-white/5
+
+          blur-3xl
         "
       />
     </div>
@@ -74,6 +101,7 @@ BlurBlob.propTypes = {
   }).isRequired,
 
   color: PropTypes.string,
+
   duration: PropTypes.string,
 };
 

@@ -7,7 +7,6 @@ import { GraduationCap, Calendar, Award } from "lucide-react";
 const Education = () => {
   return (
     <section
-      id="education"
       className="
         relative
         overflow-hidden
