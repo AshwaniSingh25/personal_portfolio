@@ -1,84 +1,388 @@
 import React from "react";
-// Import icons from lucide-react for a cleaner, modern look, 
-// or stick with react-icons if preferred. I'll use the original ones.
+
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
+
 import { SiLeetcode } from "react-icons/si";
+
+import { ArrowUpRight, Heart } from "lucide-react";
+
 import { socialMedia } from "../../constants";
 
 const Footer = () => {
+  // SMOOTH SCROLL
+  const handleScroll = (sectionId) => {
+    const section = document.getElementById(sectionId);
 
-// Since we added scroll-behavior: smooth to html in app.css, 
-// direct href links should handle the smooth scroll. 
-// However, keeping the handleScroll function for robustness is fine.
-const handleScroll = (sectionId) => {
-  const section = document.getElementById(sectionId);
-  if(section){
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-}
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const navLinks = [
+    { id: "hero", name: "Home" },
+    { id: "skills", name: "Skills" },
+    { id: "experience", name: "Experience" },
+    { id: "work", name: "Projects" },
+    { id: "education", name: "Education" },
+    { id: "contact", name: "Contact" },
+  ];
+
+  const socialLinks = [
+    {
+      icon: <FaLinkedin />,
+      link: socialMedia.linkedin,
+      label: "LinkedIn",
+    },
+    {
+      icon: <FaGithub />,
+      link: socialMedia.github,
+      label: "GitHub",
+    },
+    {
+      icon: <FaTwitter />,
+      link: socialMedia.twitter,
+      label: "Twitter",
+    },
+    {
+      icon: <FaInstagram />,
+      link: socialMedia.instagram,
+      label: "Instagram",
+    },
+    {
+      icon: <SiLeetcode />,
+      link: socialMedia.leetcode,
+      label: "LeetCode",
+    },
+  ];
 
   return (
-    // 1. Add border-t for separation. Use background colors from config (dark:bg-primary-dark)
-    // The background is usually inherited from App.jsx, but we ensure text contrast.
-    <footer className="py-12 md:py-16 border-t border-gray-700 dark:border-accent/10 text-text-dark dark:text-text-light">
-      
-      {/* 2. Global Content Wrapper for alignment */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center w-full">
-        
-        {/* Branding/Name - Use accent color */}
-        <h2 className="text-2xl font-bold text-accent">Manav Pal</h2>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Full Stack Developer</p>
+    <footer
+      className="
+        relative
+        overflow-hidden
+        border-t
+        border-black/10
+        py-16
 
-        {/* Navigation Links - Now using <a> tags for semantic HTML */}
-        <nav className="flex flex-wrap justify-center md:space-x-8 space-x-4 mt-8">
-          {[
-            { id: "hero", name: "Home" }, // Added Home link
-            { id: "about", name: "About" },
-            { id: "skills", name: "Skills" },
-            { id: "experience", name: "Experience" },
-            { id: "work", name: "Projects" },
-            { id: "education", name: "Education" },
-          ].map((item,index)=>(
-            // Using <a> tags pointing to section IDs
-            <a key={index}
-            href={`#${item.id}`} 
-            onClick={(e) => { e.preventDefault(); handleScroll(item.id); }} // Keep handleScroll for guaranteed smooth behavior
-            className="text-base font-medium text-gray-500 dark:text-gray-300 hover:text-accent transition-colors duration-200 my-1">
-              {item.name}
-            </a>
-          ))}
-        </nav>
+        dark:border-white/10
+      "
+    >
+      {/* BACKGROUND GLOWS */}
+      <div className="absolute left-1/2 top-0 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[120px]" />
 
-        {/* Social Media Icons - Increased size and used accent hover */}
-        <div className="flex flex-wrap justify-center space-x-6 mt-8">
-          {[
-            {icon: <FaLinkedin />, link:socialMedia.linkedin},
-            {icon: <FaTwitter />, link:socialMedia.twitter},
-            {icon: <FaInstagram />, link:socialMedia.instagram},
-            {icon: <FaGithub />, link:socialMedia.github},
-            {icon: <SiLeetcode />, link:socialMedia.leetcode},
-          ].map((item,index)=>(
-            <a key={index} 
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            // Use larger icon size and strong accent hover
-            className="text-2xl text-gray-500 dark:text-gray-400 hover:text-accent transition-transform transform hover:scale-110 duration-200"
-            aria-label={`Link to my ${item.link.includes('linkedin') ? 'LinkedIn' : item.link.includes('github') ? 'GitHub' : 'Social Profile'}`}
+      <div className="absolute bottom-0 right-0 h-[250px] w-[250px] rounded-full bg-cyan-500/10 blur-[120px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        {/* MAIN CARD */}
+        <div
+          className="
+            relative
+            overflow-hidden
+            rounded-3xl
+            border
+            border-black/10
+            bg-white/70
+            p-8
+            backdrop-blur-2xl
+            shadow-[0_10px_40px_rgba(0,0,0,0.08)]
+
+            dark:border-white/10
+            dark:bg-white/[0.04]
+            dark:shadow-[0_10px_40px_rgba(0,0,0,0.35)]
+
+            md:p-12
+          "
+        >
+          {/* GLOW EFFECT */}
+          <div
+            className="
+              absolute
+              inset-0
+              opacity-100
+            "
+          >
+            <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-violet-500/10 blur-3xl" />
+
+            <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl" />
+          </div>
+
+          {/* CONTENT */}
+          <div className="relative z-10">
+            {/* TOP SECTION */}
+            <div
+              className="
+                flex
+                flex-col
+                gap-10
+                lg:flex-row
+                lg:items-center
+                lg:justify-between
+              "
             >
-                  {item.icon}
-            </a>
-          ))}
+              {/* BRANDING */}
+              <div className="max-w-xl">
+                {/* LOGO */}
+                <div
+                  className="
+                    inline-flex
+                    items-center
+                    gap-2
+                    rounded-full
+                    border
+                    border-black/10
+                    bg-black/[0.03]
+                    px-5
+                    py-2.5
+
+                    dark:border-white/10
+                    dark:bg-white/[0.03]
+                  "
+                >
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Full Stack Developer
+                  </span>
+                </div>
+
+                {/* NAME */}
+                <h2
+                  className="
+                    mt-6
+                    text-4xl
+                    font-black
+                    tracking-tight
+                    text-gray-900
+                    dark:text-white
+                    sm:text-5xl
+                  "
+                >
+                  Manav
+                  <span
+                    className="
+                      bg-gradient-to-r
+                      from-violet-500
+                      via-cyan-500
+                      to-blue-500
+                      bg-clip-text
+                      text-transparent
+                    "
+                  >
+                    {" "}
+                    Pal
+                  </span>
+                </h2>
+
+                {/* DESCRIPTION */}
+                <p
+                  className="
+                    mt-5
+                    max-w-lg
+                    text-base
+                    leading-relaxed
+                    text-gray-600
+                    dark:text-gray-400
+                  "
+                >
+                  Passionate about building modern, scalable, and user-focused
+                  web applications with clean design and real-world
+                  functionality.
+                </p>
+              </div>
+
+              {/* CTA BUTTON */}
+              <div>
+                <button
+                  onClick={() => handleScroll("contact")}
+                  className="
+                    group
+                    inline-flex
+                    items-center
+                    gap-3
+                    rounded-2xl
+                    bg-gradient-to-r
+                    from-violet-500
+                    to-cyan-500
+                    px-7
+                    py-4
+                    text-sm
+                    font-semibold
+                    text-white
+                    shadow-[0_0_30px_rgba(139,92,246,0.35)]
+                    transition-all
+                    duration-300
+                    hover:scale-[1.02]
+                  "
+                >
+                  Let's Connect
+                  <ArrowUpRight
+                    size={18}
+                    className="
+                      transition-transform
+                      duration-300
+                      group-hover:-translate-y-1
+                      group-hover:translate-x-1
+                    "
+                  />
+                </button>
+              </div>
+            </div>
+
+            {/* DIVIDER */}
+            <div
+              className="
+                my-10
+                h-px
+                w-full
+                bg-gradient-to-r
+                from-transparent
+                via-black/10
+                to-transparent
+
+                dark:via-white/10
+              "
+            />
+
+            {/* BOTTOM SECTION */}
+            <div
+              className="
+                flex
+                flex-col
+                gap-10
+
+                lg:flex-row
+                lg:items-center
+                lg:justify-between
+              "
+            >
+              {/* NAVIGATION */}
+              <div
+                className="
+                  flex
+                  flex-wrap
+                  gap-3
+                  sm:gap-4
+                "
+              >
+                {navLinks.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleScroll(item.id)}
+                    className="
+                      rounded-full
+                      border
+                      border-black/10
+                      bg-black/[0.03]
+                      px-5
+                      py-2.5
+                      text-sm
+                      font-medium
+                      text-gray-700
+                      transition-all
+                      duration-300
+                      hover:border-cyan-400/30
+                      hover:bg-cyan-400/10
+                      hover:text-cyan-500
+
+                      dark:border-white/10
+                      dark:bg-white/[0.03]
+                      dark:text-gray-300
+                    "
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* SOCIALS */}
+              <div className="flex items-center gap-4">
+                {socialLinks.map((item, index) => (
+                  <a
+                    key={index}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                    className="
+                        group
+                        flex
+                        h-12
+                        w-12
+                        items-center
+                        justify-center
+                        rounded-2xl
+                        border
+                        border-black/10
+                        bg-black/[0.03]
+                        text-lg
+                        text-gray-600
+                        transition-all
+                        duration-300
+                        hover:-translate-y-1
+                        hover:border-cyan-400/30
+                        hover:bg-cyan-400/10
+                        hover:text-cyan-500
+
+                        dark:border-white/10
+                        dark:bg-white/[0.03]
+                        dark:text-gray-400
+                      "
+                  >
+                    {item.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* COPYRIGHT */}
+            <div
+              className="
+                mt-10
+                flex
+                flex-col
+                items-center
+                justify-between
+                gap-4
+                border-t
+                border-black/10
+                pt-8
+                text-center
+
+                dark:border-white/10
+
+                md:flex-row
+                md:text-left
+              "
+            >
+              {/* LEFT */}
+              <div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  © {new Date().getFullYear()} Manav Pal. All rights reserved.
+                </p>
+
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-500">
+                  Built with React & Tailwind CSS
+                </p>
+              </div>
+
+              {/* RIGHT */}
+              <div
+                className="
+                  flex
+                  items-center
+                  gap-2
+                  text-sm
+                  text-gray-500
+                  dark:text-gray-500
+                "
+              >
+                Crafted with
+                <Heart size={15} className="fill-red-500 text-red-500" />
+                by Manav Pal
+              </div>
+            </div>
+          </div>
         </div>
-
-        {/* Copyright Text */}
-        <p className="text-sm text-gray-500 dark:text-gray-500 mt-10">
-            Design & Developed by Manav Pal | Built with React & Tailwind CSS
-        </p>
-        <p className="text-xs text-gray-600 dark:text-gray-600 mt-1">
-            &#169; {new Date().getFullYear()} Manav Pal. All rights reserved.
-        </p>
-
       </div>
     </footer>
   );

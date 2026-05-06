@@ -1,68 +1,281 @@
 import React from "react";
-// Assuming SkillsInfo now contains categories like "Cloud," "Architecture," etc.
+
 import { SkillsInfo } from "../../constants";
-import { Zap } from "lucide-react"; // Icon for section title
+
+import {
+  Code2,
+  Sparkles,
+} from "lucide-react";
 
 const Skills = () => {
   return (
-    // 1. Remove custom BG and clip-path for consistency
-    <section id="skills" className="py-24 md:py-32">
-      {/* Section Title */}
-      <div className="text-center mb-16 max-w-2xl mx-auto">
-        <h2 className="uppercase font-extrabold text-4xl sm:text-5xl text-text-dark dark:text-text-light">
-          <Zap className="inline w-8 h-8 mr-3 mb-1 text-accent" />
-          Technical Domains
-        </h2>
-        {/* underline using accent color */}
-        <div className="w-60 h-1 bg-accent mx-auto mt-2"></div>
+    <section
+      id="skills"
+      className="
+        relative
+        overflow-hidden
+        py-24
+        md:py-32
+      "
+    >
+      {/* BACKGROUND GLOW */}
+      <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
 
-        <p className="text-gray-500 dark:text-gray-400 mt-6 text-lg">
-          Hands-on experience with modern web technologies, full-stack
-          development, and building scalable web applications.
-        </p>
-      </div>
-
-      {/* Skills Category Grid */}
-      <div className="flex flex-wrap gap-8 justify-center mx-auto max-w-6xl">
-        {SkillsInfo.map((category) => (
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        
+        {/* SECTION HEADER */}
+        <div className="mx-auto mb-20 max-w-3xl text-center">
+          
+          {/* BADGE */}
           <div
-            key={category.title}
-            // 2. Use semantic styling for the category card
-            className="bg-white dark:bg-primary-dark/80 p-6 sm:p-8 w-full md:w-[48%] rounded-xl 
-                       border border-gray-200 dark:border-accent/30 shadow-xl dark:shadow-[0_0_20px_5px_rgba(0,191,255,0.1)] 
-                       transition duration-300 hover:shadow-2xl hover:dark:shadow-[0_0_30px_5px_rgba(0,191,255,0.2)]"
+            className="
+              mb-6
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-white/10
+              bg-white/5
+              px-4
+              py-2
+              backdrop-blur-xl
+            "
           >
-            {/* Category Title */}
-            <h3 className="text-xl sm:text-2xl font-bold text-accent mb-6 text-center border-b border-gray-200 dark:border-gray-700 pb-3">
-              {category.title}
-            </h3>
+            <Sparkles className="h-4 w-4 text-cyan-400" />
 
-            {/* 3. Skill Items Grid - Simple, clean presentation (Tilt wrapper removed) */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
-              {category.skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  // 4. Clean Skill Badge Styling
-                  className="flex flex-col items-center justify-center space-y-1 bg-secondary-light dark:bg-primary-dark/50 
-                             border border-gray-300 dark:border-gray-700 rounded-lg py-3 px-1 text-center 
-                             transition duration-200 hover:border-accent/50 hover:shadow-md"
-                >
-                  {/* images */}
-                  <img
-                    src={skill.logo}
-                    alt={`${skill.name} logo`}
-                    loading="lazy"
-                    className={`w-6 h-6 sm:w-8 sm:h-8 object-contain`}
-                  />
-
-                  <span className="text-xs sm:text-sm text-text-dark dark:text-gray-300 font-medium">
-                    {skill.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <span className="text-sm text-gray-300">
+              Technical Expertise
+            </span>
           </div>
-        ))}
+
+          {/* TITLE */}
+          <h2
+            className="
+              text-4xl
+              font-black
+              leading-tight
+              tracking-tight
+              text-white
+              sm:text-5xl
+              lg:text-6xl
+            "
+          >
+            Technologies I use to
+            <span
+              className="
+                block
+                bg-gradient-to-r
+                from-violet-400
+                via-cyan-400
+                to-blue-400
+                bg-clip-text
+                text-transparent
+              "
+            >
+              build modern products.
+            </span>
+          </h2>
+
+          {/* DESCRIPTION */}
+          <p
+            className="
+              mx-auto
+              mt-6
+              max-w-2xl
+              text-base
+              leading-relaxed
+              text-gray-400
+              sm:text-lg
+            "
+          >
+            I work across frontend, backend, databases,
+            and modern development tools to create
+            scalable, performant, and user-focused
+            digital experiences.
+          </p>
+        </div>
+
+        {/* SKILL CARDS */}
+        <div
+          className="
+            grid
+            gap-8
+            md:grid-cols-2
+          "
+        >
+          {SkillsInfo.map((category, index) => (
+            <div
+              key={category.title}
+              className="
+                group
+                relative
+                overflow-hidden
+                rounded-3xl
+                border
+                border-white/10
+                bg-white/5
+                p-8
+                backdrop-blur-2xl
+                transition-all
+                duration-500
+                hover:-translate-y-2
+                hover:border-cyan-400/20
+                hover:bg-white/[0.07]
+                hover:shadow-[0_10px_50px_rgba(0,0,0,0.35)]
+              "
+            >
+              {/* CARD GLOW */}
+              <div
+                className="
+                  absolute
+                  inset-0
+                  opacity-0
+                  transition-opacity
+                  duration-500
+                  group-hover:opacity-100
+                "
+              >
+                <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-violet-500/20 blur-3xl" />
+
+                <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-cyan-500/20 blur-3xl" />
+              </div>
+
+              {/* CONTENT */}
+              <div className="relative z-10">
+                
+                {/* TOP */}
+                <div className="mb-8 flex items-center gap-4">
+                  
+                  {/* ICON */}
+                  <div
+                    className="
+                      flex
+                      h-14
+                      w-14
+                      items-center
+                      justify-center
+                      rounded-2xl
+                      bg-gradient-to-br
+                      from-violet-500
+                      to-cyan-500
+                      shadow-lg
+                    "
+                  >
+                    <Code2 className="h-7 w-7 text-white" />
+                  </div>
+
+                  {/* TITLE */}
+                  <div>
+                    <h3
+                      className="
+                        text-2xl
+                        font-bold
+                        text-white
+                      "
+                    >
+                      {category.title}
+                    </h3>
+
+                    <p className="mt-1 text-sm text-gray-400">
+                      Modern development technologies
+                    </p>
+                  </div>
+                </div>
+
+                {/* SKILLS GRID */}
+                <div
+                  className="
+                    grid
+                    grid-cols-2
+                    gap-4
+                    sm:grid-cols-3
+                  "
+                >
+                  {category.skills.map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="
+                        group/skill
+                        flex
+                        flex-col
+                        items-center
+                        justify-center
+                        rounded-2xl
+                        border
+                        border-white/10
+                        bg-black/20
+                        px-4
+                        py-5
+                        transition-all
+                        duration-300
+                        hover:border-cyan-400/30
+                        hover:bg-white/10
+                        hover:shadow-lg
+                      "
+                    >
+                      {/* LOGO */}
+                      <div
+                        className="
+                          mb-3
+                          flex
+                          h-14
+                          w-14
+                          items-center
+                          justify-center
+                          rounded-2xl
+                          bg-white/5
+                          transition-all
+                          duration-300
+                          group-hover/skill:scale-110
+                        "
+                      >
+                        <img
+                          src={skill.logo}
+                          alt={skill.name}
+                          loading="lazy"
+                          className="
+                            h-8
+                            w-8
+                            object-contain
+                          "
+                        />
+                      </div>
+
+                      {/* NAME */}
+                      <span
+                        className="
+                          text-sm
+                          font-medium
+                          text-gray-300
+                          transition-colors
+                          duration-300
+                          group-hover/skill:text-white
+                        "
+                      >
+                        {skill.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CARD NUMBER */}
+              <div
+                className="
+                  absolute
+                  right-6
+                  top-6
+                  text-5xl
+                  font-black
+                  text-white/[0.03]
+                "
+              >
+                0{index + 1}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

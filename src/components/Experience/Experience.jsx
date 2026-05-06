@@ -1,95 +1,395 @@
+import React from "react";
+
 import { experiences } from "../../constants";
-import { Briefcase } from "lucide-react";
+
+import { Briefcase, Calendar } from "lucide-react";
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24 md:py-32">
-      {/* Section Title */}
-      <div className="text-center mb-16 max-w-2xl mx-auto">
-        <h2 className="uppercase font-extrabold text-4xl sm:text-5xl text-text-dark dark:text-text-light">
-          <Briefcase className="inline w-8 h-8 mr-3 mb-1 text-accent" />
-          Professional Experience
-        </h2>
+    <section
+      id="experience"
+      className="
+        relative
+        overflow-hidden
+        pt-36 pb-24
+        md:py-32
+      "
+    >
+      {/* BACKGROUND EFFECTS */}
+      <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[120px]" />
 
-        <div className="w-60 h-1 bg-accent mx-auto mt-2"></div>
+      <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]" />
 
-        <p className="text-gray-500 dark:text-gray-400 mt-6 text-lg">
-          A snapshot of my professional experience, practical learning, and hands-on contributions.
-        </p>
-      </div>
-
-      {/* Timeline Container */}
-      <div className="relative max-w-5xl mx-auto">
-        
-        {/* Vertical Line */}
-        <div className="absolute top-0 bottom-0 left-0 lg:left-1/2 transform lg:-translate-x-1/2 w-1 bg-accent/50"></div>
-
-        {/* Entries */}
-        {experiences.map((experience, index) => (
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        {/* HEADER */}
+        <div className="mx-auto mb-24 max-w-3xl text-center">
+          {/* BADGE */}
           <div
-            key={experience.id}
-            className={`flex flex-col sm:flex-row items-center mb-16 ${
-              index % 2 === 0 ? "sm:justify-end" : "sm:justify-start"
-            }`}
+            className="
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-white/10
+              bg-white/[0.04]
+              px-5
+              py-2.5
+              backdrop-blur-xl
+            "
           >
-            {/* Timeline Circle (hidden on mobile) */}
-            <div className="hidden lg:flex absolute left-1/2 transform lg:-translate-x-1/2 bg-white dark:bg-primary-dark border-4 border-accent w-14 h-14 rounded-full justify-center items-center z-10">
-              <img
-                src={experience.img}
-                alt={experience.company}
-                loading="lazy"
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
+            <Briefcase className="h-4 w-4 text-cyan-400" />
 
-            {/* Card */}
-            <div
-              className={`w-full sm:max-w-md p-6 sm:p-8 rounded-xl 
-                bg-white dark:bg-primary-dark/80 
-                border border-gray-200 dark:border-accent/30 
-                shadow-xl dark:shadow-[0_0_25px_5px_rgba(0,191,255,0.15)] 
-                transform transition-transform duration-300 hover:scale-[1.02] 
-                ${index % 2 === 0 ? "sm:ml-10" : "sm:mr-10"}`}
-            >
-              {/* Header */}
-              <div className="flex flex-col">
-                <h3 className="text-xl sm:text-2xl font-bold text-text-dark dark:text-text-light leading-snug">
-                  {experience.role}
-                </h3>
-                <h4 className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1">
-                  {experience.company}
-                </h4>
-                <p className="text-xs text-gray-500 mt-2">{experience.date}</p>
-              </div>
-
-              {/* Bullet Points */}
-              {experience.points && (
-                <ul className="mt-5 border-t border-gray-200 dark:border-gray-700 pt-4 list-disc ml-5 space-y-2 text-gray-600 dark:text-gray-400">
-                  {experience.points.map((point, idx) => (
-                    <li key={idx}>{point}</li>
-                  ))}
-                </ul>
-              )}
-
-              {/* Skills */}
-              <div className="mt-6">
-                <h5 className="font-medium text-text-dark dark:text-text-light mb-2">
-                  Key Technologies:
-                </h5>
-                <ul className="flex flex-wrap">
-                  {experience.skills.map((skill, idx) => (
-                    <li
-                      key={idx}
-                      className="bg-accent/10 text-accent px-3 py-1 text-xs font-semibold rounded-full mr-2 mb-2 border border-accent/50 transition duration-150 hover:bg-accent/20"
-                    >
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            <span className="text-sm font-medium text-gray-300">
+              Career Timeline
+            </span>
           </div>
-        ))}
+
+          {/* TITLE */}
+          <h2
+            className="
+              mt-7
+              text-4xl
+              font-black
+              leading-tight
+              tracking-tight
+              text-white
+              sm:text-5xl
+              lg:text-6xl
+            "
+          >
+            Professional
+            <span
+              className="
+                block
+                bg-gradient-to-r
+                from-violet-400
+                via-cyan-400
+                to-blue-400
+                bg-clip-text
+                text-transparent
+              "
+            >
+              experience & growth.
+            </span>
+          </h2>
+
+          {/* DESCRIPTION */}
+          <p
+            className="
+              mx-auto
+              mt-6
+max-w-xl
+              text-base
+              leading-relaxed
+              text-gray-400
+              sm:text-lg
+            "
+          >
+            My professional journey building modern web applications, learning
+            industry practices, and delivering scalable digital solutions.
+          </p>
+        </div>
+
+        {/* TIMELINE */}
+        <div className="relative mx-auto max-w-6xl">
+          {/* CENTER LINE */}
+          <div
+            className="
+              absolute
+              left-[10px]
+              top-0
+              h-full
+              w-[2px]
+              bg-gradient-to-b
+from-cyan-500/50
+via-cyan-400/20
+to-transparent
+              lg:left-1/2
+              lg:-translate-x-1/2
+            "
+          />
+
+          {/* EXPERIENCE ITEMS */}
+          <div className="space-y-10 md:space-y-14">
+            {experiences.map((experience, index) => (
+              <div
+                key={experience.id}
+                className={`
+                  relative
+                  flex
+                  w-full
+                  ${index % 2 === 0 ? "lg:justify-start" : "lg:justify-end"}
+                `}
+              >
+             {/* MOBILE TIMELINE LOGO */}
+<div
+  className="
+    absolute
+    left-[10px]
+    top-8
+    z-20
+    flex
+    h-10
+    w-10
+    items-center
+    justify-center
+    overflow-hidden
+    rounded-full
+    border-2
+    border-cyan-400/40
+    bg-[#0b0718]
+    shadow-[0_0_20px_rgba(34,211,238,0.25)]
+    backdrop-blur-xl
+
+    sm:h-12
+    sm:w-12
+
+    lg:hidden
+  "
+>
+  <img
+    src={experience.img}
+    alt={experience.company}
+    loading="lazy"
+    className="
+      h-full
+      w-full
+      object-cover
+      rounded-full
+    "
+  />
+</div>
+
+{/* DESKTOP TIMELINE DOT */}
+<div
+  className="
+    absolute
+    left-1/2
+    top-10
+    z-20
+    hidden
+    h-3
+    w-3
+    -translate-x-1/2
+    rounded-full
+    bg-cyan-400
+    shadow-[0_0_15px_rgba(34,211,238,0.7)]
+
+    lg:block
+  "
+/>
+                {/* CARD */}
+                <div
+                  className={`
+                    group
+                    relative
+                    ml-14 sm:ml-16
+                    w-full
+                    max-w-full lg:max-w-2xl
+                    overflow-hidden
+                    rounded-3xl
+                    border
+                    border-white/10
+                    bg-white/[0.05]
+                    backdrop-blur-2xl
+                    transition-all
+                    duration-500
+                    hover:-translate-y-2
+                    hover:border-cyan-400/30
+                    hover:shadow-[0_15px_60px_rgba(0,0,0,0.45)]
+                    lg:ml-0
+                    ${index % 2 === 0 ? "lg:mr-16" : "lg:ml-16"}
+                  `}
+                >
+                  {/* GLOW EFFECT */}
+                  <div
+                    className="
+                      absolute
+                      inset-0
+                      opacity-0
+                      transition-opacity
+                      duration-500
+                      group-hover:opacity-100
+                    "
+                  >
+                    <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-violet-500/20 blur-3xl" />
+
+                    <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-cyan-500/20 blur-3xl" />
+                  </div>
+
+                  {/* CONTENT */}
+                  <div className="relative z-10 p-5 sm:p-7 lg:p-9">
+                    {/* TOP SECTION */}
+                    <div
+                      className="
+                        flex
+                        flex-col
+                        gap-6
+                        sm:flex-row
+                        sm:items-start
+                      "
+                    >
+                      {/* COMPANY LOGO */}
+                      <div
+                        className="
+                          relative
+                          flex
+                          h-24
+                          w-24
+                          shrink-0
+                          items-center
+                          justify-center
+                          rounded-2xl
+                          border
+                          border-white/10
+                          bg-gradient-to-br
+                          from-white/10
+                          to-white/5
+                          p-4
+                          shadow-xl
+                          backdrop-blur-xl
+                        "
+                      >
+                        {/* INNER GLOW */}
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/10 to-cyan-500/10" />
+
+                        <img
+                          src={experience.img}
+                          alt={experience.company}
+                          loading="lazy"
+                          className="
+                            relative
+                            z-10
+                            h-full
+                            w-full
+                            object-contain
+                          "
+                        />
+                      </div>
+
+                      {/* ROLE INFO */}
+                      <div className="flex-1">
+                        {/* ROLE */}
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <h3
+                              className="
+                                text-2xl
+                                font-bold
+                                text-white
+                                sm:text-3xl
+                              "
+                            >
+                              {experience.role}
+                            </h3>
+
+                            <p
+                              className="
+                                mt-2
+                                text-lg
+                                font-medium
+                                text-cyan-400
+                              "
+                            >
+                              {experience.company}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* DATE */}
+                        <div
+                          className="
+                            mt-5
+                            inline-flex
+                            items-center
+                            gap-2
+                            rounded-full
+                            border
+                            border-white/10
+                            bg-black/20
+                            px-4
+                            py-2
+                          "
+                        >
+                          <Calendar className="h-4 w-4 text-violet-400" />
+
+                          <span className="text-sm text-gray-300">
+                            {experience.date}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* POINTS */}
+                    {experience.points && (
+                      <ul className="mt-8 space-y-4">
+                        {experience.points.map((point, idx) => (
+                          <li
+                            key={idx}
+                            className="
+                                flex
+                                items-start
+                                gap-4
+                              "
+                          >
+                            <div
+                              className="
+                                  mt-2
+                                  h-2
+                                  w-2
+                                  shrink-0
+                                  rounded-full
+                                  bg-cyan-400
+                                "
+                            />
+
+                            <p
+                              className="
+                                  text-sm
+                                  leading-relaxed
+                                  text-gray-300
+                                  sm:text-base
+                                "
+                            >
+                              {point}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {/* TECH STACK */}
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      {experience.skills.map((skill, idx) => (
+                        <span
+                          key={idx}
+                          className="
+                              rounded-full
+                              border
+                              border-cyan-400/20
+                              bg-cyan-400/10
+                              px-4
+                              py-2
+                              text-xs
+                              font-semibold
+                              text-cyan-300
+                              transition-all
+                              duration-300
+                              hover:scale-105
+                              hover:bg-cyan-400/20
+                            "
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

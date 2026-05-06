@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import { projects } from "../../constants";
+
 import { FolderGit2, X, Github, ExternalLink } from "lucide-react";
 
 const Work = () => {
@@ -7,156 +9,498 @@ const Work = () => {
 
   const handleOpenModel = (project) => {
     setSelectedProject(project);
+
     document.body.style.overflow = "hidden";
   };
 
   const handleCloseModel = () => {
     setSelectedProject(null);
+
     document.body.style.overflow = "unset";
   };
 
   return (
-    <section id="work" className="py-24 md:py-32 relative">
-      <div className="text-center mb-16 max-w-2xl mx-auto">
-        <h2 className="uppercase font-extrabold text-4xl sm:text-5xl text-text-dark dark:text-text-light">
-          <FolderGit2 className="inline w-8 h-8 mr-3 mb-1 text-accent" />
-          Key Projects & Case Studies
-        </h2>
+    <section
+      id="work"
+      className="
+        relative
+        overflow-hidden
+        py-24
+        md:py-32
+      "
+    >
+      {/* BACKGROUND EFFECTS */}
+      <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[120px]" />
 
-        <div className="w-72 h-1 bg-accent mx-auto mt-2"></div>
+      <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]" />
 
-        <p className="text-gray-500 dark:text-gray-400 mt-6 text-lg">
-          Deep dives into complex systems I've architected, focusing on scalability,
-          performance, and solution design.
-        </p>
-      </div>
-
-      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {projects.map((project) => (
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        {/* HEADER */}
+        <div className="mx-auto mb-20 max-w-3xl text-center">
+          {/* BADGE */}
           <div
-            key={project.id}
-            onClick={() => handleOpenModel(project)}
-            className="bg-white dark:bg-primary-dark/80 rounded-xl shadow-xl overflow-hidden cursor-pointer 
-                     border border-gray-200 dark:border-accent/30 
-                     hover:shadow-accent/50 hover:dark:shadow-[0_15px_30px_rgba(0,191,255,0.25)] 
-                     hover:-translate-y-1 transition-all duration-300"
+            className="
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-white/10
+              bg-white/[0.04]
+              px-5
+              py-2.5
+              backdrop-blur-xl
+            "
           >
-            <div className="p-3">
-              <img
-                src={project.image}
-                alt={project.title}
-                loading="lazy"
-                className="w-full h-48 object-cover rounded-lg border border-gray-300 dark:border-gray-700"
-              />
-            </div>
+            <FolderGit2 className="h-4 w-4 text-cyan-400" />
 
-            <div className="p-5">
-              <h3 className="text-xl font-bold text-text-dark dark:text-text-light">
-                {project.title}
-              </h3>
-
-              {/* Show first 2 points as preview */}
-              {project.points && (
-                <ul className="text-gray-500 dark:text-gray-400 mb-4 pt-3 text-sm space-y-1">
-                  {project.points.slice(0, 2).map((p, idx) => (
-                    <li key={idx} className="list-disc ml-4">
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              <div className="mb-2 flex flex-wrap gap-2">
-                {project.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="inline-block bg-accent/10 text-accent text-xs font-semibold rounded-full px-3 py-1 mr-1 mb-1 border border-accent/30"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <span className="text-sm font-medium text-gray-300">
+              Featured Projects
+            </span>
           </div>
-        ))}
-      </div>
 
-      {selectedProject && (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black bg-opacity-90 backdrop-blur-sm p-4"
-          onClick={handleCloseModel}
-        >
-          <div
-            className="bg-white dark:bg-primary-dark rounded-xl shadow-2xl lg:w-full w-full max-w-4xl max-h-[90vh] overflow-y-auto relative"
-            onClick={(e) => e.stopPropagation()}
+          {/* TITLE */}
+          <h2
+            className="
+              mt-7
+              text-4xl
+              font-black
+              leading-tight
+              tracking-tight
+              text-white
+              sm:text-5xl
+              lg:text-6xl
+            "
           >
-            <button
-              onClick={handleCloseModel}
-              className="absolute top-4 right-4 text-3xl font-bold text-gray-500 hover:text-accent transition z-10 p-2 bg-white dark:bg-primary-dark rounded-full"
-              aria-label="Close Project Details"
+            Projects &
+            <span
+              className="
+                block
+                bg-gradient-to-r
+                from-violet-400
+                via-cyan-400
+                to-blue-400
+                bg-clip-text
+                text-transparent
+              "
             >
-              <X size={24} />
-            </button>
+              case studies.
+            </span>
+          </h2>
 
-            <div className="flex flex-col">
-              <div className="w-full flex justify-center bg-white dark:bg-primary-dark/90 p-6">
+          {/* DESCRIPTION */}
+          <p
+            className="
+              mx-auto
+              mt-6
+              max-w-2xl
+              text-base
+              leading-relaxed
+              text-gray-400
+              sm:text-lg
+            "
+          >
+            A collection of projects focused on performance, scalability, user
+            experience, and solving real-world problems using modern
+            technologies.
+          </p>
+        </div>
+
+        {/* PROJECT GRID */}
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-8
+            md:grid-cols-2
+            xl:grid-cols-3
+          "
+        >
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => handleOpenModel(project)}
+              className="
+                group
+                relative
+                overflow-hidden
+                rounded-2xl
+                border
+                border-white/10
+                bg-white/[0.04]
+                backdrop-blur-2xl
+                cursor-pointer
+                transition-all
+                duration-500
+                hover:-translate-y-2
+                hover:border-cyan-400/20
+                hover:bg-white/[0.06]
+                hover:shadow-[0_10px_40px_rgba(0,0,0,0.35)]
+              "
+            >
+              {/* HOVER GLOW */}
+              <div
+                className="
+                  absolute
+                  inset-0
+                  opacity-0
+                  transition-opacity
+                  duration-500
+                  group-hover:opacity-100
+                "
+              >
+                <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-violet-500/20 blur-3xl" />
+
+                <div className="absolute bottom-0 left-0 h-24 w-24 rounded-full bg-cyan-500/20 blur-3xl" />
+              </div>
+
+              {/* IMAGE */}
+              <div className="relative overflow-hidden">
                 <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="lg:w-full w-[95%] object-contain rounded-lg shadow-xl border border-gray-200 dark:border-gray-700"
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  className="
+                    h-56
+                    w-full
+                    object-cover
+                    transition-transform
+                    duration-700
+                    group-hover:scale-105
+                  "
+                />
+
+                {/* OVERLAY */}
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-[#030014]
+                    via-transparent
+                    to-transparent
+                  "
                 />
               </div>
 
-              <div className="p-6 lg:p-8">
-                <h3 className="text-2xl lg:text-3xl font-bold text-text-dark dark:text-text-light mb-2">
-                  {selectedProject.title}
+              {/* CONTENT */}
+              <div className="relative z-10 p-6">
+                {/* TITLE */}
+                <h3
+                  className="
+                    text-2xl
+                    font-bold
+                    tracking-tight
+                    text-white
+                  "
+                >
+                  {project.title}
                 </h3>
 
-                {selectedProject.points && (
-                  <ul className="text-gray-500 dark:text-gray-400 mb-6 text-base space-y-2 list-disc ml-5">
-                    {selectedProject.points.map((p, idx) => (
-                      <li key={idx}>{p}</li>
+                {/* PREVIEW POINTS */}
+                {project.points && (
+                  <ul
+                    className="
+                      mt-4
+                      space-y-2
+                    "
+                  >
+                    {project.points.slice(0, 2).map((p, idx) => (
+                      <li
+                        key={idx}
+                        className="
+                            flex
+                            items-start
+                            gap-3
+                            text-sm
+                            leading-relaxed
+                            text-gray-400
+                          "
+                      >
+                        <div
+                          className="
+                              mt-2
+                              h-2
+                              w-2
+                              shrink-0
+                              rounded-full
+                              bg-cyan-400
+                            "
+                        />
+
+                        <span>{p}</span>
+                      </li>
                     ))}
                   </ul>
                 )}
 
-                <div className="flex flex-wrap gap-2 mb-6 border-t border-gray-200 dark:border-gray-700 pt-4">
+                {/* TAGS */}
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="
+                          rounded-full
+                          border
+                          border-cyan-400/20
+                          bg-cyan-400/10
+                          px-3
+                          py-1.5
+                          text-xs
+                          font-semibold
+                          text-cyan-300
+                          transition-all
+                          duration-300
+                          hover:bg-cyan-400/20
+                        "
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* MODAL */}
+        {selectedProject && (
+          <div
+            className="
+              fixed
+              inset-0
+              z-[60]
+              flex
+              items-center
+              justify-center
+              bg-black/90
+              backdrop-blur-md
+              p-4
+            "
+            onClick={handleCloseModel}
+          >
+            {/* MODAL CONTAINER */}
+            <div
+              className="
+                relative
+                max-h-[85vh]
+mt-20
+                w-full
+                max-w-5xl
+                overflow-y-auto scrollbar-thin scrollbar-thumb-cyan-500/20
+                rounded-2xl
+                border
+                border-white/10
+                bg-[#0b0718]
+                backdrop-blur-2xl
+                shadow-[0_10px_60px_rgba(0,0,0,0.45)]
+              "
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* CLOSE BUTTON */}
+              <button
+                onClick={handleCloseModel}
+                className="
+                  absolute
+                  right-5
+top-24
+sm:top-5
+                  z-20
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-white/10
+                  bg-black/40
+                  text-gray-300
+                  backdrop-blur-xl
+                  transition-all
+                  duration-300
+                  hover:text-white
+                "
+              >
+                <X size={22} />
+              </button>
+
+              {/* IMAGE */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="
+                    h-[260px]
+                    w-full
+                    object-cover
+                    sm:h-[400px]
+                  "
+                />
+
+                {/* OVERLAY */}
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-[#030014]
+                    via-transparent
+                    to-transparent
+                  "
+                />
+              </div>
+
+              {/* CONTENT */}
+              <div className="p-6 sm:p-8 lg:p-10">
+                {/* TITLE */}
+                <h3
+                  className="
+                    text-3xl
+                    font-black
+                    tracking-tight
+                    text-white
+                    sm:text-4xl
+                  "
+                >
+                  {selectedProject.title}
+                </h3>
+
+                {/* DESCRIPTION */}
+                {selectedProject.points && (
+                  <ul className="mt-8 space-y-4">
+                    {selectedProject.points.map((p, idx) => (
+                      <li
+                        key={idx}
+                        className="
+                            flex
+                            items-start
+                            gap-4
+                          "
+                      >
+                        <div
+                          className="
+                              mt-2
+                              h-2
+                              w-2
+                              shrink-0
+                              rounded-full
+                              bg-cyan-400
+                            "
+                        />
+
+                        <p
+                          className="
+                              text-sm
+                              leading-relaxed
+                              text-gray-300
+                              sm:text-base
+                            "
+                        >
+                          {p}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* TAGS */}
+                <div className="mt-8 flex flex-wrap gap-3">
                   {selectedProject.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="bg-accent/10 text-accent text-sm font-semibold rounded-full px-3 py-1 border border-accent/30"
+                      className="
+                          rounded-full
+                          border
+                          border-cyan-400/20
+                          bg-cyan-400/10
+                          px-4
+                          py-2
+                          text-sm
+                          font-semibold
+                          text-cyan-300
+                        "
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-4">
+                {/* BUTTONS */}
+                <div
+                  className="
+                    mt-10
+                    flex
+                    flex-col
+                    gap-4
+                    sm:flex-row
+                  "
+                >
+                  {/* LIVE BUTTON */}
                   <a
                     href={selectedProject.webapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-1/2 flex items-center justify-center bg-accent hover:bg-accent-dark text-white py-3 rounded-lg text-lg font-bold transition duration-300 shadow-lg shadow-accent/30"
+                    className="
+                      flex
+                      flex-1
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-xl
+                      bg-gradient-to-r
+                      from-violet-500
+                      to-cyan-500
+                      px-6
+                      py-4
+                      text-sm
+                      font-semibold
+                      text-white
+                      shadow-[0_0_30px_rgba(139,92,246,0.35)]
+                      transition-all
+                      duration-300
+                      hover:scale-[1.02]
+                    "
                   >
-                    <ExternalLink className="w-5 h-5 mr-2" />
+                    <ExternalLink size={18} />
                     View Live
                   </a>
 
+                  {/* GITHUB BUTTON */}
                   <a
                     href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-1/2 flex items-center justify-center border-2 border-gray-400 dark:border-gray-600 text-text-dark dark:text-gray-300 hover:border-accent hover:text-accent py-3 rounded-lg text-lg font-bold transition duration-300"
+                    className="
+                      flex
+                      flex-1
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-xl
+                      border
+                      border-white/10
+                      bg-white/[0.04]
+                      px-6
+                      py-4
+                      text-sm
+                      font-semibold
+                      text-white
+                      transition-all
+                      duration-300
+                      hover:border-cyan-400/30
+                      hover:bg-white/[0.06]
+                    "
                   >
-                    <Github className="w-5 h-5 mr-2" />
+                    <Github size={18} />
                     View Code
                   </a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 };

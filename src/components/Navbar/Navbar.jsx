@@ -1,23 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
+
 import { socialMedia } from "../../constants";
 
 const useTheme = () => {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme") || "dark";
+    const storedTheme =
+      localStorage.getItem("theme") || "dark";
+
     setTheme(storedTheme);
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(storedTheme);
+
+    document.documentElement.classList.remove(
+      "light",
+      "dark"
+    );
+
+    document.documentElement.classList.add(
+      storedTheme
+    );
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
+    const newTheme =
+      theme === "dark" ? "light" : "dark";
+
     setTheme(newTheme);
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(newTheme);
+
+    document.documentElement.classList.remove(
+      "light",
+      "dark"
+    );
+
+    document.documentElement.classList.add(
+      newTheme
+    );
+
     localStorage.setItem("theme", newTheme);
   };
 
@@ -26,50 +51,14 @@ const useTheme = () => {
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
-  const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [activeSection, setActiveSection] =
+    useState("hero");
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: "-80px 0px -40% 0px",
-      }
-    );
-
-    ["hero", "skills", "experience", "work", "education", "contact"].forEach(
-      (id) => {
-        const el = document.getElementById(id);
-        if (el) observer.observe(el);
-      }
-    );
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleMenuItemClick = (sectionId) => {
-    setIsOpen(false);
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-
-    const yOffset = -100;
-    const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  };
+  const [isScrolled, setIsScrolled] =
+    useState(false);
 
   const menuItems = [
     { id: "hero", label: "Home" },
@@ -80,95 +69,595 @@ const Navbar = () => {
     { id: "contact", label: "Contact" },
   ];
 
+  // SCROLL EFFECT
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener(
+      "scroll",
+      handleScroll
+    );
+
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+  }, []);
+
+  // ACTIVE SECTION
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.25,
+        rootMargin: "-100px 0px -40% 0px",
+      }
+    );
+
+    menuItems.forEach((item) => {
+      const section = document.getElementById(
+        item.id
+      );
+
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // SCROLL TO SECTION
+  const handleMenuItemClick = (sectionId) => {
+    setIsOpen(false);
+
+    const section =
+      document.getElementById(sectionId);
+
+    if (!section) return;
+
+    const yOffset = -90;
+
+    const y =
+      section.getBoundingClientRect().top +
+      window.pageYOffset +
+      yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition duration-300 ${
-        isScrolled
-          ? "bg-secondary-light/90 dark:bg-primary-dark/80 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-text-dark dark:text-text-light py-5 flex justify-between items-center">
-          <button
-            onClick={() => handleMenuItemClick("hero")}
-            className="text-lg font-bold flex items-center group cursor-pointer"
+    <>
+      {/* DESKTOP NAVBAR */}
+      <nav
+        className="
+          fixed
+          top-5
+          inset-x-0
+          z-50
+          hidden
+          justify-center
+          px-4
+          md:flex
+        "
+      >
+        <div className="w-full max-w-[1180px]">
+          <div
+            className={`
+              relative
+              flex
+              items-center
+              justify-between
+              gap-8
+              overflow-hidden
+              rounded-[22px]
+              border
+              border-black/10
+              dark:border-white/10
+              px-8
+              py-4
+              backdrop-blur-2xl
+              transition-all
+              duration-500
+              ${
+                isScrolled
+                  ? "bg-white/80 shadow-[0_8px_40px_rgba(0,0,0,0.12)] dark:bg-[#0b0718]/75 dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)]"
+                  : "bg-white/70 dark:bg-white/[0.04]"
+              }
+            `}
           >
-            <span className="text-accent group-hover:text-accent-dark transition-colors">
-              &lt;
-            </span>
-            <span className="text-text-dark dark:text-text-light">Manav</span>
-            <span className="text-accent group-hover:text-accent-dark transition-colors">
-              /
-            </span>
-            <span className="text-text-dark dark:text-text-light">Pal</span>
-            <span className="text-accent group-hover:text-accent-dark transition-colors">
-              &gt;
+            {/* GLOW */}
+            <div
+              className="
+                absolute
+                inset-0
+                bg-gradient-to-r
+                from-violet-500/10
+                via-transparent
+                to-cyan-500/10
+              "
+            />
+
+            {/* LOGO */}
+            <button
+              onClick={() =>
+                handleMenuItemClick("hero")
+              }
+              className="
+                relative
+                z-10
+                group
+                flex
+                items-center
+                text-2xl
+                font-black
+                tracking-tight
+              "
+            >
+              <span
+                className="
+                  text-violet-500
+                  transition-all
+                  duration-300
+                  group-hover:text-cyan-500
+                "
+              >
+                &lt;
+              </span>
+
+              <span
+                className="
+                  mx-1
+                  bg-gradient-to-r
+                  from-gray-900
+                  to-gray-600
+                  dark:from-white
+                  dark:to-gray-300
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Manav
+              </span>
+
+              <span className="text-violet-500">
+                /
+              </span>
+
+              <span
+                className="
+                  mx-1
+                  bg-gradient-to-r
+                  from-gray-600
+                  to-gray-900
+                  dark:from-gray-300
+                  dark:to-white
+                  bg-clip-text
+                  text-transparent
+                "
+              >
+                Pal
+              </span>
+
+              <span
+                className="
+                  text-violet-500
+                  transition-all
+                  duration-300
+                  group-hover:text-cyan-500
+                "
+              >
+                &gt;
+              </span>
+            </button>
+
+            {/* NAV ITEMS */}
+            <ul
+              className="
+                relative
+                z-10
+                flex
+                items-center
+                gap-2
+              "
+            >
+              {menuItems.map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() =>
+                      handleMenuItemClick(item.id)
+                    }
+                    className={`
+                      rounded-full
+                      px-5
+                      py-2.5
+                      text-sm
+                      font-medium
+                      transition-all
+                      duration-300
+                      ${
+                        activeSection === item.id
+                          ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-lg"
+                          : "text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
+                      }
+                    `}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            {/* RIGHT SIDE */}
+            <div
+              className="
+                relative
+                z-10
+                flex
+                items-center
+                gap-5
+              "
+            >
+              {/* SOCIALS */}
+              <div className="flex items-center gap-4">
+                <a
+                  href={socialMedia.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="
+                    text-gray-500
+                    dark:text-gray-400
+                    transition-all
+                    duration-300
+                    hover:scale-110
+                    hover:text-black
+                    dark:hover:text-white
+                  "
+                >
+                  <FaLinkedin size={18} />
+                </a>
+
+                <a
+                  href={socialMedia.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="
+                    text-gray-500
+                    dark:text-gray-400
+                    transition-all
+                    duration-300
+                    hover:scale-110
+                    hover:text-black
+                    dark:hover:text-white
+                  "
+                >
+                  <FaGithub size={18} />
+                </a>
+
+                <a
+                  href={socialMedia.twitter}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="
+                    text-gray-500
+                    dark:text-gray-400
+                    transition-all
+                    duration-300
+                    hover:scale-110
+                    hover:text-black
+                    dark:hover:text-white
+                  "
+                >
+                  <FaTwitter size={18} />
+                </a>
+              </div>
+
+              {/* THEME BUTTON */}
+              <button
+                onClick={toggleTheme}
+                className="
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-black/10
+                  dark:border-white/10
+                  bg-black/[0.04]
+                  dark:bg-white/[0.05]
+                  text-gray-700
+                  dark:text-gray-300
+                  transition-all
+                  duration-300
+                  hover:bg-black/5
+                  dark:hover:bg-white/10
+                  hover:text-black
+                  dark:hover:text-white
+                "
+              >
+                {theme === "dark" ? (
+                  <Sun size={18} />
+                ) : (
+                  <Moon size={18} />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* MOBILE NAVBAR */}
+      <div
+        className="
+          fixed
+          top-0
+          z-50
+          w-full
+          px-4
+          pt-4
+          md:hidden
+        "
+      >
+        <div
+          className={`
+            relative
+            flex
+            items-center
+            justify-between
+            overflow-hidden
+            rounded-2xl
+            border
+            border-black/10
+            dark:border-white/10
+            px-5
+            py-4
+            backdrop-blur-2xl
+            transition-all
+            duration-500
+            ${
+              isScrolled
+                ? "bg-white/80 shadow-[0_8px_40px_rgba(0,0,0,0.12)] dark:bg-[#0b0718]/80 dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)]"
+                : "bg-white/70 dark:bg-white/[0.04]"
+            }
+          `}
+        >
+          {/* GLOW */}
+          <div
+            className="
+              absolute
+              inset-0
+              bg-gradient-to-r
+              from-violet-500/10
+              via-transparent
+              to-cyan-500/10
+            "
+          />
+
+          {/* MOBILE LOGO */}
+          <button
+            onClick={() =>
+              handleMenuItemClick("hero")
+            }
+            className="
+              relative
+              z-10
+              text-lg
+              font-black
+              tracking-tight
+            "
+          >
+            <span
+              className="
+                bg-gradient-to-r
+                from-gray-900
+                to-gray-600
+                dark:from-white
+                dark:to-gray-300
+                bg-clip-text
+                text-transparent
+              "
+            >
+              Manav
             </span>
           </button>
 
-          <ul className="hidden md:flex space-x-8 text-gray-500 dark:text-gray-300">
-            {menuItems.map((item) => (
-              <li
-                key={item.id}
-                className={`cursor-pointer font-medium hover:text-accent transition-colors duration-200 ${
-                  activeSection === item.id
-                    ? "text-accent border-b-2 border-accent"
-                    : "text-text-dark dark:text-gray-300"
-                }`}
-              >
-                <button onClick={() => handleMenuItemClick(item.id)} className="py-1">
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
+          {/* ACTIONS */}
+          <div
+            className="
+              relative
+              z-10
+              flex
+              items-center
+              gap-3
+            "
+          >
+            {/* THEME BUTTON */}
+            <button
+              onClick={toggleTheme}
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-black/10
+                dark:border-white/10
+                bg-black/[0.04]
+                dark:bg-white/[0.05]
+                text-gray-700
+                dark:text-gray-300
+              "
+            >
+              {theme === "dark" ? (
+                <Sun size={18} />
+              ) : (
+                <Moon size={18} />
+              )}
+            </button>
 
-          <div className="hidden md:flex items-center space-x-5">
-            <div className="flex space-x-4">
-              <a href={socialMedia.linkedin} target="_blank" rel="noreferrer">
-                <FaLinkedin />
-              </a>
-              <a href={socialMedia.github} target="_blank" rel="noreferrer">
-                <FaGithub />
-              </a>
-              <a href={socialMedia.twitter} target="_blank" rel="noreferrer">
-                <FaTwitter />
-              </a>
-            </div>
-
-            <button onClick={toggleTheme} className="p-2 rounded-full">
-              {theme === "dark" ? <Sun /> : <Moon />}
+            {/* MENU BUTTON */}
+            <button
+              onClick={() =>
+                setIsOpen(!isOpen)
+              }
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                bg-gradient-to-r
+                from-violet-500
+                to-cyan-500
+                text-white
+                shadow-lg
+              "
+            >
+              {isOpen ? (
+                <X size={20} />
+              ) : (
+                <Menu size={20} />
+              )}
             </button>
           </div>
+        </div>
 
-          <div className="md:hidden flex items-center space-x-4">
-            <button onClick={toggleTheme} className="p-1 rounded-full">
-              {theme === "dark" ? <Sun /> : <Moon />}
-            </button>
-            {isOpen ? (
-              <X className="text-3xl text-accent" onClick={() => setIsOpen(false)} />
-            ) : (
-              <Menu className="text-3xl text-accent" onClick={() => setIsOpen(true)} />
-            )}
+        {/* MOBILE MENU */}
+        <div
+          className={`
+            overflow-hidden
+            transition-all
+            duration-500
+            ${
+              isOpen
+                ? "mt-3 max-h-[500px] opacity-100"
+                : "max-h-0 opacity-0"
+            }
+          `}
+        >
+          <div
+            className="
+              rounded-2xl
+              border
+              border-black/10
+              dark:border-white/10
+              bg-white/90
+              dark:bg-[#0b0718]/90
+              p-4
+              backdrop-blur-2xl
+              shadow-[0_8px_40px_rgba(0,0,0,0.15)]
+              dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)]
+            "
+          >
+            {/* MENU ITEMS */}
+            <ul className="flex flex-col gap-2">
+              {menuItems.map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() =>
+                      handleMenuItemClick(item.id)
+                    }
+                    className={`
+                      w-full
+                      rounded-xl
+                      px-4
+                      py-3
+                      text-left
+                      text-sm
+                      font-medium
+                      transition-all
+                      duration-300
+                      ${
+                        activeSection === item.id
+                          ? "bg-gray-900 text-white dark:bg-white dark:text-black"
+                          : "text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
+                      }
+                    `}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            {/* MOBILE SOCIALS */}
+            <div
+              className="
+                mt-5
+                flex
+                items-center
+                justify-center
+                gap-6
+                border-t
+                border-black/10
+                dark:border-white/10
+                pt-5
+              "
+            >
+              <a
+                href={socialMedia.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  text-gray-500
+                  dark:text-gray-400
+                  transition
+                  hover:text-black
+                  dark:hover:text-white
+                "
+              >
+                <FaLinkedin size={20} />
+              </a>
+
+              <a
+                href={socialMedia.github}
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  text-gray-500
+                  dark:text-gray-400
+                  transition
+                  hover:text-black
+                  dark:hover:text-white
+                "
+              >
+                <FaGithub size={20} />
+              </a>
+
+              <a
+                href={socialMedia.twitter}
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  text-gray-500
+                  dark:text-gray-400
+                  transition
+                  hover:text-black
+                  dark:hover:text-white
+                "
+              >
+                <FaTwitter size={20} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
-
-      {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-white dark:bg-primary-dark/95 shadow-lg md:hidden border-t dark:border-gray-700">
-          <ul className="flex flex-col items-center space-y-4 py-6 text-text-dark dark:text-gray-300">
-            {menuItems.map((item) => (
-              <li key={item.id}>
-                <button onClick={() => handleMenuItemClick(item.id)}>
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </nav>
+    </>
   );
 };
 
