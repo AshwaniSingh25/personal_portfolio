@@ -3,23 +3,74 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 2. Global Styles (Only for styles Tailwind can't easily manage, like scroll-behavior) */
-html{
-    scroll-behavior: smooth;
-    /* Optional: Hide scrollbar but allow scrolling on specific elements: */
-    /* overflow-y: scroll; */
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-/* 3. Custom Utilities (Your clip-paths) */
-@layer utilities{
-    .clip-path-custom {
-        /* Standard polygon clip-path for angular section breaks */
-        clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 95%, 0 100%);
-    }
-    .clip-path-custom-2 {
-        clip-path: polygon(0 0, 100% 0, 100% 98%, 25% 95%, 0 100%);
-      }
-    .clip-path-custom-3 {
-        clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 96%, 0 100%);
-      }
+/* Better Body Rendering */
+body {
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background: #030014;
+}
+
+/* Blob Animation */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  25% {
+    transform: translate(40px, -60px) scale(1.1);
+  }
+
+  50% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+
+  75% {
+    transform: translate(50px, 20px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 18s ease-in-out infinite;
+}
+
+/* Slow Spin */
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 30s linear infinite;
+}
+
+/* Fade Up Animation */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease forwards;
 }

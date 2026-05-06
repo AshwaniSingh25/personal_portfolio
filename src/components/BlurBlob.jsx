@@ -1,38 +1,80 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const BlurBlob = ({ position, size }) => {
-  // Destructure position and size
-  const { top, left } = position;
+const BlurBlob = ({
+  position,
+  size,
+  color = "from-violet-500/30 to-fuchsia-500/20",
+  duration = "20s",
+}) => {
+  const { top, left, right, bottom } = position;
   const { width, height } = size;
 
   return (
     <div
-      className="absolute pointer-events-none" // 1. Add pointer-events-none
+      className="
+        absolute
+        pointer-events-none
+        -z-10
+        transform-gpu
+        will-change-transform
+      "
       style={{
-        top: top,
-        left: left,
-        width: width,
-        height: height,
-        transform: "translate(-50%, -50%)",
+        top,
+        left,
+        right,
+        bottom,
+        width,
+        height,
       }}
     >
-      {/* 2. Use semantic accent color for the blur effect */}
-      <div className="w-full h-full bg-accent dark:bg-accent rounded-full opacity-20 blur-3xl animate-blob"></div>
+      <div
+        className={`
+          w-full
+          h-full
+          rounded-full
+          bg-gradient-to-br
+          ${color}
+          opacity-70
+          blur-3xl
+          mix-blend-screen
+          animate-blob
+        `}
+        style={{
+          animationDuration: duration,
+        }}
+      />
+
+      {/* Secondary Glow Layer */}
+      <div
+        className="
+          absolute
+          inset-0
+          rounded-full
+          bg-white/10
+          blur-2xl
+          opacity-30
+        "
+      />
     </div>
   );
 };
 
-// 3. Fix PropTypes spelling (P should be lowercase)
 BlurBlob.propTypes = {
   position: PropTypes.shape({
-    top: PropTypes.string.isRequired, // Added isRequired
-    left: PropTypes.string.isRequired, // Added isRequired
+    top: PropTypes.string,
+    left: PropTypes.string,
+    right: PropTypes.string,
+    bottom: PropTypes.string,
   }).isRequired,
+
   size: PropTypes.shape({
-    width: PropTypes.string.isRequired, // Added isRequired
-    height: PropTypes.string.isRequired, // Added isRequired
+    width: PropTypes.string.isRequired,
+    height: PropTypes.string.isRequired,
   }).isRequired,
+
+  color: PropTypes.string,
+  duration: PropTypes.string,
 };
 
 export default BlurBlob;
