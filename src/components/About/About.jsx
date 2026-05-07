@@ -308,7 +308,7 @@ const Hero = () => {
                 {/* IMAGE */}
                 <img
                   src={profileImage}
-                  alt="Manav Pal"
+                  alt="Manav Pal Profile Picture"
                   loading="eager"
                   className="
                     h-full

@@ -154,7 +154,7 @@ const App = () => {
         >
           <img
             src="/noise.png"
-            alt=""
+            alt="This is a noise texture that adds a subtle grain effect to the background, enhancing the overall visual appeal of the website."
             className="
               h-full
               w-full
