@@ -1,72 +1,103 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
-  // 1. Content: Essential for Tailwind's JIT mode to scan your files for classes.
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  
-  // 2. Dark Mode: Enables `dark:` utility prefix for theme switching.
-  darkMode: 'class', 
 
   theme: {
-    // Defines Poppins as the primary font stack for the 'font-sans' utility.
     fontFamily: {
-      sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
-      mono: ['Fira Code', 'monospace'],
+      sans: [
+        "Poppins",
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+      ],
+
+      mono: [
+        "Fira Code",
+        "monospace",
+      ],
     },
-    
+
     extend: {
-      // 3. Custom Color Palette: Professional and semantic colors.
       colors: {
-        'primary-dark': '#0A192F',       // Deep Navy/Charcoal for Dark BG
-        'secondary-light': '#F8F9FA',    // Off-White for Light BG
-        'accent': '#00BFFF',             // Bright Blue/Sky Blue for CTAs/Highlights
-        'accent-dark': '#009ACD',        // Darker shade for hover states
-        'text-light': '#CCD6F6',         // Light text for dark backgrounds
-        'text-dark': '#495670',          // Dark text for light backgrounds
-      },
-      
-      // Screens: Added a common breakpoint for large screens and kept your custom one.
-      screens:{
-        'hide-circle' : {'min': '639px', 'max':'1350px'},
-        '3xl': '1700px', // Extra large desktop monitors
-      },
-      
-      // Keyframes: Definition of custom animations.
-      keyframes:{
-        blob:{
-          '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
-          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+        brand: {
+          primary: "#030014",
+          secondary: "#0A192F",
+          accent: "#00BFFF",
+          hover: "#009ACD",
         },
-        'fade-in-down': {
-          '0%': { opacity: '0', transform: 'translateY(-10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        }
+
+        text: {
+          light: "#FFFFFF",
+          muted: "#94A3B8",
+          dark: "#495670",
+        },
       },
-      
-      // Animation: Applying the keyframes to utility names.
-      animation:{
-        blob: 'blob 15s infinite ease-in-out', 
-        'fade-down': 'fade-in-down 0.5s ease-out',
+
+      screens: {
+        xs: "480px",
+        "3xl": "1800px",
       },
-      
-      // Background Image: Your custom gradient and a radial utility.
+
+      keyframes: {
+        blob: {
+          "0%, 100%": {
+            transform:
+              "translate3d(0,0,0) scale(1)",
+          },
+
+          "50%": {
+            transform:
+              "translate3d(15px,-15px,0) scale(1.03)",
+          },
+        },
+
+        fadeDown: {
+          "0%": {
+            opacity: "0",
+            transform:
+              "translateY(-8px)",
+          },
+
+          "100%": {
+            opacity: "1",
+            transform:
+              "translateY(0)",
+          },
+        },
+      },
+
+      animation: {
+        blob:
+          "blob 18s infinite ease-in-out",
+
+        fadeDown:
+          "fadeDown 0.5s ease-out forwards",
+      },
+
+      boxShadow: {
+        card:
+          "0 10px 30px rgba(0,0,0,0.35)",
+
+        glow:
+          "0 0 25px rgba(0,191,255,0.15)",
+      },
+
+      backdropBlur: {
+        xs: "2px",
+      },
+
       backgroundImage: {
-        'skills-gradient': 'linear-gradient(38.73deg, rgba(204, 0, 187, 0.15) 0%, rgba(201, 32, 184, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%)',
-        'radial-spotlight': 'radial-gradient(circle at center, var(--tw-color-accent-dark) 0%, transparent 50%)',
+        "skills-gradient":
+          "linear-gradient(38.73deg, rgba(204,0,187,0.12) 0%, rgba(201,32,184,0) 50%), linear-gradient(141.27deg, rgba(0,70,209,0) 50%, rgba(0,70,209,0.12) 100%)",
       },
-      
-      // Typography Size: Utility for extra-large headlines.
-      fontSize: {
-        '10xl': ['10rem', { lineHeight: '1' }],
-      }
     },
   },
-  
-  // 4. Plugins: Include external packages (requires installation: npm install -D @tailwindcss/forms).
+
   plugins: [
-    require('@tailwindcss/forms'),
+    require("@tailwindcss/forms"),
   ],
-}
+};

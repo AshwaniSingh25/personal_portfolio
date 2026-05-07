@@ -284,7 +284,7 @@ const Work = () => {
               className="
                 relative
                 max-h-[85vh]
-mt-20
+                mt-20
                 w-full
                 max-w-5xl
                 overflow-y-auto scrollbar-thin scrollbar-thumb-cyan-500/20

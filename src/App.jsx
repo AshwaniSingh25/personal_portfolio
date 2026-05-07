@@ -1,12 +1,9 @@
-import React, { useEffect, useState, Suspense, lazy } from "react";
-
-// Critical components (Load immediately for LCP)
+import React, { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/About/About";
 import Footer from "./components/Footer/Footer";
 import BlurBlob from "./components/BlurBlob";
 
-// Lazy Loaded Sections (Keeps the initial bundle small)
 const Skills = lazy(() => import("./components/Skills/Skills"));
 const Experience = lazy(() => import("./components/Experience/Experience"));
 const Work = lazy(() => import("./components/Work/Work"));
@@ -14,64 +11,59 @@ const Education = lazy(() => import("./components/Education/Education"));
 const Contact = lazy(() => import("./components/Contact/Contact"));
 
 const App = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.remove("light", "dark");
-    root.classList.add(theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
-
   return (
-    <div className="relative min-h-screen overflow-hidden antialiased transition-colors duration-500 bg-[#f8fafc] text-slate-900 dark:bg-[#030014] dark:text-white selection:bg-violet-500/30 selection:text-white">
-      
-      {/* GLOBAL BACKGROUND - Fixed for Performance */}
-      <div className="absolute inset-0 -z-50 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#dbeafe_0%,#f8fafc_35%,#eef2ff_100%)] dark:bg-[radial-gradient(circle_at_top,#1e1b4b_0%,#030014_50%)]" />
-        
-        {/* Optimized Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a08_1px,transparent_1px),linear-gradient(to_bottom,#0f172a08_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]" />
+    <div className="relative min-h-screen overflow-hidden bg-[#030014] text-white antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+      {/* DIMENSIONAL BACKGROUND */}
+      <div className="fixed inset-0 -z-50 pointer-events-none">
+        {/* Core Depth Gradient */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#1e1b4b_0%,_#030014_70%)]" />
 
-        {/* Glows - Using lower opacity to reduce paint cost */}
-        <div className="absolute left-1/2 top-0 h-[550px] w-[550px] -translate-x-1/2 rounded-full bg-violet-400/10 dark:bg-violet-600/10 blur-[120px]" />
+        {/* Animated Grid - Now with a fade-out mask for depth */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:45px_45px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-        {/* Optimized Noise Texture */}
-        <div className="absolute inset-0 opacity-[0.02] mix-blend-soft-light">
-          <img
-            src="/noise.webp" 
-            alt=""
-            className="h-full w-full object-cover"
-            loading="eager" 
-          />
-        </div>
+        {/* Dynamic Light Source */}
+        <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-violet-600/10 blur-[140px]" />
       </div>
 
-      <BlurBlob position={{ top: "18%", left: "8%" }} size={{ width: "18rem", height: "18rem" }} />
-      <BlurBlob position={{ bottom: "12%", right: "8%" }} size={{ width: "22rem", height: "22rem" }} color="from-cyan-500/25 to-indigo-500/20" duration="24s" />
+      {/* STRATEGIC BLOBS - Fewer, but larger for a cleaner look */}
+      <BlurBlob
+        position={{ top: "10%", left: "-5%" }}
+        size={{ width: "35rem", height: "35rem" }}
+        color="from-indigo-600/20 to-transparent"
+        duration="25s"
+      />
+      <BlurBlob
+        position={{ bottom: "5%", right: "-5%" }}
+        size={{ width: "30rem", height: "30rem" }}
+        color="from-cyan-500/15 to-transparent"
+        duration="30s"
+      />
 
       <div className="relative z-10">
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
-
+        <Navbar />
         <main className="mx-auto max-w-7xl px-6 lg:px-8">
-          <section id="hero">
-            <Hero />
-          </section>
+          <Hero />
 
-          {/* Grouped Suspense for better UX */}
-          <Suspense fallback={<div className="h-96 w-full animate-pulse bg-slate-200/20 dark:bg-slate-800/20 rounded-3xl" />}>
-            <section id="skills" className="py-28"><Skills /></section>
-            <section id="experience" className="py-28"><Experience /></section>
-            <section id="work" className="py-28"><Work /></section>
-            <section id="education" className="py-28"><Education /></section>
-            <section id="contact" className="py-28"><Contact /></section>
+          <Suspense fallback={<div className="h-40" />}>
+            <Skills />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-40" />}>
+            <Experience />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-40" />}>
+            <Work />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-40" />}>
+            <Education />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-40" />}>
+            <Contact />
           </Suspense>
         </main>
-
         <Footer />
       </div>
     </div>

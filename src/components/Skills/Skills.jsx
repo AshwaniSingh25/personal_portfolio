@@ -2,10 +2,7 @@ import React from "react";
 
 import { SkillsInfo } from "../../constants";
 
-import {
-  Code2,
-  Sparkles,
-} from "lucide-react";
+import { Code2, Sparkles } from "lucide-react";
 
 const Skills = () => {
   return (
@@ -22,10 +19,8 @@ const Skills = () => {
       <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
-        
         {/* SECTION HEADER */}
         <div className="mx-auto mb-20 max-w-3xl text-center">
-          
           {/* BADGE */}
           <div
             className="
@@ -44,9 +39,7 @@ const Skills = () => {
           >
             <Sparkles className="h-4 w-4 text-cyan-400" />
 
-            <span className="text-sm text-gray-300">
-              Technical Expertise
-            </span>
+            <span className="text-sm text-gray-300">Technical Expertise</span>
           </div>
 
           {/* TITLE */}
@@ -89,10 +82,9 @@ const Skills = () => {
               sm:text-lg
             "
           >
-            I work across frontend, backend, databases,
-            and modern development tools to create
-            scalable, performant, and user-focused
-            digital experiences.
+            I work across frontend, backend, databases, and modern development
+            tools to create scalable, performant, and user-focused digital
+            experiences.
           </p>
         </div>
 
@@ -143,10 +135,8 @@ const Skills = () => {
 
               {/* CONTENT */}
               <div className="relative z-10">
-                
                 {/* TOP */}
                 <div className="mb-8 flex items-center gap-4">
-                  
                   {/* ICON */}
                   <div
                     className="

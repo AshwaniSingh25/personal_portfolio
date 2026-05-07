@@ -30,49 +30,56 @@ const Navbar = () => {
   ];
 
   // SCROLL EFFECT
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
+ // ACTIVE SECTION ON SCROLL
+useEffect(() => {
+  const handleActiveSection = () => {
+    const sections = [
+      "hero",
+      "skills",
+      "experience",
+      "work",
+      "education",
+      "contact",
+    ];
 
-    window.addEventListener(
-      "scroll",
-      handleScroll
-    );
+    const scrollPosition =
+      window.scrollY + 150;
 
-    return () =>
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
-  }, []);
+    sections.forEach((sectionId) => {
+      const section =
+        document.getElementById(sectionId);
 
-  // ACTIVE SECTION
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setActiveSection(entry.target.id);
+      if (!section) return;
+
+      const sectionTop =
+        section.offsetTop;
+
+      const sectionHeight =
+        section.offsetHeight;
+
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition <
+          sectionTop + sectionHeight
+      ) {
+        setActiveSection(sectionId);
       }
     });
-  },
-  {
-    threshold: 0.15,
-    rootMargin: "-80px 0px -20% 0px",
-  }
-);
+  };
 
-    menuItems.forEach((item) => {
-      const section = document.getElementById(
-        item.id
-      );
+  window.addEventListener(
+    "scroll",
+    handleActiveSection
+  );
 
-      if (section) observer.observe(section);
-    });
+  handleActiveSection();
 
-    return () => observer.disconnect();
-  }, []);
+  return () =>
+    window.removeEventListener(
+      "scroll",
+      handleActiveSection
+    );
+}, []);
 
   // SCROLL TO SECTION
   const handleMenuItemClick = (sectionId) => {

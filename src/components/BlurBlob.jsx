@@ -4,13 +4,20 @@ import PropTypes from "prop-types";
 const BlurBlob = ({
   position,
   size,
-  color = "from-violet-500/25 to-cyan-500/20",
-  duration = "20s",
+  color = "from-violet-500/15 to-cyan-500/10",
+  duration = "18s",
 }) => {
-  const { top, left, right, bottom } =
-    position;
+  const {
+    top,
+    left,
+    right,
+    bottom,
+  } = position;
 
-  const { width, height } = size;
+  const {
+    width,
+    height,
+  } = size;
 
   return (
     <div
@@ -20,6 +27,7 @@ const BlurBlob = ({
         -z-10
         transform-gpu
         will-change-transform
+        hidden md:block
       "
       style={{
         top,
@@ -30,59 +38,37 @@ const BlurBlob = ({
         height,
       }}
     >
-      {/* MAIN BLOB */}
       <div
         className={`
+          relative
           h-full
           w-full
           rounded-full
           bg-gradient-to-br
           ${color}
 
-          opacity-60
-          blur-[90px]
+          opacity-50
 
-          dark:opacity-70
+          blur-[60px]
+          lg:blur-[80px]
 
           animate-blob
         `}
         style={{
           animationDuration: duration,
         }}
-      />
-
-      {/* SECONDARY GLOW */}
-      <div
-        className="
-          absolute
-          inset-0
-          rounded-full
-
-          bg-white/40
-          opacity-30
-          blur-[120px]
-
-          dark:bg-white/10
-          dark:opacity-20
-        "
-      />
-
-      {/* EXTRA DEPTH LAYER */}
-      <div
-        className="
-          absolute
-          inset-0
-          rounded-full
-
-          bg-gradient-to-br
-          from-white/10
-          to-transparent
-
-          dark:from-white/5
-
-          blur-3xl
-        "
-      />
+      >
+        {/* SOFT INNER GLOW */}
+        <div
+          className="
+            absolute
+            inset-0
+            rounded-full
+            bg-white/[0.04]
+            mix-blend-overlay
+          "
+        />
+      </div>
     </div>
   );
 };
