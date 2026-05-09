@@ -41,7 +41,7 @@ const App = () => {
 
       <div className="relative z-10">
         <Navbar />
-        <main className="mx-auto max-w-7xl px-6 lg:px-8">
+        <main className="mx-auto max-w-7xl sm:px-3 md:px-4 lg:px-8">
           <Hero />
 
           <Suspense fallback={<div className="h-40" />}>

@@ -131,7 +131,7 @@ const Education = () => {
                 <div
                   className="
                     absolute
-                    left-[10px]
+                    left-[-8px]
                     top-7
                     z-20
                     flex

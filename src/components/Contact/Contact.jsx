@@ -1,12 +1,6 @@
 import React, { useRef } from "react";
-
 import toast, { Toaster } from "react-hot-toast";
-
-import {
-  Send,
-  Mail,
-  Sparkles,
-} from "lucide-react";
+import { Send, Mail, Sparkles } from "lucide-react";
 
 const Contact = () => {
   const form = useRef();
@@ -33,21 +27,15 @@ const Contact = () => {
     const result = await response.json();
 
     if (result.success) {
-      toast.success(
-        "Message sent successfully 🚀",
-        {
-          position: "top-center",
-        }
-      );
+      toast.success("Message sent successfully 🚀", {
+        position: "top-center",
+      });
 
       form.current.reset();
     } else {
-      toast.error(
-        "Failed to send message ❌",
-        {
-          position: "top-center",
-        }
-      );
+      toast.error("Failed to send message ❌", {
+        position: "top-center",
+      });
     }
   };
 
@@ -57,22 +45,85 @@ const Contact = () => {
       className="
         relative
         overflow-hidden
-        py-24
-        md:py-32
+        py-16
+        sm:py-20
+        lg:py-28
       "
     >
       <Toaster />
 
       {/* BACKGROUND GLOWS */}
-      <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[120px]" />
+      <div
+        className="
+          absolute
+          left-1/2
+          top-0
 
-      <div className="absolute bottom-0 right-0 h-[350px] w-[350px] rounded-full bg-cyan-500/10 blur-[120px]" />
+          h-[220px]
+          w-[220px]
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
-        
+          sm:h-[320px]
+          sm:w-[320px]
+
+          lg:h-[500px]
+          lg:w-[500px]
+
+          -translate-x-1/2
+          rounded-full
+          bg-violet-500/10
+
+          blur-[60px]
+          sm:blur-[80px]
+          lg:blur-[120px]
+        "
+      />
+
+      <div
+        className="
+          absolute
+          bottom-0
+          right-0
+
+          h-[180px]
+          w-[180px]
+
+          sm:h-[260px]
+          sm:w-[260px]
+
+          lg:h-[350px]
+          lg:w-[350px]
+
+          rounded-full
+          bg-cyan-500/10
+
+          blur-[60px]
+          sm:blur-[80px]
+          lg:blur-[120px]
+        "
+      />
+
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-7xl
+          px-4
+          sm:px-6
+        "
+      >
         {/* HEADER */}
-        <div className="mx-auto mb-20 max-w-3xl text-center">
-          
+        <div
+          className="
+            mx-auto
+            mb-14
+            max-w-3xl
+            text-center
+
+            sm:mb-16
+            lg:mb-20
+          "
+        >
           {/* BADGE */}
           <div
             className="
@@ -81,19 +132,24 @@ const Contact = () => {
               gap-2
               rounded-full
               border
-              border-black/10
-              bg-white/70
-              px-5
-              py-2.5
+              border-white/10
+              bg-white/[0.04]
+              px-4
+              py-2
               backdrop-blur-xl
-
-              dark:border-white/10
-              dark:bg-white/[0.04]
             "
           >
             <Sparkles className="h-4 w-4 text-cyan-400" />
 
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <span
+              className="
+                text-xs
+                font-medium
+                text-gray-300
+
+                sm:text-sm
+              "
+            >
               Let's Connect
             </span>
           </div>
@@ -101,14 +157,14 @@ const Contact = () => {
           {/* TITLE */}
           <h2
             className="
-              mt-7
-              text-4xl
+              mt-6
+              text-3xl
               font-black
               leading-tight
               tracking-tight
-              text-gray-900
-              dark:text-white
-              sm:text-5xl
+              text-white
+
+              sm:text-4xl
               lg:text-6xl
             "
           >
@@ -132,19 +188,21 @@ const Contact = () => {
           <p
             className="
               mx-auto
-              mt-6
-              max-w-2xl
-              text-base
+              mt-5
+              max-w-xl
+              text-sm
               leading-relaxed
-              text-gray-600
-              dark:text-gray-400
-              sm:text-lg
+              text-gray-400
+
+              sm:max-w-2xl
+              sm:text-base
+              lg:text-lg
             "
           >
-            I'm actively looking for opportunities
-            as a Full Stack Developer where I can
-            contribute, grow, and build impactful
-            digital experiences with modern technologies.
+            I'm actively looking for opportunities as a Full
+            Stack Developer where I can contribute, grow, and
+            build impactful digital experiences with modern
+            technologies.
           </p>
         </div>
 
@@ -155,29 +213,46 @@ const Contact = () => {
             mx-auto
             max-w-5xl
             overflow-hidden
-            rounded-3xl
-            border
-            border-black/10
-            bg-white/70
-            backdrop-blur-2xl
-            shadow-[0_10px_40px_rgba(0,0,0,0.08)]
 
-            dark:border-white/10
-            dark:bg-white/[0.04]
-            dark:shadow-[0_10px_40px_rgba(0,0,0,0.35)]
+            rounded-2xl
+            border
+            border-white/10
+
+            bg-white/[0.04]
+            backdrop-blur-2xl
+
+            shadow-[0_10px_40px_rgba(0,0,0,0.35)]
+
+            sm:rounded-3xl
           "
         >
-          {/* HOVER GLOW */}
-          <div
-            className="
-              absolute
-              inset-0
-              opacity-100
-            "
-          >
-            <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-violet-500/10 blur-3xl" />
+          {/* HOVER GLOWS */}
+          <div className="absolute inset-0 opacity-100">
+            <div
+              className="
+                absolute
+                -right-20
+                -top-20
+                h-40
+                w-40
+                rounded-full
+                bg-violet-500/10
+                blur-3xl
+              "
+            />
 
-            <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl" />
+            <div
+              className="
+                absolute
+                bottom-0
+                left-0
+                h-32
+                w-32
+                rounded-full
+                bg-cyan-500/10
+                blur-3xl
+              "
+            />
           </div>
 
           {/* CONTENT */}
@@ -186,16 +261,20 @@ const Contact = () => {
               relative
               z-10
               grid
-              gap-12
-              p-6
+              gap-8
+
+              p-4
+
+              sm:p-6
+
               lg:grid-cols-2
+              lg:gap-12
               lg:p-10
             "
           >
             {/* LEFT SIDE */}
             <div className="flex flex-col justify-center">
-              
-              {/* SMALL LABEL */}
+              {/* LABEL */}
               <div
                 className="
                   mb-5
@@ -207,13 +286,25 @@ const Contact = () => {
                   border
                   border-cyan-400/20
                   bg-cyan-400/10
-                  px-4
-                  py-2
+
+                  px-3
+                  py-1.5
+
+                  sm:px-4
+                  sm:py-2
                 "
               >
                 <Mail className="h-4 w-4 text-cyan-400" />
 
-                <span className="text-sm font-medium text-cyan-500">
+                <span
+                  className="
+                    text-xs
+                    font-medium
+                    text-cyan-400
+
+                    sm:text-sm
+                  "
+                >
                   Open for opportunities
                 </span>
               </div>
@@ -221,79 +312,100 @@ const Contact = () => {
               {/* TITLE */}
               <h3
                 className="
-                  text-3xl
+                  text-2xl
                   font-black
                   leading-tight
                   tracking-tight
-                  text-gray-900
-                  dark:text-white
-                  sm:text-4xl
+                  text-white
+
+                  sm:text-3xl
+                  lg:text-4xl
                 "
               >
-                Have a project,
-                idea, or opportunity?
+                Have a project, idea, or opportunity?
               </h3>
 
               {/* TEXT */}
               <p
                 className="
-                  mt-6
-                  text-base
+                  mt-5
+                  text-sm
                   leading-relaxed
-                  text-gray-600
-                  dark:text-gray-400
+                  text-gray-400
+
+                  sm:text-base
                 "
               >
                 Whether it's a freelance project,
-                collaboration, internship, or
-                full-time opportunity — feel free
-                to reach out. I'm always open to
-                discussing exciting ideas and
-                building modern web experiences.
+                collaboration, internship, or full-time
+                opportunity — feel free to reach out.
+                I'm always open to discussing exciting
+                ideas and building modern web experiences.
               </p>
 
               {/* CONTACT INFO */}
-              <div className="mt-8 space-y-4">
-                
+              <div className="mt-8">
                 <div
                   className="
                     flex
                     items-center
                     gap-4
+
                     rounded-2xl
                     border
-                    border-black/10
-                    bg-black/[0.03]
-                    px-5
-                    py-4
+                    border-white/10
 
-                    dark:border-white/10
-                    dark:bg-white/[0.03]
+                    bg-white/[0.03]
+
+                    px-4
+                    py-3
+
+                    sm:px-5
+                    sm:py-4
                   "
                 >
                   <div
                     className="
                       flex
-                      h-12
-                      w-12
+                      h-11
+                      w-11
                       items-center
                       justify-center
+
                       rounded-xl
+
                       bg-gradient-to-r
                       from-violet-500
                       to-cyan-500
+
                       text-white
                     "
                   >
-                    <Mail size={20} />
+                    <Mail size={18} />
                   </div>
 
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <div className="min-w-0">
+                    <p
+                      className="
+                        text-xs
+                        text-gray-400
+
+                        sm:text-sm
+                      "
+                    >
                       Email
                     </p>
 
-                    <p className="font-medium text-gray-900 dark:text-white">
+                    <p
+                      className="
+                        break-all
+                        text-sm
+                        font-medium
+                        text-white
+
+                        sm:text-base
+                      "
+                    >
                       manavpal.contact@gmail.com
                     </p>
                   </div>
@@ -306,7 +418,7 @@ const Contact = () => {
               <form
                 ref={form}
                 onSubmit={sendEmail}
-                className="space-y-5"
+                className="space-y-4 sm:space-y-5"
               >
                 {/* EMAIL */}
                 <div>
@@ -317,8 +429,7 @@ const Contact = () => {
                       block
                       text-sm
                       font-medium
-                      text-gray-700
-                      dark:text-gray-300
+                      text-gray-300
                     "
                   >
                     Email Address
@@ -332,24 +443,32 @@ const Contact = () => {
                     placeholder="john@example.com"
                     className="
                       w-full
+
                       rounded-2xl
                       border
-                      border-black/10
-                      bg-black/[0.03]
-                      px-5
-                      py-4
-                      text-gray-900
+                      border-white/10
+
+                      bg-white/[0.03]
+
+                      px-4
+                      py-3.5
+
+                      text-sm
+                      text-white
+
                       outline-none
                       transition-all
                       duration-300
-                      placeholder:text-gray-400
+
+                      placeholder:text-gray-500
+
                       focus:border-cyan-400
                       focus:ring-4
                       focus:ring-cyan-400/10
 
-                      dark:border-white/10
-                      dark:bg-white/[0.03]
-                      dark:text-white
+                      sm:px-5
+                      sm:py-4
+                      sm:text-base
                     "
                   />
                 </div>
@@ -363,8 +482,7 @@ const Contact = () => {
                       block
                       text-sm
                       font-medium
-                      text-gray-700
-                      dark:text-gray-300
+                      text-gray-300
                     "
                   >
                     Full Name
@@ -378,24 +496,32 @@ const Contact = () => {
                     placeholder="Your Name"
                     className="
                       w-full
+
                       rounded-2xl
                       border
-                      border-black/10
-                      bg-black/[0.03]
-                      px-5
-                      py-4
-                      text-gray-900
+                      border-white/10
+
+                      bg-white/[0.03]
+
+                      px-4
+                      py-3.5
+
+                      text-sm
+                      text-white
+
                       outline-none
                       transition-all
                       duration-300
-                      placeholder:text-gray-400
+
+                      placeholder:text-gray-500
+
                       focus:border-cyan-400
                       focus:ring-4
                       focus:ring-cyan-400/10
 
-                      dark:border-white/10
-                      dark:bg-white/[0.03]
-                      dark:text-white
+                      sm:px-5
+                      sm:py-4
+                      sm:text-base
                     "
                   />
                 </div>
@@ -409,8 +535,7 @@ const Contact = () => {
                       block
                       text-sm
                       font-medium
-                      text-gray-700
-                      dark:text-gray-300
+                      text-gray-300
                     "
                   >
                     Subject
@@ -424,24 +549,32 @@ const Contact = () => {
                     placeholder="Project Inquiry"
                     className="
                       w-full
+
                       rounded-2xl
                       border
-                      border-black/10
-                      bg-black/[0.03]
-                      px-5
-                      py-4
-                      text-gray-900
+                      border-white/10
+
+                      bg-white/[0.03]
+
+                      px-4
+                      py-3.5
+
+                      text-sm
+                      text-white
+
                       outline-none
                       transition-all
                       duration-300
-                      placeholder:text-gray-400
+
+                      placeholder:text-gray-500
+
                       focus:border-cyan-400
                       focus:ring-4
                       focus:ring-cyan-400/10
 
-                      dark:border-white/10
-                      dark:bg-white/[0.03]
-                      dark:text-white
+                      sm:px-5
+                      sm:py-4
+                      sm:text-base
                     "
                   />
                 </div>
@@ -455,8 +588,7 @@ const Contact = () => {
                       block
                       text-sm
                       font-medium
-                      text-gray-700
-                      dark:text-gray-300
+                      text-gray-300
                     "
                   >
                     Message
@@ -471,24 +603,32 @@ const Contact = () => {
                     className="
                       w-full
                       resize-none
+
                       rounded-2xl
                       border
-                      border-black/10
-                      bg-black/[0.03]
-                      px-5
-                      py-4
-                      text-gray-900
+                      border-white/10
+
+                      bg-white/[0.03]
+
+                      px-4
+                      py-3.5
+
+                      text-sm
+                      text-white
+
                       outline-none
                       transition-all
                       duration-300
-                      placeholder:text-gray-400
+
+                      placeholder:text-gray-500
+
                       focus:border-cyan-400
                       focus:ring-4
                       focus:ring-cyan-400/10
 
-                      dark:border-white/10
-                      dark:bg-white/[0.03]
-                      dark:text-white
+                      sm:px-5
+                      sm:py-4
+                      sm:text-base
                     "
                   />
                 </div>
@@ -503,19 +643,28 @@ const Contact = () => {
                     items-center
                     justify-center
                     gap-3
+
                     rounded-2xl
+
                     bg-gradient-to-r
                     from-violet-500
                     to-cyan-500
+
                     px-6
-                    py-4
+                    py-3.5
+
                     text-sm
                     font-semibold
                     text-white
+
                     shadow-[0_0_30px_rgba(139,92,246,0.35)]
+
                     transition-all
                     duration-300
+
                     hover:scale-[1.01]
+
+                    sm:py-4
                   "
                 >
                   <Send
