@@ -3,7 +3,7 @@ import reactjsLogo from "./assets/tech_logo/reactjs.webp";
 import htmlLogo from "./assets/tech_logo/html.webp";
 import cssLogo from "./assets/tech_logo/css.webp";
 import reduxLogo from "./assets/tech_logo/redux.webp";
-import nextjsLogo from "./assets/tech_logo/nextjs.webp";
+import nextjsLogo from "./assets/tech_logo/nextjs.png";
 import angular from "./assets/tech_logo/angular.webp";
 import tailwindcssLogo from "./assets/tech_logo/tailwindcss.webp";
 import gsapLogo from "./assets/tech_logo/gsap.webp";

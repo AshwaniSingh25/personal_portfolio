@@ -226,8 +226,8 @@ const Skills = () => {
                           loading="lazy"
                           decoding="async"
                           className="
-                            h-8
-                            w-8
+                            h-12
+                            w-12
                             object-contain
                           "
                           width="32"
