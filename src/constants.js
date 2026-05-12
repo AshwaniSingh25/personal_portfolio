@@ -222,8 +222,8 @@ export const projects = [
       "React Hooks",
       "Tailwind CSS",
     ],
-    github: "https://github.com/manavpal-dev/Github-Profile-Detective.git",
-    webapp: "https://github-profile-detective-orpin.vercel.app/",
+    github: "https://github.com/manavpal-dev/github-profile-finder",
+    webapp: "https://github-profile-detective-orpin.vercel.app",
   },
   {
     id: 1,
@@ -245,8 +245,8 @@ export const projects = [
       "State Management",
       "Performance Optimization",
     ],
-    github: "https://codingmasterweb.in/",
-    webapp: "https://ecommerce-project-lake-eight.vercel.app/",
+    github: "https://github.com/manavpal-dev/Vastracraft",
+    webapp: "https://ecommerce-project-lake-eight.vercel.app",
   },
   {
     id: 2,
@@ -271,8 +271,8 @@ export const projects = [
       "Tailwind CSS",
       "CRUD Operations",
     ],
-    github: "https://github.com/manavpal-dev/QuickBlog_Project.git",
-    webapp: "https://quickblog-beta-eight.vercel.app/",
+    github: "https://github.com/manavpal-dev/quickblog",
+    webapp: "https://quickblog-beta-eight.vercel.app",
   },
   {
     id: 3,
