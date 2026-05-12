@@ -222,13 +222,16 @@ const Skills = () => {
                       >
                         <img
                           src={skill.logo}
-                          alt={skill.name}
+                          alt={`${skill.name} technology`}
                           loading="lazy"
+                          decoding="async"
                           className="
                             h-8
                             w-8
                             object-contain
                           "
+                          width="32"
+                          height="32"
                         />
                       </div>
 

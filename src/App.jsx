@@ -4,11 +4,19 @@ import Hero from "./components/About/About";
 import Footer from "./components/Footer/Footer";
 import BlurBlob from "./components/BlurBlob";
 
+// Lazy load non-critical components for better performance
 const Skills = lazy(() => import("./components/Skills/Skills"));
 const Experience = lazy(() => import("./components/Experience/Experience"));
 const Work = lazy(() => import("./components/Work/Work"));
 const Education = lazy(() => import("./components/Education/Education"));
 const Contact = lazy(() => import("./components/Contact/Contact"));
+
+// Loading fallback component for better UX
+const LoadingFallback = ({ height = "h-40" }) => (
+  <div className={`${height} flex items-center justify-center`}>
+    <div className="w-12 h-12 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
+  </div>
+);
 
 const App = () => {
   return (
@@ -41,26 +49,26 @@ const App = () => {
 
       <div className="relative z-10">
         <Navbar />
-        <main className="mx-auto max-w-7xl sm:px-3 md:px-4 lg:px-8">
+        <main className="mx-auto max-w-7xl px-4 sm:px-3 md:px-4 lg:px-8">
           <Hero />
 
-          <Suspense fallback={<div className="h-40" />}>
+          <Suspense fallback={<LoadingFallback />}>
             <Skills />
           </Suspense>
 
-          <Suspense fallback={<div className="h-40" />}>
+          <Suspense fallback={<LoadingFallback />}>
             <Experience />
           </Suspense>
 
-          <Suspense fallback={<div className="h-40" />}>
+          <Suspense fallback={<LoadingFallback />}>
             <Work />
           </Suspense>
 
-          <Suspense fallback={<div className="h-40" />}>
+          <Suspense fallback={<LoadingFallback />}>
             <Education />
           </Suspense>
 
-          <Suspense fallback={<div className="h-40" />}>
+          <Suspense fallback={<LoadingFallback />}>
             <Contact />
           </Suspense>
         </main>

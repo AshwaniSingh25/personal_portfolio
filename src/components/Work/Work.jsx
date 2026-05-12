@@ -158,8 +158,9 @@ const Work = () => {
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} - Project showcase`}
                   loading="lazy"
+                  decoding="async"
                   className="
                     h-56
                     w-full
@@ -168,6 +169,8 @@ const Work = () => {
                     duration-700
                     group-hover:scale-105
                   "
+                  width="400"
+                  height="224"
                 />
 
                 {/* OVERLAY */}

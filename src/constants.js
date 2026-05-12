@@ -1,51 +1,50 @@
 //Frontend Section Logo's
-import reactjsLogo from "./assets/tech_logo/reactjs.png";
-import htmlLogo from "./assets/tech_logo/html.png";
-import cssLogo from "./assets/tech_logo/css.png";
-import reduxLogo from "./assets/tech_logo/redux.png";
-import nextjsLogo from "./assets/tech_logo/nextjs.png";
-import angular from "./assets/tech_logo/angular.png";
-import tailwindcssLogo from "./assets/tech_logo/tailwindcss.png";
-import gsapLogo from "./assets/tech_logo/gsap.png";
-// import materialuiLogo from "./assets/tech_logo/materialui.png";
+import reactjsLogo from "./assets/tech_logo/reactjs.webp";
+import htmlLogo from "./assets/tech_logo/html.webp";
+import cssLogo from "./assets/tech_logo/css.webp";
+import reduxLogo from "./assets/tech_logo/redux.webp";
+import nextjsLogo from "./assets/tech_logo/nextjs.webp";
+import angular from "./assets/tech_logo/angular.webp";
+import tailwindcssLogo from "./assets/tech_logo/tailwindcss.webp";
+import gsapLogo from "./assets/tech_logo/gsap.webp";
+// import materialuiLogo from "./assets/tech_logo/materialui.webp";
 
 
 // Backend & Database Section Logo's
-import nodejsLogo from "./assets/tech_logo/nodejs.png";
-import expressjsLogo from "./assets/tech_logo/express.png";
-import mysqlLogo from "./assets/tech_logo/mysql.png";
-import mongodbLogo from "./assets/tech_logo/mongodb.png";
-import javascriptLogo from "./assets/tech_logo/javascript.png";
-import postgreLogo from "./assets/tech_logo/postgre.png";
+import nodejsLogo from "./assets/tech_logo/nodejs.webp";
+import expressjsLogo from "./assets/tech_logo/express.webp";
+import mysqlLogo from "./assets/tech_logo/mysql.webp";
+import mongodbLogo from "./assets/tech_logo/mongodb.webp";
+import javascriptLogo from "./assets/tech_logo/javascript.webp";
+import postgreLogo from "./assets/tech_logo/postgre.webp";
 
 // Languages Section Logo's
-import cLogo from "./assets/tech_logo/c.png";
-import cppLogo from "./assets/tech_logo/cpp.png";
-import javaLogo from "./assets/tech_logo/java.png";
-import pythonLogo from "./assets/tech_logo/python.png";
-import typescriptLogo from "./assets/tech_logo/typescript.png";
+import cLogo from "./assets/tech_logo/c.webp";
+import cppLogo from "./assets/tech_logo/cpp.webp";
+import javaLogo from "./assets/tech_logo/java.webp";
+import pythonLogo from "./assets/tech_logo/python.webp";
+import typescriptLogo from "./assets/tech_logo/typescript.webp";
 
 // Tools & Platforms Section Logo's
-import gitLogo from "./assets/tech_logo/git.png";
-import githubLogo from "./assets/tech_logo/github.png";
-import vscodeLogo from "./assets/tech_logo/vscode.png";
-import postmanLogo from "./assets/tech_logo/postman.png";
-import mcLogo from "./assets/tech_logo/mc.png"; // Assuming 'mcLogo' is MongoDB Compass
-import vercelLogo from "./assets/tech_logo/vercel.png";
+import gitLogo from "./assets/tech_logo/git.webp";
+import githubLogo from "./assets/tech_logo/github.webp";
+import vscodeLogo from "./assets/tech_logo/vscode.webp";
+import postmanLogo from "./assets/tech_logo/postman.webp";
+import vercelLogo from "./assets/tech_logo/vercel.webp";
 
 // Experience Section Logo's
-// import freelance from "./assets/company_logo/freelancer-logo.png";
-import jogazLogo from "./assets/company_logo/jogaz_logo.jpeg"; // Placeholder for new company logo
-import concentrixLogo from "./assets/company_logo/concentrix_logo.jpeg"; // Placeholder for new company logo
+import jogazLogo from "./assets/company_logo/jogaz_logo.webp";
+import concentrixLogo from "./assets/company_logo/concentrix_logo.webp"; // Placeholder for new company logo
 
 // Education Section Logo's
-import ignou from "./assets/education_logo/ignou.png";
-import lbs from "./assets/education_logo/lbs.png";
+import ignou from "./assets/education_logo/ignou.webp";
+import lbs from "./assets/education_logo/lbs.webp";
 
 // Project Section Logo's
-import github_project_logo from "./assets/work_logo/github_ss.png";
-import vastracraft from "./assets/work_logo/vastracraft_project_ss.png";
-import quickblogLogo from "./assets/work_logo/quickblog_ss.png";
+import github_project_logo from "./assets/work_logo/github_ss.webp";
+import vastracraft from "./assets/work_logo/vastracraft_project_ss.webp";
+import quickblogLogo from "./assets/work_logo/quickblog-project.webp";
+import {ignouLogo} from "./assets/work_logo/ignou-project.webp"
 
 // My CV Link
 export const cv =
@@ -60,9 +59,7 @@ export const socialMedia = {
   leetcode: "https://leetcode.com/u/manav9248_/",
 };
 
-// ====================================================================
-// REVISED SKILLS SECTION - Focused on Architectural Domains
-// ====================================================================
+// Skills Section
 export const SkillsInfo = [
   {
     title: "Frontend",
@@ -112,10 +109,7 @@ export const SkillsInfo = [
   },
 ];
 
-
-// ====================================================================
-// REVISED EXPERIENCE SECTION - Focused on Impact and Seniority
-// ====================================================================
+// Experience Section
 export const experiences = [
   {
     id: 0,
@@ -165,10 +159,7 @@ export const experiences = [
   },
 ];
 
-
-// ====================================================================
-// REVISED EDUCATION SECTION - Focused on Specialization
-// ====================================================================
+// education Section
 export const education = [
   {
     id: 0,

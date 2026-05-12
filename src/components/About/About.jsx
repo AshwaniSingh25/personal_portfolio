@@ -43,7 +43,7 @@ const Hero = () => {
                 <Typewriter
                   words={[
                     "MERN Stack Developer",
-                    "Frontend Engineer",
+                    "Backend Engineer",
                     "Web Automation Specialist",
                     "Next.js Expert",
                   ]}
@@ -122,10 +122,13 @@ const Hero = () => {
               <div className="relative overflow-hidden rounded-[2.5rem] border border-white/20 bg-white/5 p-2 backdrop-blur-sm shadow-2xl">
                 <img
                   src={profileImage}
-                  alt="Manav Pal"
-                  loading="eager"
+                  alt="Manav Pal - Full Stack Developer"
+                  loading="lazy"
+                  decoding="async"
                   fetchpriority="high"
                   className="h-full w-full rounded-[2.2rem] object-cover"
+                  width="400"
+                  height="400"
                 />
               </div>
             </Tilt>

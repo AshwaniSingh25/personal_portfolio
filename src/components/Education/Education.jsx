@@ -153,14 +153,17 @@ const Education = () => {
                 >
                   <img
                     src={edu.img}
-                    alt={edu.school}
+                    alt={`${edu.school} logo`}
                     loading="lazy"
+                    decoding="async"
                     className="
                       h-full
                       w-full
-                      rounded-full
+                      rounded-fullfirst
                       object-cover
                     "
+                    width="48"
+                    height="48"
                   />
                 </div>
 

@@ -6,14 +6,22 @@
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
+  /* Font optimization */
+  font-display: swap;
+  /* Improve rendering performance */
+  scroll-timeline: view();
 }
 
 /* Better Body Rendering */
 body {
   overflow-x: hidden;
+  /* Improved text rendering */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: #030014;
+  /* Reduce repaints */
+  backface-visibility: hidden;
 }
 
 /* Blob Animation */
@@ -41,6 +49,8 @@ body {
 
 .animate-blob {
   animation: blob 18s ease-in-out infinite;
+  /* Use will-change sparingly */
+  will-change: transform;
 }
 
 /* Slow Spin */
@@ -56,6 +66,7 @@ body {
 
 .animate-slow-spin {
   animation: slow-spin 30s linear infinite;
+  will-change: transform;
 }
 
 /* Fade Up Animation */
@@ -73,4 +84,35 @@ body {
 
 .animate-fade-up {
   animation: fade-up 0.8s ease forwards;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Image optimization - prevent layout shift */
+img {
+  display: block;
+  /* Optimize image rendering */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Link focus states for accessibility */
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Button accessibility improvements */
+button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }

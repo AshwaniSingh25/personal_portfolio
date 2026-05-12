@@ -20,7 +20,7 @@ const Experience = () => {
 
       <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-1">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-6 md:px-8">
         {/* HEADER */}
         <div className="mx-auto mb-24 max-w-3xl text-center">
           {/* BADGE */}
@@ -150,8 +150,9 @@ to-transparent
                 >
                   <img
                     src={experience.img}
-                    alt={experience.company}
+                    alt={`${experience.company} company logo`}
                     loading="lazy"
+                    decoding="async"
                     className="
       h-full
       w-full
@@ -159,10 +160,11 @@ to-transparent
       rounded-full
       lg:hidden
     "
+                    width="48"
+                    height="48"
                   />
                 </div>
 
-          
                 {/* CARD */}
                 <div
                   className={`
@@ -186,7 +188,6 @@ to-transparent
                     ${index % 2 === 0 ? "lg:mr-16" : "lg:ml-16"}
                   `}
                 >
-
                   {/* CONTENT */}
                   <div className="relative z-10 p-5 sm:p-7 lg:p-9">
                     {/* TOP SECTION */}
