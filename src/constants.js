@@ -9,7 +9,6 @@ import tailwindcssLogo from "./assets/tech_logo/tailwindcss.webp";
 import gsapLogo from "./assets/tech_logo/gsap.webp";
 // import materialuiLogo from "./assets/tech_logo/materialui.webp";
 
-
 // Backend & Database Section Logo's
 import nodejsLogo from "./assets/tech_logo/nodejs.webp";
 import expressjsLogo from "./assets/tech_logo/express.webp";
@@ -44,7 +43,8 @@ import lbs from "./assets/education_logo/lbs.webp";
 import github_project_logo from "./assets/work_logo/github_ss.webp";
 import vastracraft from "./assets/work_logo/vastracraft_project_ss.webp";
 import quickblogLogo from "./assets/work_logo/quickblog-project.webp";
-import {ignouLogo} from "./assets/work_logo/ignou-project.webp"
+import ignouLogo from "./assets/work_logo/ignou-project.webp";
+import auroraLogo from "./assets/work_logo/aurora.png";
 
 // My CV Link
 export const cv =
@@ -113,29 +113,6 @@ export const SkillsInfo = [
 export const experiences = [
   {
     id: 0,
-    img: jogazLogo,
-    role: "Full Stack Developer",
-    company: "Jogaz Info Pvt. Ltd.",
-    date: "October 2025 - Present",
-    points: [
-      "Working on the development and maintenance of a web-based trading support platform.",
-      "Building custom tools and strategy interfaces to help traders configure and manage their workflows.",
-      "Developing the frontend using Angular and TypeScript for better structure and type safety.",
-      "Integrating frontend components with backend services using REST APIs.",
-      "Handling bug fixes, feature enhancements, and regular maintenance to ensure platform stability.",
-    ],
-    skills: [
-      "Angular",
-      "TypeScript",
-      "REST APIs",
-      "Web Application Development",
-      "Bug Fixing",
-      "Feature Enhancement",
-      "Maintenance & Support",
-    ],
-  },
-  {
-    id: 1,
     img: concentrixLogo,
     role: "Chat Support Advisor",
     company: "Concentrix",
@@ -157,21 +134,43 @@ export const experiences = [
       "Cross-cultural Communication",
     ],
   },
+  {
+    id: 1,
+    img: jogazLogo,
+    role: "Full Stack Developer",
+    company: "Jogaz Info Pvt. Ltd.",
+    date: "October 2025 - December 2025",
+    points: [
+      "Working on the development and maintenance of a web-based trading support platform.",
+      "Building custom tools and strategy interfaces to help traders configure and manage their workflows.",
+      "Developing the frontend using Angular and TypeScript for better structure and type safety.",
+      "Integrating frontend components with backend services using REST APIs.",
+      "Handling bug fixes, feature enhancements, and regular maintenance to ensure platform stability.",
+    ],
+    skills: [
+      "Angular",
+      "TypeScript",
+      "REST APIs",
+      "Web Application Development",
+      "Bug Fixing",
+      "Feature Enhancement",
+      "Maintenance & Support",
+    ],
+  },
 ];
 
 // education Section
 export const education = [
   {
     id: 0,
-    img: ignou,
-    school: "Indira Gandhi National Open University, New Delhi",
-    date: "Jan 2023 - Dec 2025",
-    grade: "7.81 CGPA",
-    degree: "Bachelor of Computer Applications (BCA)",
+    img: lbs,
+    school: "Lal Bahadur Shastri School",
+    date: "Apr 2019 - March 2020",
+    grade: "72.84%",
+    degree: "CBSE (Class X), Science with Computer Applications",
     points: [
-      "Studied core subjects including Data Structures, Database Management Systems (RDBMS), and Software Engineering.",
-      "Built a strong foundation in programming, data handling, and web application development.",
-      "Applied theoretical concepts through practical projects and assignments.",
+      "Studied Science and Computer Applications with a focus on logic and mathematics.",
+      "Developed a foundation in problem-solving and computational thinking.",
     ],
   },
   {
@@ -179,23 +178,25 @@ export const education = [
     img: lbs,
     school: "Lal Bahadur Shastri School",
     date: "Apr 2021 - March 2022",
-    grade: "88.74%",
+    grade: "71.74%",
     degree: "CBSE (Class XII), Arts with Economics and Computer Science",
     points: [
       "Focused on Economics and Computer Science with an emphasis on analytical and logical thinking.",
       "Learned basic programming concepts and problem-solving techniques.",
     ],
   },
+
   {
     id: 2,
-    img: lbs,
-    school: "Lal Bahadur Shastri School",
-    date: "Apr 2019 - March 2020",
-    grade: "87.54%",
-    degree: "CBSE (Class X), Science with Computer Applications",
+    img: ignou,
+    school: "Indira Gandhi National Open University, New Delhi",
+    date: "Jan 2023 - Dec 2025",
+    grade: "70.82 %",
+    degree: "Bachelor of Computer Applications (BCA)",
     points: [
-      "Studied Science and Computer Applications with a focus on logic and mathematics.",
-      "Developed a foundation in problem-solving and computational thinking.",
+      "Studied core subjects including Data Structures, Database Management Systems (RDBMS), and Software Engineering.",
+      "Built a strong foundation in programming, data handling, and web application development.",
+      "Applied theoretical concepts through practical projects and assignments.",
     ],
   },
 ];
@@ -204,7 +205,52 @@ export const education = [
 export const projects = [
   {
     id: 0,
-    title: "QuickBlog AI – High-Performance Blogging Platform",
+    title: "GitHub Profile Detective - API-Based Dashboard",
+    image: github_project_logo,
+    points: [
+      "Built a React application to fetch and display GitHub user data using the GitHub public API.",
+      "Handled API errors and edge cases such as invalid usernames and rate limits.",
+      "Implemented loading and error states to improve user experience.",
+      "Optimized component re-rendering using React hooks and state management best practices.",
+      "Designed a clean and responsive UI using Tailwind CSS.",
+    ],
+    tags: [
+      "React",
+      "External API Integration",
+      "Error Handling",
+      "Rate Limiting",
+      "React Hooks",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/manavpal-dev/Github-Profile-Detective.git",
+    webapp: "https://github-profile-detective-orpin.vercel.app/",
+  },
+  {
+    id: 1,
+    title: "VastraCraft - eCommerce Web Application",
+    image: vastracraft,
+    points: [
+      "Developed a modern eCommerce web application using React and Node.js.",
+      "Implemented Redux for managing shopping cart and checkout state.",
+      "Built a responsive product listing and detail pages optimized for different screen sizes.",
+      "Added backend logic to handle order processing and maintain inventory consistency.",
+      "Focused on performance optimization and clean component structure.",
+    ],
+    tags: [
+      "React",
+      "Redux",
+      "Node.js",
+      "Express.js",
+      "E-commerce Logic",
+      "State Management",
+      "Performance Optimization",
+    ],
+    github: "https://codingmasterweb.in/",
+    webapp: "https://ecommerce-project-lake-eight.vercel.app/",
+  },
+  {
+    id: 2,
+    title: "QuickBlog AI - High-Performance Blogging Platform",
     image: quickblogLogo,
     points: [
       "Built a full-stack blogging platform using the MERN stack with a focus on performance and scalability.",
@@ -229,48 +275,60 @@ export const projects = [
     webapp: "https://quickblog-beta-eight.vercel.app/",
   },
   {
-    id: 1,
-    title: "VastraCraft – eCommerce Web Application",
-    image: vastracraft,
+    id: 3,
+    title: "Aurora Perfume - Luxury Fragrance Landing Page",
+    image: auroraLogo,
     points: [
-      "Developed a modern eCommerce web application using React and Node.js.",
-      "Implemented Redux for managing shopping cart and checkout state.",
-      "Built a responsive product listing and detail pages optimized for different screen sizes.",
-      "Added backend logic to handle order processing and maintain inventory consistency.",
-      "Focused on performance optimization and clean component structure.",
+      "Designed and developed a modern single-page perfume landing page focused on luxury branding and premium user experience.",
+      "Built the frontend using React.js and Tailwind CSS with a fully responsive layout across mobile, tablet, and desktop devices.",
+      "Implemented reusable UI components and clean component-based architecture for better scalability and maintainability.",
+      "Created visually appealing sections including hero banners, featured collections, testimonials, and product showcases.",
+      "Optimized the application for performance with responsive images, smooth animations, and clean UI structure.",
+      "Focused on modern design principles, spacing, typography, and user interaction to improve overall user engagement.",
     ],
     tags: [
-      "React",
-      "Redux",
-      "Node.js",
-      "Express.js",
-      "E-commerce Logic",
-      "State Management",
+      "React.js",
+      "Tailwind CSS",
+      "JavaScript",
+      "Responsive Design",
+      "Single Page Application",
+      "UI/UX Design",
+      "Component-Based Architecture",
+      "Frontend Development",
       "Performance Optimization",
     ],
-    github: "https://codingmasterweb.in/",
-    webapp: "https://ecommerce-project-lake-eight.vercel.app/",
+    github: "https://github.com/manavpal-dev/Aurora-Project",
+    webapp: "https://aurora-project-one.vercel.app",
   },
   {
-    id: 2,
-    title: "GitHub Profile Detective – API-Based Dashboard",
-    image: github_project_logo,
+    id: 4,
+    title: "IGNOU Grade Card Analyzer",
+    image: ignouLogo,
     points: [
-      "Built a React application to fetch and display GitHub user data using the GitHub public API.",
-      "Handled API errors and edge cases such as invalid usernames and rate limits.",
-      "Implemented loading and error states to improve user experience.",
-      "Optimized component re-rendering using React hooks and state management best practices.",
-      "Designed a clean and responsive UI using Tailwind CSS.",
+      "Built a full-stack platform to help IGNOU students analyze academic progress and calculate percentages automatically.",
+      "Rebuilt the entire project from Angular to Next.js for improved scalability, SEO, and production-level architecture.",
+      "Implemented real-time data scraping using Puppeteer because no official IGNOU API was available.",
+      "Developed features to track completed and pending subjects across all IGNOU programs.",
+      "Optimized backend performance using caching and efficient API handling.",
+      "Deployed the frontend and backend using Vercel and Render.",
+      "Focused on real-world debugging, API security, and server-client architecture during development.",
     ],
     tags: [
-      "React",
-      "External API Integration",
-      "Error Handling",
-      "Rate Limiting",
-      "React Hooks",
+      "Next.js",
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Puppeteer",
+      "Web Scraping",
+      "SSR",
+      "REST API",
       "Tailwind CSS",
+      "Vercel",
+      "Render",
+      "Caching",
     ],
-    github: "https://github.com/manavpal-dev/Github-Profile-Detective.git",
-    webapp: "https://github-profile-detective-orpin.vercel.app/",
+    github: "https://github.com/manavpal-dev/ignou-gradecard-analyzer",
+    webapp: "https://ignou-gradecard-analyzer.vercel.app",
   },
 ];

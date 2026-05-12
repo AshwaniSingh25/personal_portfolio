@@ -112,7 +112,7 @@ to-transparent
 
           {/* EXPERIENCE ITEMS */}
           <div className="space-y-10 md:space-y-14">
-            {experiences.map((experience, index) => (
+            {[...experiences].reverse().map((experience, index) => (
               <div
                 key={experience.id}
                 className={`
@@ -125,7 +125,7 @@ to-transparent
                 {/* MOBILE TIMELINE LOGO */}
                 <div
                   className="
-    absolute
+              absolute
     left-[-5px]
     top-8
     z-20
@@ -154,11 +154,11 @@ to-transparent
                     loading="lazy"
                     decoding="async"
                     className="
-      h-full
-      w-full
-      object-cover
-      rounded-full
-      lg:hidden
+                     h-full
+                   w-full
+                      object-cover
+                   rounded-full
+                    lg:hidden
     "
                     width="48"
                     height="48"
@@ -359,6 +359,8 @@ to-transparent
               </div>
             ))}
           </div>
+
+
         </div>
       </div>
     </section>

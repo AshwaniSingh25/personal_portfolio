@@ -117,7 +117,7 @@ const Education = () => {
 
           {/* EDUCATION ITEMS */}
           <div className="space-y-10 md:space-y-14">
-            {education.map((edu, index) => (
+            {[...education].reverse().map((edu, index) => (
               <div
                 key={edu.id}
                 className={`

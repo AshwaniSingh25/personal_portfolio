@@ -116,7 +116,7 @@ const Work = () => {
             xl:grid-cols-3
           "
         >
-          {projects.map((project) => (
+          {[...projects].reverse().map((project) => (
             <div
               key={project.id}
               onClick={() => handleOpenModel(project)}
