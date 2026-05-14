@@ -52,7 +52,7 @@ Your portfolio website has been comprehensively analyzed for **responsiveness, S
 
 ✓ **Image Optimization:**
 - Changed hero image loading from `eager` to `lazy`
-- Added `fetchpriority="high"` for critical images
+- Added `fetchPriority="high"` for critical images
 - Added `decoding="async"` for all images
 - Added width/height attributes to prevent Cumulative Layout Shift (CLS)
 

@@ -2,10 +2,29 @@ import ChatHeader from "./ChatHeader";
 import QuickQuestions from "./QuickQuestions";
 import ChatMessages from "./ChatMessages";
 import ChatInput from "./ChatInput";
+import { motion } from "framer-motion";
 
 const ChatWindow = (props) => {
   return (
-    <div
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 30,
+        scale: 0.95,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      }}
+      exit={{
+        opacity: 0,
+        y: 20,
+        scale: 0.95,
+      }}
+      transition={{
+        duration: 0.25,
+      }}
       className="
         absolute
         bottom-20
@@ -37,10 +56,9 @@ const ChatWindow = (props) => {
 
       <ChatHeader onClose={props.onClose} />
 
-      <QuickQuestions onQuickQuestion={props.onQuickQuestion}/>
+      <QuickQuestions onQuickQuestion={props.onQuickQuestion} />
 
-      <ChatMessages isTyping={props.isTyping}
-      messages={props.messages} />
+      <ChatMessages isTyping={props.isTyping} messages={props.messages} />
 
       <ChatInput
         input={props.input}
@@ -48,7 +66,7 @@ const ChatWindow = (props) => {
         onSend={props.onSend}
         isTyping={props.isTyping}
       />
-    </div>
+    </motion.div>
   );
 };
 

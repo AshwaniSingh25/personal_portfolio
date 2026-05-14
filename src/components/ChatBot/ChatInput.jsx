@@ -1,8 +1,17 @@
+import { useEffect, useRef } from "react";
+
 const ChatInput = (props) => {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+  
   return (
     <div className="relative z-10 border-t border-white/10 p-4">
       <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-3">
         <input
+          ref={inputRef}
           disabled={props.isTyping}
           value={props.input}
           onChange={(e) => props.setInput(e.target.value)}
@@ -24,7 +33,8 @@ const ChatInput = (props) => {
           "
         />
 
-        <button disabled={props.isTyping}
+        <button
+          disabled={props.isTyping}
           onClick={props.onSend}
           className="
             flex

@@ -1,11 +1,34 @@
-const MessageBubble = ({ role, content }) => {
+import { motion } from "framer-motion";
+
+const MessageBubble = ({ role, content, timestamp }) => {
   const isAssistant = role === "assistant";
 
+  const formattedTime = new Date(timestamp).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const messageVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      scale: 0.95,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+    },
+  };
+
   return (
-    <div
-      className={`flex ${
-        isAssistant ? "justify-start" : "justify-end"
-      }`}
+    <motion.div
+      variants={messageVariants}
+      transition={{
+        duration: 0.25,
+      }}
+      className={`flex ${isAssistant ? "justify-start" : "justify-end"}`}
     >
       <div
         className={`
@@ -24,8 +47,9 @@ const MessageBubble = ({ role, content }) => {
         `}
       >
         {content}
+        <p className="mt-2 text-[10px] text-gray-500">{formattedTime}</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

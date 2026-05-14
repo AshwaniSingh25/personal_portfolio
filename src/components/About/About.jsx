@@ -125,7 +125,7 @@ const Hero = () => {
                   alt="Manav Pal - Full Stack Developer"
                   loading="lazy"
                   decoding="async"
-                  fetchpriority="high"
+                  fetchPriority="high"
                   className="h-full w-full rounded-[2.2rem] object-cover"
                   width="400"
                   height="400"
