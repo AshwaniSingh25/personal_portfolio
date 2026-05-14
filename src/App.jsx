@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/About/About";
 import Footer from "./components/Footer/Footer";
 import BlurBlob from "./components/BlurBlob";
+import PortfolioChatbotUI from "./components/ChatBot/PortfolioChatbotUI";
 
 // Lazy load non-critical components for better performance
 const Skills = lazy(() => import("./components/Skills/Skills"));
@@ -73,6 +74,9 @@ const App = () => {
           </Suspense>
         </main>
         <Footer />
+
+        {/* PORTFOLIO CHATBOT */}
+        <PortfolioChatbotUI />
       </div>
     </div>
   );
