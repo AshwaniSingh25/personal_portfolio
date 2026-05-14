@@ -1,8 +1,16 @@
-const ChatInput = () => {
+const ChatInput = (props) => {
   return (
     <div className="relative z-10 border-t border-white/10 p-4">
       <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-3">
         <input
+          disabled={props.isTyping}
+          value={props.input}
+          onChange={(e) => props.setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              props.onSend();
+            }
+          }}
           type="text"
           placeholder="Ask AI about Manav..."
           className="
@@ -16,7 +24,8 @@ const ChatInput = () => {
           "
         />
 
-        <button
+        <button disabled={props.isTyping}
+          onClick={props.onSend}
           className="
             flex
             h-11

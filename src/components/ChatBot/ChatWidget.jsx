@@ -2,42 +2,44 @@ import React, { useState } from "react";
 
 import ChatButton from "./ChatButton";
 import ChatWindow from "./ChatWindow";
+import { generateFakeResponse } from "./utils/generateFakeResponse";
+import { createMessage } from "./utils/createMessage";
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content: "👋 Hi! I'm Manav's AI assistant.",
-    },
+    createMessage("assistant", "👋 Hi! I'm Manav's AI assistant."),
   ]);
 
   const [input, setInput] = useState("");
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const generateResponse = (messageContent) => {
 
-    const userMessage = {
-      role: "user",
-      content: input,
-    };
+    setMessages((prev) => [...prev, createMessage("user", messageContent)]);
 
-    setMessages((prev) => [...prev, userMessage]);
+    setIsTyping(true);
 
-    setInput("");
-
-    // TEMPORARY FAKE AI RESPONSE
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
-        {
-          role: "assistant",
-          content:
-            "I'm still under development, but soon I'll answer everything about Manav 🚀",
-        },
+        createMessage("assistant", generateFakeResponse(messageContent)),
       ]);
+
+      setIsTyping(false);
     }, 1000);
+  };
+
+  const handleSend = () => {
+    if (!input.trim()) return;
+
+    generateResponse(input);
+
+    setInput("");
+  };
+
+  const handleQuickQuestion = (question) => {
+    generateResponse(question);
   };
 
   return (
@@ -51,6 +53,8 @@ const ChatWidget = () => {
           input={input}
           setInput={setInput}
           onSend={handleSend}
+          isTyping={isTyping}
+          onQuickQuestion={handleQuickQuestion}
         />
       )}
     </div>

@@ -37,11 +37,17 @@ const ChatWindow = (props) => {
 
       <ChatHeader onClose={props.onClose} />
 
-      <QuickQuestions />
+      <QuickQuestions onQuickQuestion={props.onQuickQuestion}/>
 
-      <ChatMessages messages={props.messages}/>
+      <ChatMessages isTyping={props.isTyping}
+      messages={props.messages} />
 
-      <ChatInput input={props.input}first setInput={props.setInput} onSend={props.onSend}/>
+      <ChatInput
+        input={props.input}
+        setInput={props.setInput}
+        onSend={props.onSend}
+        isTyping={props.isTyping}
+      />
     </div>
   );
 };
