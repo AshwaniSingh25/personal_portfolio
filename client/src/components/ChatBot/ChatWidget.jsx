@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import ChatButton from "./ChatButton";
 import ChatWindow from "./ChatWindow";
-import { generateFakeResponse } from "./utils/generateFakeResponse";
 import { createMessage } from "./utils/createMessage";
 
 const ChatWidget = () => {
@@ -14,20 +13,44 @@ const ChatWidget = () => {
 
   const [input, setInput] = useState("");
 
-  const generateResponse = (messageContent) => {
+  // API call function
+  const fetchData = async (messageContent) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ messages: messageContent }),
+      });
 
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.log("Error", error);
+      return {
+        success: false,
+        message: "Something went wrong while connecting to the server.",
+      };
+    }
+  };
+
+  const generateResponse = async (messageContent) => {
     setMessages((prev) => [...prev, createMessage("user", messageContent)]);
 
+    // start typing animation
     setIsTyping(true);
 
-    setTimeout(() => {
+    // wait for backend response
+    const result = await fetchData(messageContent);
+
       setMessages((prev) => [
         ...prev,
-        createMessage("assistant", generateFakeResponse(messageContent)),
+        createMessage("assistant", result.message),
       ]);
 
+      // Stop typing
       setIsTyping(false);
-    }, 1000);
   };
 
   const handleSend = () => {
