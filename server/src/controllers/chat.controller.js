@@ -2,12 +2,12 @@ import { chatService } from "../services/chat.service.js";
 
 export const chatController = async (req, res) => {
   try {
-    const chatResponse = req.body.messages;
+    const {message, messages} = req.body;
 
-    if (!chatResponse) {
+    if (!message) {
       return res.status(400).json({ message: "Ask your question first" });
     }
-    const chat = await chatService(chatResponse);
+    const chat = await chatService(message,messages);
 
     if(chat.success){
         return res.status(200).json(chat);

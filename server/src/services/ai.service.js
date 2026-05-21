@@ -8,10 +8,11 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-export const generateAIResponse = async (userMessage) => {
+export const generateAIResponse = async (userMessage, conversationHistory) => {
   try {
     // PROJECTS
-    const projectContext = projects
+    const projectContext = [...projects]
+      .reverse()
       .slice(0, 5)
       .map(
         (project) =>
@@ -25,7 +26,8 @@ export const generateAIResponse = async (userMessage) => {
     ).join(", ");
 
     // EXPERIENCE
-    const experienceContext = experiences
+    const experienceContext = [...experiences]
+      .reverse()
       .map(
         (exp) =>
           `Role: ${exp.role} Company: ${exp.company} Duration: ${exp.date} Job Description: ${exp.points.join(", ")}  skills: ${exp.skills.join(", ")}`,
@@ -33,10 +35,11 @@ export const generateAIResponse = async (userMessage) => {
       .join("\n\n");
 
     // EDUCATION
-    const educationContext = education
+    const educationContext = [...education]
+      .reverse()
       .map(
         (edu) =>
-          `Degree: ${edu.degree} Institution: ${edu.school} Grade: ${edu.grade} About: ${(edu.points, join(", "))} `,
+          `Degree: ${edu.degree} Institution: ${edu.school} Grade: ${edu.grade} About: ${edu.points.join(", ")} `,
       )
       .join("\n\n");
 
@@ -77,16 +80,22 @@ ${educationContext}
 Projects:
 ${projectContext}
 
-==============================
-USER QUESTION
-==============================
+======================================
+CONVERSATION HISTORY
+======================================
+
+${conversationHistory}
+
+======================================
+CURRENT USER QUESTION
+======================================
 
 ${userMessage}
 `;
 
     // GEMINI RESPONSE
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash",
 
       contents: prompt,
     });
@@ -95,7 +104,7 @@ ${userMessage}
     return {
       success: true,
 
-      message: response.text || "I couldn't generate a response.",
+      message: response.text?.trim() || "I couldn't generate a response.",
     };
   } catch (error) {
     console.error("AI Service Error:", error);
