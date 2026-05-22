@@ -3,7 +3,7 @@ import {
   experiences,
   education,
   projects,
-} from "../data/portfolio.data.js";
+} from "../../data/portfolio.data.js";
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
@@ -64,6 +64,13 @@ Rules:
 - If information is unavailable, politely say you do not know.
 - If user asks unrelated questions, redirect them back to portfolio-related topics.
 
+Formatting Rules:
+- Use bullet points when listing items.
+- Keep responses concise.
+- Use markdown formatting.
+- Use clickable links when available.
+- Avoid large paragraphs.
+
 ======================================
 MANAV'S PORTFOLIO DATA
 ======================================
@@ -98,6 +105,8 @@ ${userMessage}
       model: "gemini-2.5-flash",
 
       contents: prompt,
+
+      // stream: true,
     });
 
     // RETURN CLEAN RESPONSE

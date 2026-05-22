@@ -1,4 +1,5 @@
-import { generateAIResponse } from "./ai.service.js";
+import { generateAIResponse } from "./ai/gemini.service.js";
+import { generateOllamaResponse } from "./ai/ollama.service.js";
 
 export const chatService = async (chatMessage, messages) => {
   try {
@@ -14,13 +15,20 @@ export const chatService = async (chatMessage, messages) => {
       })
       .join("\n\n");
 
-    // Generate AI Response
+    // Generate AI Response using gemni api
     const aiResponse = await generateAIResponse(
       chatMessage,
       conversationHistory,
     );
 
-    return aiResponse;
+    // Generate AI response using ollama local model
+    const ollamaResponse = await generateOllamaResponse();
+
+    if (process.env.AI_PROVIDER === ollama) {
+      return ollamaResponse;
+    } else {
+      return aiResponse;
+    }
   } catch (error) {
     console.error("Chat Service Error:", error);
     return {

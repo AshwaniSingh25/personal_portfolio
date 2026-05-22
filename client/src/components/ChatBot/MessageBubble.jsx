@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 
 const MessageBubble = ({ role, content, timestamp }) => {
   const isAssistant = role === "assistant";
@@ -46,7 +47,7 @@ const MessageBubble = ({ role, content, timestamp }) => {
           }
         `}
       >
-        {content}
+        <ReactMarkdown>{content}</ReactMarkdown>
         <p className="mt-2 text-[10px] text-gray-500">{formattedTime}</p>
       </div>
     </motion.div>
