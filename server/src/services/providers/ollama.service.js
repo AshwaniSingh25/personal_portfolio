@@ -1,15 +1,24 @@
 import axios from "axios";
-
-export const generateOllamaResponse = async (prompt) => {
+import { portfolioContext } from "../prompt/buildPortfolioContext.js";
+import { prompt } from "../prompt/buildPrompt.js";
+export const generateOllamaResponse = async (
+  userMessage,
+  conversationHistory,
+) => {
   try {
+    const finalPrompt = prompt({
+      portfolioContext,
+      conversationHistory,
+      userMessage,
+    });
     const response = await axios.post("http://localhost:11434/api/generate", {
       model: "qwen2.5:3b",
 
-      prompt,
+      prompt: finalPrompt,
 
       stream: false,
     });
-    
+
     return {
       success: true,
       message: response.data.response,

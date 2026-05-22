@@ -1,10 +1,10 @@
-import { generateAIResponse } from "./ai/gemini.service.js";
-import { generateOllamaResponse } from "./ai/ollama.service.js";
+import { generateAIResponse } from "./providers/gemini.service.js";
+import { generateOllamaResponse } from "./providers/ollama.service.js";
 
 export const chatService = async (chatMessage, messages) => {
   try {
     // Limit chat history
-    const recentMessages = messages.slice(-6);
+    const recentMessages = messages?.slice(-6) || [];
 
     // Format conversation history
     const conversationHistory = recentMessages
@@ -15,19 +15,10 @@ export const chatService = async (chatMessage, messages) => {
       })
       .join("\n\n");
 
-    // Generate AI Response using gemni api
-    const aiResponse = await generateAIResponse(
-      chatMessage,
-      conversationHistory,
-    );
-
-    // Generate AI response using ollama local model
-    const ollamaResponse = await generateOllamaResponse();
-
-    if (process.env.AI_PROVIDER === ollama) {
-      return ollamaResponse;
+    if (process.env.AI_PROVIDER === "ollama") {
+      return await generateOllamaResponse(chatMessage, conversationHistory);
     } else {
-      return aiResponse;
+      return await generateAIResponse(chatMessage, conversationHistory);
     }
   } catch (error) {
     console.error("Chat Service Error:", error);
