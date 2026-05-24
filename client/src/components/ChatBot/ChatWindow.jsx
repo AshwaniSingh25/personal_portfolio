@@ -1,16 +1,25 @@
+import { motion } from "framer-motion";
+
 import ChatHeader from "./ChatHeader";
 import QuickQuestions from "./QuickQuestions";
 import ChatMessages from "./ChatMessages";
 import ChatInput from "./ChatInput";
-import { motion } from "framer-motion";
 
-const ChatWindow = (props) => {
+const ChatWindow = ({
+  onClose,
+  messages,
+  input,
+  setInput,
+  onSend,
+  isTyping,
+  onQuickQuestion,
+}) => {
   return (
     <motion.div
       initial={{
         opacity: 0,
-        y: 30,
-        scale: 0.95,
+        y: 40,
+        scale: 0.92,
       }}
       animate={{
         opacity: 1,
@@ -23,49 +32,123 @@ const ChatWindow = (props) => {
         scale: 0.95,
       }}
       transition={{
-        duration: 0.25,
+        type: "spring",
+        damping: 18,
+        stiffness: 180,
       }}
       className="
-        absolute
-        bottom-20
-        right-0
+        fixed
+        bottom-24
+        right-5
+        z-50
+
         flex
-        h-[580px]
-        w-[380px]
+        h-[620px]
+        w-[390px]
         flex-col
+
         overflow-hidden
-        rounded-3xl
+
+        rounded-[32px]
+
         border
         border-white/10
-        bg-[#060816]/95
-        shadow-[0_20px_80px_rgba(0,0,0,0.6)]
-        backdrop-blur-2xl
+
+        bg-[#060816]/90
+
+        shadow-[0_20px_120px_rgba(0,0,0,0.7)]
+
+        backdrop-blur-3xl
 
         max-sm:bottom-0
         max-sm:right-0
         max-sm:h-[100dvh]
-        max-sm:w-[100vw]
+        max-sm:w-full
         max-sm:rounded-none
       "
     >
+      {/* Gradient Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-violet-500/10 blur-3xl" />
+        {/* Top Glow */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[-120px]
 
-        <div className="absolute bottom-0 right-0 h-56 w-56 rounded-full bg-cyan-500/10 blur-3xl" />
+            h-[320px]
+            w-[320px]
+
+            -translate-x-1/2
+
+            rounded-full
+
+            bg-violet-500/15
+
+            blur-3xl
+          "
+        />
+
+        {/* Bottom Glow */}
+        <div
+          className="
+            absolute
+            bottom-[-80px]
+            right-[-40px]
+
+            h-[260px]
+            w-[260px]
+
+            rounded-full
+
+            bg-cyan-500/15
+
+            blur-3xl
+          "
+        />
+
+        {/* Light Reflection */}
+        <div
+          className="
+            absolute
+            inset-0
+
+            bg-gradient-to-b
+            from-white/[0.04]
+            via-transparent
+            to-transparent
+          "
+        />
       </div>
 
-      <ChatHeader onClose={props.onClose} />
+      {/* Inner Border */}
+      <div
+        className="
+          absolute
+          inset-[1px]
 
-      <QuickQuestions onQuickQuestion={props.onQuickQuestion} />
+          rounded-[31px]
 
-      <ChatMessages isTyping={props.isTyping} messages={props.messages} />
-
-      <ChatInput
-        input={props.input}
-        setInput={props.setInput}
-        onSend={props.onSend}
-        isTyping={props.isTyping}
+          border
+          border-white/[0.03]
+        "
       />
+
+      {/* Content */}
+      <div className="relative z-10 flex h-full flex-col">
+        <ChatHeader onClose={onClose} />
+
+        <QuickQuestions onQuickQuestion={onQuickQuestion} />
+
+        <ChatMessages messages={messages} isTyping={isTyping} />
+
+        <ChatInput
+          input={input}
+          setInput={setInput}
+          onSend={onSend}
+          isTyping={isTyping}
+        />
+      </div>
     </motion.div>
   );
 };

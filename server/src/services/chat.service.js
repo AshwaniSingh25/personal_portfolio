@@ -1,7 +1,7 @@
 import { generateAIResponse } from "./providers/gemini.service.js";
 import { generateOllamaResponse } from "./providers/ollama.service.js";
 
-export const chatService = async (chatMessage, messages) => {
+export const chatService = async (chatMessage, messages,res) => {
   try {
     // Limit chat history
     const recentMessages = messages?.slice(-6) || [];
@@ -16,7 +16,7 @@ export const chatService = async (chatMessage, messages) => {
       .join("\n\n");
 
     if (process.env.AI_PROVIDER === "ollama") {
-      return await generateOllamaResponse(chatMessage, conversationHistory);
+      return await generateOllamaResponse(chatMessage, conversationHistory, res);
     } else {
       return await generateAIResponse(chatMessage, conversationHistory);
     }

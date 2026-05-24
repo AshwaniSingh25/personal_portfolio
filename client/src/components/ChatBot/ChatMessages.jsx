@@ -1,44 +1,71 @@
-import MessageBubble from "./MessageBubble";
 import { useEffect, useRef } from "react";
-import TypingLoader from "./TypingLoader";
+
 import { motion } from "framer-motion";
 
-const ChatMessages = (props) => {
+import MessageBubble from "./MessageBubble";
+import TypingLoader from "./TypingLoader";
+
+const ChatMessages = ({ messages, isTyping }) => {
+  const bottomRef = useRef(null);
+
+  // AUTO SCROLL
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      bottomRef.current?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }, 100);
+
+    return () => clearTimeout(timeout);
+  }, [messages]);
+
   const containerVariants = {
     hidden: {},
 
     visible: {
       transition: {
-        staggerChildren: 0.08,
+        staggerChildren: 0.06,
       },
     },
   };
-
-  const bottomRef = useRef(null);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({
-      behavior: "smooth",
-    });
-  }, [props.messages]);
 
   return (
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="relative z-10 flex-1 overflow-y-auto px-5 py-6 space-y-4"
+      className="
+        relative
+        z-10
+
+        flex-1
+
+        overflow-y-auto
+
+        px-4
+        py-5
+
+        space-y-5
+
+        scrollbar-thin
+        scrollbar-thumb-white/10
+        scrollbar-track-transparent
+      "
     >
-      {props.messages.map((message, indx) => (
+      {messages.map((message, index) => (
         <MessageBubble
-          key={indx}
+          key={index}
           role={message.role}
           content={message.content}
           timestamp={message.timestamp}
         />
       ))}
+
+      {/* Typing Loader */}
+      {isTyping && <TypingLoader />}
+
+      {/* Bottom Ref */}
       <div ref={bottomRef} />
-      {props.isTyping && <TypingLoader />}
     </motion.div>
   );
 };
