@@ -3,22 +3,15 @@ import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-const MessageBubble = ({
-  role,
-  content,
-  timestamp,
-}) => {
-  const isAssistant =
-    role === "assistant";
+const MessageBubble = ({ role, content, timestamp }) => {
+  if (!content?.trim()) return null;
 
-  const formattedTime =
-    new Date(timestamp).toLocaleTimeString(
-      [],
-      {
-        hour: "2-digit",
-        minute: "2-digit",
-      }
-    );
+  const isAssistant = role === "assistant";
+
+  const formattedTime = new Date(timestamp).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   const messageVariants = {
     hidden: {
@@ -40,11 +33,7 @@ const MessageBubble = ({
       transition={{
         duration: 0.25,
       }}
-      className={`flex ${
-        isAssistant
-          ? "justify-start"
-          : "justify-end"
-      }`}
+      className={`flex ${isAssistant ? "justify-start" : "justify-end"}`}
     >
       <div
         className={`
@@ -131,11 +120,7 @@ const MessageBubble = ({
             prose-blockquote:border-cyan-400/40
           "
         >
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-          >
-            {content}
-          </ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
         </div>
 
         {/* Timestamp */}
@@ -145,11 +130,7 @@ const MessageBubble = ({
 
             text-[11px]
 
-            ${
-              isAssistant
-                ? "text-gray-500"
-                : "text-white/70"
-            }
+            ${isAssistant ? "text-gray-500" : "text-white/70"}
           `}
         >
           {formattedTime}

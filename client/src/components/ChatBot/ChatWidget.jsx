@@ -10,7 +10,7 @@ const ChatWidget = () => {
 
   const [input, setInput] = useState("");
 
-  const { messages, isTyping, sendMessage } = useChatStream();
+  const { messages, isLoading, sendMessage, showTyping } = useChatStream();
 
   // SEND MESSAGE
   const handleSend = () => {
@@ -37,7 +37,8 @@ const ChatWidget = () => {
           input={input}
           setInput={setInput}
           onSend={handleSend}
-          isTyping={isTyping}
+          isLoading={isLoading}
+          showTyping={showTyping}
           onQuickQuestion={handleQuickQuestion}
         />
       )}

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import MessageBubble from "./MessageBubble";
 import TypingLoader from "./TypingLoader";
 
-const ChatMessages = ({ messages, isTyping }) => {
+const ChatMessages = ({ messages, showTyping }) => {
   const bottomRef = useRef(null);
 
   // AUTO SCROLL
@@ -62,7 +62,7 @@ const ChatMessages = ({ messages, isTyping }) => {
       ))}
 
       {/* Typing Loader */}
-      {isTyping && <TypingLoader />}
+      {showTyping && <TypingLoader />}
 
       {/* Bottom Ref */}
       <div ref={bottomRef} />

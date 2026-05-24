@@ -11,7 +11,8 @@ const ChatWindow = ({
   input,
   setInput,
   onSend,
-  isTyping,
+  isLoading,
+  showTyping,
   onQuickQuestion,
 }) => {
   return (
@@ -138,15 +139,15 @@ const ChatWindow = ({
       <div className="relative z-10 flex h-full flex-col">
         <ChatHeader onClose={onClose} />
 
-        <QuickQuestions onQuickQuestion={onQuickQuestion} />
+        <QuickQuestions onQuickQuestion={onQuickQuestion} isLoading={isLoading}/>
 
-        <ChatMessages messages={messages} isTyping={isTyping} />
+        <ChatMessages messages={messages} showTyping={showTyping} />
 
         <ChatInput
           input={input}
           setInput={setInput}
           onSend={onSend}
-          isTyping={isTyping}
+          isLoading={isLoading}
         />
       </div>
     </motion.div>

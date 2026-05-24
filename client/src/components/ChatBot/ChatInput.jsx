@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowUp, Sparkles } from "lucide-react";
 
-const ChatInput = ({ input, setInput, onSend, isTyping }) => {
+const ChatInput = ({ input, setInput, onSend, isLoading }) => {
   const inputRef = useRef(null);
 
   // AUTO FOCUS
@@ -89,16 +89,16 @@ const ChatInput = ({ input, setInput, onSend, isTyping }) => {
         {/* INPUT */}
         <input
           ref={inputRef}
-          disabled={isTyping}
+          disabled={isLoading}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && !isTyping) {
+            if (e.key === "Enter" && !isLoading) {
               onSend();
             }
           }}
           type="text"
-          placeholder={isTyping ? "AI is thinking..." : "Ask AI about Manav..."}
+          placeholder={isLoading ? "AI is thinking..." : "Ask AI about Manav..."}
           className="
             flex-1
 
@@ -115,7 +115,7 @@ const ChatInput = ({ input, setInput, onSend, isTyping }) => {
 
         {/* SEND BUTTON */}
         <motion.button
-          disabled={isTyping || !input.trim()}
+          disabled={isLoading || !input.trim()}
           onClick={onSend}
           whileHover={{
             scale: 1.06,

@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 import { quickQuestions } from "./chatbotData";
 
-const QuickQuestions = ({ onQuickQuestion }) => {
+const QuickQuestions = ({ onQuickQuestion, isLoading }) => {
   return (
     <div
-      className="
+      className={`
         relative
         z-10
 
@@ -21,7 +21,8 @@ const QuickQuestions = ({ onQuickQuestion }) => {
         py-4
 
         scrollbar-hide
-      "
+        ${isLoading ? "pointer-events-none opacity-50" : ""}
+      `}
     >
       {quickQuestions.map((item, index) => (
         <motion.button
@@ -44,7 +45,11 @@ const QuickQuestions = ({ onQuickQuestion }) => {
           whileTap={{
             scale: 0.96,
           }}
-          onClick={() => onQuickQuestion(item)}
+          onClick={() => {
+            if (isLoading) return;
+
+            onQuickQuestion(item);
+          }}
           className="
               group
               relative

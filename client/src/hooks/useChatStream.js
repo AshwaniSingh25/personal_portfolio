@@ -7,7 +7,9 @@ export const useChatStream = () => {
     createMessage("assistant", "👋 Hi! I'm Manav's AI assistant."),
   ]);
 
-  const [isTyping, setIsTyping] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [showTyping, setShowTyping] = useState(false);
 
   const sendMessage = async (messageContent) => {
     if (!messageContent.trim()) return;
@@ -24,7 +26,8 @@ export const useChatStream = () => {
     // UPDATE UI IMMEDIATELY
     setMessages(updatedMessages);
 
-    setIsTyping(true);
+    setIsLoading(true);
+    setShowTyping(true);
 
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
@@ -46,8 +49,6 @@ export const useChatStream = () => {
 
       const decoder = new TextDecoder();
 
-      setIsTyping(false);
-
       while (true) {
         const { value, done } = await reader.read();
 
@@ -55,6 +56,8 @@ export const useChatStream = () => {
 
         // DECODE CHUNK
         const chunk = decoder.decode(value);
+
+        setShowTyping(false);
 
         // SMALL DELAY FOR SMOOTHNESS
         await new Promise((resolve) => setTimeout(resolve, 25));
@@ -86,13 +89,16 @@ export const useChatStream = () => {
         ),
       ]);
     } finally {
-      setIsTyping(false);
+      setIsLoading(false);
+
+      setShowTyping(false);
     }
   };
 
   return {
     messages,
-    isTyping,
+    isLoading,
+    showTyping,
     sendMessage,
   };
 };
