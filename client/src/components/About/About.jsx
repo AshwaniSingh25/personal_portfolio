@@ -2,7 +2,7 @@ import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import Tilt from "react-parallax-tilt";
 import { ChevronRight, Download } from "lucide-react";
-import profileImage from "../../assets/profile_pic.webp";
+import profileImage from "../../assets/profile.png";
 import { cv } from "../../constants";
 
 const Hero = () => {
@@ -126,8 +126,8 @@ const Hero = () => {
                   loading="lazy"
                   decoding="async"
                   fetchPriority="high"
-                  className="h-full w-full rounded-[2.2rem] object-cover"
-                  width="400"
+                  className="w-full rounded-[2.2rem] object-cover h-full md:h-[26rem]"
+                  width="800"
                   height="400"
                 />
               </div>
