@@ -2,36 +2,56 @@ import { GoogleGenAI } from "@google/genai";
 import { prompt } from "../prompt/buildPrompt.js";
 import { portfolioContext } from "../prompt/buildPortfolioContext.js";
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const AI_UNAVAILABLE_MESSAGE =
+  "The AI service is currently unavailable. Please try again in a moment.";
 
-export const generateAIResponse = async (userMessage, conversationHistory) => {
+export const generateAIResponse = async (
+  userMessage,
+  conversationHistory,
+  res,
+) => {
   try {
     const finalPrompt = prompt({
       portfolioContext,
       conversationHistory,
       userMessage,
     });
-    // GEMINI RESPONSE
-    const response = await ai.models.generateContent({
+
+    const response = await ai.models.generateContentStream({
       model: "gemini-2.5-flash",
 
       contents: finalPrompt,
-
-      // stream: true,
     });
 
-    // RETURN CLEAN RESPONSE
+    let fullResponse = "";
+
+    for await (const chunk of response) {
+      const text = chunk.text || "";
+
+      fullResponse += text;
+
+      // STREAM TO CLIENT
+      res.write(text);
+    }
+
+    // END STREAM
+    res.end();
+
     return {
       success: true,
-
-      message: response.text?.trim() || "I couldn't generate a response.",
+      message: fullResponse,
     };
   } catch (error) {
-    console.error("AI Service Error:", error);
+    console.error("Gemini Streaming Error:", error);
+
+    if (!res.writableEnded) {
+      res.write(AI_UNAVAILABLE_MESSAGE);
+      res.end();
+    }
 
     return {
       success: false,
-
-      message: "AI service is currently unavailable.",
+      message: AI_UNAVAILABLE_MESSAGE,
     };
   }
 };

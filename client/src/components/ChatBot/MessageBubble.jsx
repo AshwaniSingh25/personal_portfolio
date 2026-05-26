@@ -3,10 +3,37 @@ import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+const linkifyPlainText = (text) =>
+  text
+    .split(/(\[[^\]]+\]\([^)]+\))/g)
+    .map((part) => {
+      if (/^\[[^\]]+\]\([^)]+\)$/.test(part)) return part;
+
+      return part
+        .replace(
+          /(^|[\s(])((?:https?:\/\/|www\.)[^\s<>)]+)/g,
+          (_, prefix, url) => {
+            const href = url.startsWith("www.") ? `https://${url}` : url;
+            return `${prefix}[${url}](${href})`;
+          },
+        )
+        .replace(
+          /(^|[\s(])([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/gi,
+          (_, prefix, email) => `${prefix}[${email}](mailto:${email})`,
+        )
+        .replace(
+          /(^|[\s(])(\+91\s?\d{10})/g,
+          (_, prefix, phone) =>
+            `${prefix}[${phone}](tel:${phone.replace(/\s/g, "")})`,
+        );
+    })
+    .join("");
+
 const MessageBubble = ({ role, content, timestamp }) => {
   if (!content?.trim()) return null;
 
   const isAssistant = role === "assistant";
+  const markdownContent = linkifyPlainText(content);
 
   const formattedTime = new Date(timestamp).toLocaleTimeString([], {
     hour: "2-digit",
@@ -99,6 +126,10 @@ const MessageBubble = ({ role, content, timestamp }) => {
 
             max-w-none
 
+            prose-headings:mb-2
+            prose-headings:mt-4
+
+            prose-p:my-3
             prose-p:leading-7
             prose-p:text-[15px]
 
@@ -108,19 +139,51 @@ const MessageBubble = ({ role, content, timestamp }) => {
 
             prose-code:text-cyan-300
 
+            prose-ul:my-3
+            prose-ol:my-3
+            prose-li:my-1.5
+            prose-li:pl-1
+
             prose-pre:border
             prose-pre:border-white/10
             prose-pre:bg-black/40
 
             prose-li:text-gray-200
 
-            prose-a:text-cyan-300
-            prose-a:no-underline
-
             prose-blockquote:border-cyan-400/40
+            prose-blockquote:my-3
           "
         >
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              a: ({ href, children }) => (
+                <a
+                  href={href}
+                  target={href?.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    href?.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="
+                    font-semibold
+                    text-blue-400
+                    underline
+                    underline-offset-4
+                    decoration-blue-400/70
+                    break-words
+                    hover:text-blue-300
+                    hover:decoration-blue-300
+                  "
+                >
+                  {children}
+                </a>
+              ),
+            }}
+          >
+            {markdownContent}
+          </ReactMarkdown>
         </div>
 
         {/* Timestamp */}

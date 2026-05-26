@@ -1,7 +1,10 @@
 import { generateAIResponse } from "./providers/gemini.service.js";
 import { generateOllamaResponse } from "./providers/ollama.service.js";
 
-export const chatService = async (chatMessage, messages,res) => {
+const CHAT_UNAVAILABLE_MESSAGE =
+  "The AI service is currently unavailable. Please try again in a moment.";
+
+export const chatService = async (chatMessage, messages, res) => {
   try {
     // Limit chat history
     const recentMessages = messages?.slice(-6) || [];
@@ -18,13 +21,19 @@ export const chatService = async (chatMessage, messages,res) => {
     if (process.env.AI_PROVIDER === "ollama") {
       return await generateOllamaResponse(chatMessage, conversationHistory, res);
     } else {
-      return await generateAIResponse(chatMessage, conversationHistory);
+      return await generateAIResponse(chatMessage, conversationHistory,res);
     }
   } catch (error) {
     console.error("Chat Service Error:", error);
+
+    if (!res.writableEnded) {
+      res.write(CHAT_UNAVAILABLE_MESSAGE);
+      res.end();
+    }
+
     return {
       success: false,
-      message: "Chat Service is unavailable.",
+      message: CHAT_UNAVAILABLE_MESSAGE,
     };
   }
 };

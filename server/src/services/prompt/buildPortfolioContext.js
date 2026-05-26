@@ -1,65 +1,105 @@
 import {
+  cv,
+  contactInfo,
+  socialMedia,
   SkillsInfo,
   experiences,
   education,
   projects,
 } from "../../data/portfolio.data.js";
 
-// PROJECTS
-const projectContext = [...projects]
-  .reverse()
-  .slice(0, 5)
-  .map(
-    (project) =>
-      `Title: ${project.title} Description: ${project.points.join(", ")} Tech Stack: ${project.tags.join(", ")} Live: ${project.webapp} Gtihub: ${project.github}`,
-  )
-  .join("\n\n");
+const formatList = (items) => items.map((item) => `- ${item}`).join("\n");
 
-// SKILLS
-const skillsContext = SkillsInfo.flatMap((category) =>
-  category.skills.map((skill) => skill.name),
-).join(", ");
+const formatLinks = (links) =>
+  Object.entries(links)
+    .map(([name, url]) => `- ${name}: ${url}`)
+    .join("\n");
 
-// EXPERIENCE
-const experienceContext = [...experiences]
-  .reverse()
-  .map(
-    (exp) =>
-      `Role: ${exp.role} Company: ${exp.company} Duration: ${exp.date} Job Description: ${exp.points.join(", ")}  skills: ${exp.skills.join(", ")}`,
-  )
-  .join("\n\n");
+const formatSkills = (skillCategories) =>
+  skillCategories
+    .map(
+      (category) =>
+        `Category: ${category.title}\n${formatList(
+          category.skills.map((skill) => skill.name),
+        )}`,
+    )
+    .join("\n\n");
 
-// EDUCATION
-const educationContext = [...education]
-  .reverse()
-  .map(
-    (edu) =>
-      `Degree: ${edu.degree} Institution: ${edu.school} Grade: ${edu.grade} About: ${edu.points.join(", ")} `,
-  )
-  .join("\n\n");
+const formatExperience = (experienceItems) =>
+  [...experienceItems]
+    .reverse()
+    .map(
+      (experience) => `Role: ${experience.role}
+Company: ${experience.company}
+Duration: ${experience.date}
+Responsibilities:
+${formatList(experience.points)}
+Skills Used:
+${formatList(experience.skills)}`,
+    )
+    .join("\n\n");
+
+const formatEducation = (educationItems) =>
+  [...educationItems]
+    .reverse()
+    .map(
+      (item) => `Institution: ${item.school}
+Degree: ${item.degree}
+Duration: ${item.date}
+Grade: ${item.grade}
+Details:
+${formatList(item.points)}`,
+    )
+    .join("\n\n");
+
+const formatProjects = (projectItems) =>
+  [...projectItems]
+    .reverse()
+    .map(
+      (project) => `Project: ${project.title}
+Live URL: ${project.webapp}
+GitHub URL: ${project.github}
+Tech Stack:
+${formatList(project.tags)}
+Details:
+${formatList(project.points)}`,
+    )
+    .join("\n\n");
 
 export const portfolioContext = `
+======================================
+PROFILE LINKS
+======================================
+
+Resume/CV: ${cv}
+
+Contact:
+${formatLinks(contactInfo)}
+
+Social Media:
+${formatLinks(socialMedia)}
+
 ======================================
 SKILLS
 ======================================
 
-${skillsContext}
+${formatSkills(SkillsInfo)}
 
 ======================================
 EXPERIENCE
 ======================================
 
-${experienceContext}
+${formatExperience(experiences)}
 
 ======================================
 EDUCATION
 ======================================
 
-${educationContext}
+${formatEducation(education)}
 
 ======================================
 PROJECTS
 ======================================
 
-${projectContext}
-`;
+${formatProjects(projects)}
+`.trim();

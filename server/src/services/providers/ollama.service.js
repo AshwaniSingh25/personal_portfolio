@@ -2,6 +2,9 @@ import axios from "axios";
 import { portfolioContext } from "../prompt/buildPortfolioContext.js";
 import { prompt } from "../prompt/buildPrompt.js";
 
+const AI_UNAVAILABLE_MESSAGE =
+  "The AI service is currently unavailable. Please try again in a moment.";
+
 export const generateOllamaResponse = async (
   userMessage,
   conversationHistory,
@@ -20,8 +23,9 @@ export const generateOllamaResponse = async (
 
         prompt: finalPrompt,
 
-        stream: true, 
+        stream: true,
         // wait for complete response if "false"
+        options: { temperature: 0.2 },
       },
       {
         responseType: "stream",
@@ -58,14 +62,25 @@ export const generateOllamaResponse = async (
       });
 
       response.data.on("error", (error) => {
+        if (!res.writableEnded) {
+          res.write(AI_UNAVAILABLE_MESSAGE);
+          res.end();
+        }
+
         reject(error);
       });
     });
   } catch (error) {
-    console.error("Ollama Error:", error.message);
+    console.error("Ollama Service Error:", error.message);
+
+    if (!res.writableEnded) {
+      res.write(AI_UNAVAILABLE_MESSAGE);
+      res.end();
+    }
+
     return {
       success: false,
-      message: "Ollama service unavailable.",
+      message: AI_UNAVAILABLE_MESSAGE,
     };
   }
 };
