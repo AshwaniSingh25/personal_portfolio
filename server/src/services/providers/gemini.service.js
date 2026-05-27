@@ -18,9 +18,14 @@ export const generateAIResponse = async (
     });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-2.5-flash",
+      model: "models/gemini-3.1-flash-lite",
 
       contents: finalPrompt,
+      config: {
+        temperature: 0.4,
+         maxOutputTokens: 1024,
+        responseMimeType: "text/plain",
+      },
     });
 
     let fullResponse = "";
