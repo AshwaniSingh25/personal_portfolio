@@ -1,5 +1,6 @@
 import { generateAIResponse } from "./providers/gemini.service.js";
 import { generateOllamaResponse } from "./providers/ollama.service.js";
+import { detectRelevantContext } from "../utils/detectRelevantContext.js";
 
 const CHAT_UNAVAILABLE_MESSAGE =
   "The AI service is currently unavailable. Please try again in a moment.";
@@ -18,10 +19,23 @@ export const chatService = async (chatMessage, messages, res) => {
       })
       .join("\n\n");
 
+      // Detect relevant context
+    const relevantContext = detectRelevantContext(chatMessage);
+
     if (process.env.AI_PROVIDER === "ollama") {
-      return await generateOllamaResponse(chatMessage, conversationHistory, res);
+      return await generateOllamaResponse(
+        chatMessage,
+        conversationHistory,
+        relevantContext,
+        res,
+      );
     } else {
-      return await generateAIResponse(chatMessage, conversationHistory,res);
+      return await generateAIResponse(
+        chatMessage,
+        conversationHistory,
+        relevantContext,
+        res,
+      );
     }
   } catch (error) {
     console.error("Chat Service Error:", error);

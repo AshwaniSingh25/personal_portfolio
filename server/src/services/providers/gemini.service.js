@@ -1,6 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 import { prompt } from "../prompt/buildPrompt.js";
-import { portfolioContext } from "../prompt/buildPortfolioContext.js";
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 const AI_UNAVAILABLE_MESSAGE =
   "The AI service is currently unavailable. Please try again in a moment.";
@@ -8,11 +7,12 @@ const AI_UNAVAILABLE_MESSAGE =
 export const generateAIResponse = async (
   userMessage,
   conversationHistory,
+  relevantContext,
   res,
 ) => {
   try {
     const finalPrompt = prompt({
-      portfolioContext,
+      relevantContext,
       conversationHistory,
       userMessage,
     });

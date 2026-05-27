@@ -30,12 +30,12 @@ const formatExperience = (experienceItems) =>
     .reverse()
     .map(
       (experience) => `Role: ${experience.role}
-Company: ${experience.company}
-Duration: ${experience.date}
-Responsibilities:
-${formatList(experience.points)}
-Skills Used:
-${formatList(experience.skills)}`,
+      Company: ${experience.company}
+      Duration: ${experience.date}
+      Responsibilities:
+      ${formatList(experience.points)}
+      Skills Used:
+      ${formatList(experience.skills)}`,
     )
     .join("\n\n");
 
@@ -44,11 +44,11 @@ const formatEducation = (educationItems) =>
     .reverse()
     .map(
       (item) => `Institution: ${item.school}
-Degree: ${item.degree}
-Duration: ${item.date}
-Grade: ${item.grade}
-Details:
-${formatList(item.points)}`,
+      Degree: ${item.degree}
+      Duration: ${item.date}
+      Grade: ${item.grade}
+      Details:
+      ${formatList(item.points)}`,
     )
     .join("\n\n");
 
@@ -66,10 +66,33 @@ ${formatList(project.points)}`,
     )
     .join("\n\n");
 
-export const portfolioContext = `
-======================================
+export const contextSections = {
+  skills: `
+SKILLS
+
+${formatSkills(SkillsInfo)}
+`.trim(),
+
+  projects: `
+PROJECTS
+
+${formatProjects(projects)}
+`.trim(),
+
+  experience: `
+EXPERIENCE
+
+${formatExperience(experiences)}
+`.trim(),
+
+  education: `
+EDUCATION
+
+${formatEducation(education)}
+`.trim(),
+
+  socials: `
 PROFILE LINKS
-======================================
 
 Resume/CV: ${cv}
 
@@ -78,28 +101,5 @@ ${formatLinks(contactInfo)}
 
 Social Media:
 ${formatLinks(socialMedia)}
-
-======================================
-SKILLS
-======================================
-
-${formatSkills(SkillsInfo)}
-
-======================================
-EXPERIENCE
-======================================
-
-${formatExperience(experiences)}
-
-======================================
-EDUCATION
-======================================
-
-${formatEducation(education)}
-
-======================================
-PROJECTS
-======================================
-
-${formatProjects(projects)}
-`.trim();
+`.trim(),
+};

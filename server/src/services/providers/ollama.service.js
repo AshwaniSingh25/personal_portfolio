@@ -1,5 +1,4 @@
 import axios from "axios";
-import { portfolioContext } from "../prompt/buildPortfolioContext.js";
 import { prompt } from "../prompt/buildPrompt.js";
 
 const AI_UNAVAILABLE_MESSAGE =
@@ -8,11 +7,12 @@ const AI_UNAVAILABLE_MESSAGE =
 export const generateOllamaResponse = async (
   userMessage,
   conversationHistory,
+  relevantContext,
   res,
 ) => {
   try {
     const finalPrompt = prompt({
-      portfolioContext,
+      relevantContext,
       conversationHistory,
       userMessage,
     });
