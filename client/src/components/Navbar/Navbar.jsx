@@ -33,6 +33,8 @@ const Navbar = () => {
  // ACTIVE SECTION ON SCROLL
 useEffect(() => {
   const handleActiveSection = () => {
+    setIsScrolled(window.scrollY > 20);
+
     const sections = [
       "hero",
       "skills",

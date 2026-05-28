@@ -21,7 +21,6 @@ export default defineConfig({
           'router': ['react-router-dom'],
           'ui': ['lucide-react', 'react-icons'],
           'animations': ['react-parallax-tilt', 'react-simple-typewriter', 'react-hot-toast'],
-          'forms': ['@emailjs/browser'],
         },
       },
     },

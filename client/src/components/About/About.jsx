@@ -4,7 +4,7 @@ import Tilt from "react-parallax-tilt";
 import { ChevronRight, Download } from "lucide-react";
 import { cv } from "../../constants";
 
-const profileImage = "/profile.png";
+const profileImage = "/profile.webp";
 
 const Hero = () => {
   return (
