@@ -22,7 +22,7 @@ export const chatService = async (chatMessage, messages, res) => {
       // Detect relevant context
     const relevantContext = detectRelevantContext(chatMessage);
 
-    if (process.env.AI_PROVIDER === "ollam") {
+    if (process.env.AI_PROVIDER === "ollama") {
       return await generateOllamaResponse(
         chatMessage,
         conversationHistory,
