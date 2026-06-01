@@ -122,9 +122,9 @@ export const SkillsInfo = [
 export const experiences = [
   {
     id: 0,
-    img: "concentrixLogo",
+    img: "prakhar",
     role: "Full Stack Developer",
-    company: "Concentrix",
+    company: "Prakhar Tech World Private Limited",
     date: "July 2025 - Present",
     points: [
       "Developed scalable full-stack web applications using Next.js, React.js, Angular, Node.js, and MongoDB for business clients across multiple domains.",
