@@ -73,7 +73,7 @@ export const SkillsInfo = [
   {
     title: "Frontend",
     skills: [
-      { name: "HTML5", logo:  htmlLogo},
+      { name: "HTML5", logo: htmlLogo },
       { name: "CSS3", logo: cssLogo },
       { name: "React JS", logo: reactjsLogo },
       { name: "Next JS", logo: nextjsLogo },
@@ -122,42 +122,23 @@ export const SkillsInfo = [
 export const experiences = [
   {
     id: 0,
-    img: concentrixLogo,
-    role: "Chat Support Advisor",
-    company: "Concentrix",
-    date: "September 2025 - October 2025",
-    points: [
-      "Worked on the Amazon customer support process, handling customer queries through live chat.",
-      "Resolved order, account, and delivery-related issues while maintaining service quality standards.",
-      "Used internal CRM and ticketing systems to document, track, and escalate customer issues.",
-      "Maintained high customer satisfaction and SLA compliance in a fast-paced environment.",
-      "Developed strong communication, problem-solving, and time-management skills.",
-    ],
-    skills: [
-      "Customer Communication",
-      "Problem Solving",
-      "CRM Tools",
-      "Ticketing Systems",
-      "Time Management",
-      "Professional Communication",
-      "Cross-cultural Communication",
-    ],
-  },
-  {
-    id: 1,
-    img: jogazLogo,
+    img: "concentrixLogo",
     role: "Full Stack Developer",
-    company: "Jogaz Info Pvt. Ltd.",
-    date: "October 2025 - December 2025",
+    company: "Concentrix",
+    date: "July 2025 - Present",
     points: [
-      "Working on the development and maintenance of a web-based trading support platform.",
-      "Building custom tools and strategy interfaces to help traders configure and manage their workflows.",
-      "Developing the frontend using Angular and TypeScript for better structure and type safety.",
-      "Integrating frontend components with backend services using REST APIs.",
-      "Handling bug fixes, feature enhancements, and regular maintenance to ensure platform stability.",
+      "Developed scalable full-stack web applications using Next.js, React.js, Angular, Node.js, and MongoDB for business clients across multiple domains.",
+      "Engineered a real-time trading and portfolio risk management platform using Angular, Node.js, TypeScript, and Zerodha APIs, delivering live market insights, futures forecasting, and secure rate-limited data processing.",
+      "Built and deployed portfolio websites and business platforms for CA and consultancy firms, enhancing digital presence and client engagement.",
+      "Integrated AI-powered chatbots, authentication systems, and performance optimizations to improve user experience, scalability, and application reliability.",
     ],
     skills: [
       "Angular",
+      "React.js",
+      "Node.js",
+      "AI Integration",
+      "AI Chatbot",
+      "Next.js",
       "TypeScript",
       "REST APIs",
       "Web Application Development",
@@ -166,6 +147,29 @@ export const experiences = [
       "Maintenance & Support",
     ],
   },
+  // {
+  //   id: 1,
+  //   img: jogazLogo,
+  //   role: "Full Stack Developer",
+  //   company: "Jogaz Info Pvt. Ltd.",
+  //   date: "October 2025 - December 2025",
+  //   points: [
+  //     "Working on the development and maintenance of a web-based trading support platform.",
+  //     "Building custom tools and strategy interfaces to help traders configure and manage their workflows.",
+  //     "Developing the frontend using Angular and TypeScript for better structure and type safety.",
+  //     "Integrating frontend components with backend services using REST APIs.",
+  //     "Handling bug fixes, feature enhancements, and regular maintenance to ensure platform stability.",
+  //   ],
+  //   skills: [
+  //     "Angular",
+  //     "TypeScript",
+  //     "REST APIs",
+  //     "Web Application Development",
+  //     "Bug Fixing",
+  //     "Feature Enhancement",
+  //     "Maintenance & Support",
+  //   ],
+  // },
 ];
 
 // education Section
