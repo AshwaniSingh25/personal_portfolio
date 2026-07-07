@@ -24,7 +24,7 @@ const Footer = () => {
     { id: "hero", name: "Home" },
     { id: "skills", name: "Skills" },
     { id: "experience", name: "Experience" },
-    { id: "work", name: "Projects" },
+    { id: "work", name: "Work" },
     { id: "education", name: "Education" },
     { id: "contact", name: "Contact" },
   ];
@@ -141,7 +141,7 @@ const Footer = () => {
                   "
                 >
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Full Stack Developer
+                    Creative Designer · AI Video Editor
                   </span>
                 </div>
 
@@ -157,7 +157,7 @@ const Footer = () => {
                     sm:text-5xl
                   "
                 >
-                  Manav
+                  Ashwani
                   <span
                     className="
                       bg-gradient-to-r
@@ -169,7 +169,7 @@ const Footer = () => {
                     "
                   >
                     {" "}
-                    Pal
+                    Singh
                   </span>
                 </h2>
 
@@ -184,9 +184,8 @@ const Footer = () => {
                     dark:text-gray-400
                   "
                 >
-                  Passionate about building modern, scalable, and user-focused
-                  web applications with clean design and real-world
-                  functionality.
+                  Creating expressive visuals, thoughtful edits, and AI-assisted
+                  motion work that helps ideas earn attention.
                 </p>
               </div>
 
@@ -357,7 +356,7 @@ const Footer = () => {
               {/* LEFT */}
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  © {new Date().getFullYear()} Manav Pal. All rights reserved.
+                  © {new Date().getFullYear()} Ashwani Singh. All rights reserved.
                 </p>
 
                 <p className="mt-1 text-sm text-gray-500 dark:text-gray-500">
@@ -378,7 +377,7 @@ const Footer = () => {
               >
                 Crafted with
                 <Heart size={15} className="fill-red-500 text-red-500" />
-                by Manav Pal
+                by Ashwani Singh
               </div>
             </div>
           </div>

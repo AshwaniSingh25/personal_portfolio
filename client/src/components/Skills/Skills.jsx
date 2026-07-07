@@ -2,7 +2,7 @@ import React from "react";
 
 import { SkillsInfo } from "../../constants";
 
-import { Code2, Sparkles } from "lucide-react";
+import { Palette, Sparkles } from "lucide-react";
 
 const Skills = () => {
   return (
@@ -39,7 +39,7 @@ const Skills = () => {
           >
             <Sparkles className="h-4 w-4 text-cyan-400" />
 
-            <span className="text-sm text-gray-300">Technical Expertise</span>
+            <span className="text-sm text-gray-300">Creative Toolkit</span>
           </div>
 
           {/* TITLE */}
@@ -54,7 +54,7 @@ const Skills = () => {
               lg:text-6xl
             "
           >
-            Technologies I use to
+            Tools and craft behind
             <span
               className="
                 block
@@ -66,7 +66,7 @@ const Skills = () => {
                 text-transparent
               "
             >
-              build modern products.
+              every strong visual.
             </span>
           </h2>
 
@@ -82,9 +82,8 @@ const Skills = () => {
               sm:text-lg
             "
           >
-            I work across frontend, backend, databases, and modern development
-            tools to create scalable, performant, and user-focused digital
-            experiences.
+            From first sketch to final export, I blend visual design, video
+            editing, and AI tools to create memorable digital content.
           </p>
         </div>
 
@@ -152,7 +151,7 @@ const Skills = () => {
                       shadow-lg
                     "
                   >
-                    <Code2 className="h-7 w-7 text-white" />
+                    <Palette className="h-7 w-7 text-white" />
                   </div>
 
                   {/* TITLE */}
@@ -168,7 +167,7 @@ const Skills = () => {
                     </h3>
 
                     <p className="mt-1 text-sm text-gray-400">
-                      Modern development technologies
+                      Hands-on creative capabilities
                     </p>
                   </div>
                 </div>
@@ -222,7 +221,7 @@ const Skills = () => {
                       >
                         <img
                           src={skill.logo}
-                          alt={`${skill.name} technology`}
+                          alt={`${skill.name} creative skill`}
                           loading="lazy"
                           decoding="async"
                           className="

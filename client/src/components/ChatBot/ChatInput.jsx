@@ -98,7 +98,7 @@ const ChatInput = ({ input, setInput, onSend, isLoading }) => {
             }
           }}
           type="text"
-          placeholder={isLoading ? "AI is thinking..." : "Ask AI about Manav..."}
+          placeholder={isLoading ? "AI is thinking..." : "Ask AI about Ashwani..."}
           className="
             flex-1
 

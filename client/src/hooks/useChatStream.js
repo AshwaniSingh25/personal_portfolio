@@ -23,7 +23,7 @@ const replaceLastAssistantMessage = (messages, content) => {
 
 export const useChatStream = () => {
   const [messages, setMessages] = useState([
-    createMessage("assistant", "Hi! I'm Manav's AI assistant."),
+    createMessage("assistant", "Hi! I'm Ashwani's AI assistant."),
   ]);
 
   const [isLoading, setIsLoading] = useState(false);

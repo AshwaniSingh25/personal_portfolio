@@ -55,7 +55,7 @@ const Work = () => {
             <FolderGit2 className="h-4 w-4 text-cyan-400" />
 
             <span className="text-sm font-medium text-gray-300">
-              Featured Projects
+              Selected Work
             </span>
           </div>
 
@@ -72,7 +72,7 @@ const Work = () => {
               lg:text-6xl
             "
           >
-            Projects &
+            Visual stories &
             <span
               className="
                 block
@@ -84,7 +84,7 @@ const Work = () => {
                 text-transparent
               "
             >
-              case studies.
+              creative experiments.
             </span>
           </h2>
 
@@ -100,9 +100,8 @@ const Work = () => {
               sm:text-lg
             "
           >
-            A collection of projects focused on performance, scalability, user
-            experience, and solving real-world problems using modern
-            technologies.
+            A compact selection across brand design, photo manipulation, and
+            AI-assisted video—each built around a clear visual idea.
           </p>
         </div>
 

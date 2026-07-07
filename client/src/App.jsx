@@ -21,30 +21,30 @@ const LoadingFallback = ({ height = "h-40" }) => (
 
 const App = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#030014] text-white antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="relative min-h-screen overflow-hidden bg-[#0b0710] text-white antialiased selection:bg-rose-500/30 selection:text-rose-100">
       {/* DIMENSIONAL BACKGROUND */}
       <div className="fixed inset-0 -z-50 pointer-events-none">
         {/* Core Depth Gradient */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#1e1b4b_0%,_#030014_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#3b1728_0%,_#0b0710_68%)]" />
 
         {/* Animated Grid - Now with a fade-out mask for depth */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:45px_45px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
         {/* Dynamic Light Source */}
-        <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-violet-600/10 blur-[140px]" />
+        <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-rose-500/10 blur-[140px]" />
       </div>
 
       {/* STRATEGIC BLOBS - Fewer, but larger for a cleaner look */}
       <BlurBlob
         position={{ top: "10%", left: "-5%" }}
         size={{ width: "35rem", height: "35rem" }}
-        color="from-indigo-600/20 to-transparent"
+        color="from-rose-600/20 to-transparent"
         duration="25s"
       />
       <BlurBlob
         position={{ bottom: "5%", right: "-5%" }}
         size={{ width: "30rem", height: "30rem" }}
-        color="from-cyan-500/15 to-transparent"
+        color="from-amber-500/15 to-transparent"
         duration="30s"
       />
 

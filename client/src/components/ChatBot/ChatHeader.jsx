@@ -132,7 +132,7 @@ const ChatHeader = ({ onClose }) => {
                 text-white
               "
             >
-              Manav AI Assistant
+              Ashwani AI Assistant
             </h2>
 
             {/* LIVE STATUS DOT */}
@@ -248,4 +248,3 @@ const ChatHeader = ({ onClose }) => {
 };
 
 export default ChatHeader;
-

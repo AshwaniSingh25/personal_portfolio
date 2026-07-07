@@ -19,7 +19,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #030014;
+  background: #0b0710;
   /* Reduce repaints */
   backface-visibility: hidden;
 }

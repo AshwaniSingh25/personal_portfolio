@@ -1,10 +1,10 @@
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import Tilt from "react-parallax-tilt";
-import { ChevronRight, Download } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import { cv } from "../../constants";
 
-const profileImage = "/profile.webp";
+const profileImage = "/asr.jpeg";
 
 const Hero = () => {
   return (
@@ -27,26 +27,26 @@ const Hero = () => {
             </div>
 
             <p className="mb-4 text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-violet-400">
-              Full Stack Developer
+              Creative Designer · AI Video Editor
             </p>
 
             <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl">
-              Building <br className="hidden md:block" />
+              Ideas, shaped <br className="hidden md:block" />
               <span className="bg-gradient-to-r from-violet-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                modern digital
+                into visuals
               </span>
               <br />
-              experiences.
+              that move.
             </h1>
 
             <div className="mt-6 h-8 sm:h-10">
               <span className="text-lg font-semibold text-gray-300 sm:text-2xl">
                 <Typewriter
                   words={[
-                    "MERN Stack Developer",
-                    "Backend Engineer",
-                    "Web Automation Specialist",
-                    "Next.js Expert",
+                    "Adobe Photoshop Artist",
+                    "AI Video Editor",
+                    "Visual Storyteller",
+                    "Creative Designer",
                   ]}
                   loop={0} // Changed to 0 for infinite
                   cursor
@@ -58,19 +58,17 @@ const Hero = () => {
             </div>
 
             <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-gray-400 sm:text-lg lg:mx-0">
-              I build modern, scalable, and high-performance web applications
-              using
+              I’m Ashwani Singh—a multidisciplinary creative turning ideas into
               <span className="text-white">
                 {" "}
-                React, Next.js, Node.js, and MERN stack technologies
+                bold brand visuals, polished photo edits, and scroll-stopping videos
               </span>
-              . I’m also exploring
+              . I combine a sharp design eye with
               <span className="text-cyan-400">
                 {" "}
-                AI agents, automation systems,
+                AI-assisted creative workflows
               </span>
-              and intelligent web solutions to create impactful digital
-              experiences.
+              to move from concept to final frame with speed and intent.
             </p>
 
             {/* BUTTONS - Improved mobile layout */}
@@ -79,8 +77,8 @@ const Hero = () => {
                 href="#work"
                 className="w-full sm:w-auto group flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 hover:scale-[1.02] transition-all"
               >
-                View Projects
-                <ChevronRight
+                Explore Selected Work
+                <ArrowUpRight
                   size={18}
                   className="group-hover:translate-x-1 transition-transform"
                 />
@@ -88,22 +86,20 @@ const Hero = () => {
 
               <a
                 href={cv}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-8 py-4 text-sm font-bold text-white hover:bg-white/10 transition-all"
               >
-                <Download size={18} />
-                Get Resume
+                <Mail size={18} />
+                Let’s Talk
               </a>
             </div>
 
             {/* STATS - Responsive Grid */}
             <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-white/10 pt-8">
-              <StatItem value="1+" label="Years Experience" />
-              <StatItem value="10+" label="Projects Completed" />
+              <StatItem value="1+" label="Year of Experience" />
+              <StatItem value="3" label="Creative Disciplines" />
               <StatItem
                 value="24/7"
-                label="Learning Mindset"
+                label="Ideas in Motion"
                 className="col-span-2 md:col-span-1"
               />
             </div>
@@ -123,7 +119,7 @@ const Hero = () => {
               <div className="relative overflow-hidden rounded-[2.5rem] border border-white/20 bg-white/5 p-2 backdrop-blur-sm shadow-2xl">
                 <img
                   src={profileImage}
-                  alt="Manav Pal - Full Stack Developer"
+                  alt="Ashwani Singh - Creative Designer and AI Video Editor"
                   loading="lazy"
                   decoding="async"
                   fetchPriority="high"

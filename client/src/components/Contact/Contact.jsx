@@ -199,10 +199,8 @@ const Contact = () => {
               lg:text-lg
             "
           >
-            I'm actively looking for opportunities as a Full
-            Stack Developer where I can contribute, grow, and
-            build impactful digital experiences with modern
-            technologies.
+            I’m open to creative roles, freelance collaborations, and visual
+            projects where thoughtful design and fresh ideas can make an impact.
           </p>
         </div>
 

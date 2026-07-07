@@ -90,8 +90,8 @@ const Education = () => {
               sm:text-lg
             "
           >
-            My academic journey and the foundational knowledge I developed in
-            computer applications, programming, and software development.
+            Formal computer education gives me the technical confidence to
+            explore new creative tools and build efficient digital workflows.
           </p>
         </div>
 

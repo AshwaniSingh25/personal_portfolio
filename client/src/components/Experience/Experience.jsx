@@ -86,8 +86,8 @@ const Experience = () => {
               sm:text-lg
             "
           >
-            My professional journey building modern web applications, learning
-            industry practices, and delivering scalable digital solutions.
+            A hands-on journey creating brand assets, editing visual stories,
+            and using AI to make creative production faster and more expressive.
           </p>
         </div>
 

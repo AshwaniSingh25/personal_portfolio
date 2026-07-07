@@ -1,6 +1,6 @@
 export const quickQuestions = [
-  "What technologies do you use?",
-  "Tell me about your projects",
-  "Do you know backend?",
+  "Which creative tools do you use?",
+  "Show me your selected work",
+  "How do you use AI in editing?",
   "What experience do you have?",
 ];

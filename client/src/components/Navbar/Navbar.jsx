@@ -24,7 +24,7 @@ const Navbar = () => {
     { id: "hero", label: "Home" },
     { id: "skills", label: "Skills" },
     { id: "experience", label: "Experience" },
-    { id: "work", label: "Projects" },
+    { id: "work", label: "Work" },
     { id: "education", label: "Education" },
     { id: "contact", label: "Contact" },
   ];
@@ -189,7 +189,7 @@ useEffect(() => {
                   text-transparent
                 "
               >
-                Manav
+                Ashwani
               </span>
 
               <span className="text-violet-500">
@@ -206,7 +206,7 @@ useEffect(() => {
                   text-transparent
                 "
               >
-                Pal
+                Singh
               </span>
 
               <span
@@ -379,7 +379,7 @@ useEffect(() => {
               text-white
             "
           >
-            Manav
+            Ashwani
           </button>
 
           {/* MENU BUTTON */}
