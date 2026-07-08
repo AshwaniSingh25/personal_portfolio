@@ -11,18 +11,12 @@ const Contact = () => {
 
     const formData = new FormData(form.current);
 
-    formData.append(
-      "access_key",
-      import.meta.env.VITE_WEB3_ACCESS_KEY
-    );
+    formData.append("access_key", import.meta.env.VITE_WEB3_ACCESS_KEY);
 
-    const response = await fetch(
-      "https://api.web3forms.com/submit",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
 
     const result = await response.json();
 
@@ -334,11 +328,10 @@ const Contact = () => {
                   sm:text-base
                 "
               >
-                Whether it's a freelance project,
-                collaboration, internship, or full-time
-                opportunity — feel free to reach out.
-                I'm always open to discussing exciting
-                ideas and building modern web experiences.
+                Whether it's a freelance project, collaboration, internship, or
+                full-time opportunity — feel free to reach out. I'm always open
+                to discussing exciting ideas and building modern web
+                experiences.
               </p>
 
               {/* CONTACT INFO */}
@@ -404,7 +397,7 @@ const Contact = () => {
                         sm:text-base
                       "
                     >
-                      manavpal.contact@gmail.com
+                      ashwani.connect25@gmail.com
                     </p>
                   </div>
                 </div>
@@ -673,7 +666,6 @@ const Contact = () => {
                       group-hover:translate-x-1
                     "
                   />
-
                   Send Message
                 </button>
               </form>

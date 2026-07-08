@@ -77,7 +77,14 @@ export const experiences = [
       "Retouched product photography in Adobe Photoshop, improving composition, consistency, and campaign readiness.",
       "Collaborated with stakeholders to translate briefs into clear, engaging visual communication across digital formats.",
     ],
-    skills: ["Photoshop", "AI Video", "Video Editing", "Photo Retouching", "Brand Design", "Social Media Design"],
+    skills: [
+      "Photoshop",
+      "AI Video",
+      "Video Editing",
+      "Photo Retouching",
+      "Brand Design",
+      "Social Media Design",
+    ],
   },
 ];
 
