@@ -1,4 +1,4 @@
-# 🚀 Manav Pal — Full Stack Developer Portfolio
+# 🚀 Ashwani Singh Rajput — Full Stack Developer Portfolio
 
 Modern responsive portfolio website built using React, Tailwind CSS, and modern UI principles.
 
